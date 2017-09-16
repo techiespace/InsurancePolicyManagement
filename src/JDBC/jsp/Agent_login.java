@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import JDBC.jsp.Connect;
 
-public class agent_login {
+public class Agent_login {
 
 	public int ID(String u_name, String pass) {
 		int agent_id = 122;
@@ -29,11 +29,6 @@ public class agent_login {
 
 		return agent_id;
 
-	}
-
-	public static void main(String args[]) {
-		int key = new agent_login().ID("Sharan", "sharan123");
-		System.out.println("key=" + key);
 	}
 
 }

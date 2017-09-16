@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import JDBC.jsp.Connect;
 
-public class login {
+public class Cust_login {
 
 	public int ID(String u_name, String pass) {
 
@@ -38,11 +38,6 @@ public class login {
 
 		return cust_id;
 
-	}
-
-	public static void main(String args[]) {
-		int a = new login().ID("Akash", "akash123");
-		System.out.println("ID=" + a);
 	}
 
 }

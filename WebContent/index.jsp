@@ -39,9 +39,9 @@
 		<a class="navbar-brand" href="#">LIC Welcome, <%
 			try {
 
-				String type = (String)session.getAttribute("type");
+				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
-				int id = (Integer)session.getAttribute("Id");
+				int id = (Integer) session.getAttribute("Id");
 				if (type.equals("user")) {
 					//out.println("Cust");
 					String sql = "select c_fname,c_mname,c_lname from customer where cust_id=?";
@@ -49,7 +49,7 @@
 					stmt.setInt(1, id);
 					ResultSet rs = stmt.executeQuery();
 					rs.next();
-					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
+					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " fucker");
 				} else if (type.equals("agent")) {
 					//out.println("Agent");
 					String sql = "select a_fname,a_lname from agent where agent_id=?";
