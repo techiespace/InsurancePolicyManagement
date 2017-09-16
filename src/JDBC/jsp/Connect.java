@@ -9,7 +9,7 @@ public class Connect {
 
 		url = "jdbc:mysql://localhost:3306/lic";
 		username = "root";
-		password = "rsn027213";
+		password = "password";
 	}
 
 	public Connection myDBConnect() throws ClassNotFoundException, SQLException {

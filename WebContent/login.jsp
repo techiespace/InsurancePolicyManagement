@@ -13,8 +13,6 @@
 			} else {
 				session.setAttribute("type", "user");
 				session.setAttribute("Id", keyc);
-				/*RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-				rd.forward(request, response);*/
 				response.sendRedirect("index.jsp");
 			}
 		}
@@ -25,8 +23,6 @@
 			} else {
 				session.setAttribute("type", "agent");
 				session.setAttribute("Id", keyp);
-				/*RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-				rd.forward(request, response);*/
 				response.sendRedirect("index.jsp");
 			}
 		}
