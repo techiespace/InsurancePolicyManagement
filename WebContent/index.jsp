@@ -62,24 +62,6 @@
 			} catch (Exception e) {
 				System.out.println(e);
 			}
-
-			/*try{
-			
-			String sql="select cust_id,c_fname from customer where c_uname=Akash AND c_passwd=akash123";
-			PreparedStatement stmt=conn.prepareStatement(sql);
-			//		stmt.setString(1, u_name);
-			//		stmt.setString(2, pass);
-					ResultSet rs=stmt.executeQuery();
-					rs.next();
-					
-					//System.out.println(rs.getInt(1) + "  " + rs.getString(2));
-					int cust_id=rs.getInt("cust_id");
-					String name=rs.getString("c_fname");
-			System.out.println(name);
-			}
-			catch(Exception e){
-			System.out.println(e);	
-			}*/
 		%> <!-- session.getAttribute("userid")-->
 		</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -124,10 +106,10 @@
 							Example Pages</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
-						<li><a href="login.html">Login Page</a></li>
-						<li><a href="register.html">Registration Page</a></li>
-						<li><a href="forgot-password.html">Forgot Password Page</a></li>
-						<li><a href="blank.html">Blank Page</a></li>
+						<li><a href="dashboard/login.html">Login Page</a></li>
+						<li><a href="dashboard/register.html">Registration Page</a></li>
+						<li><a href="dashboard/forgot-password.html">Forgot Password Page</a></li>
+						<li><a href="dashboard/blank.html">Blank Page</a></li>
 					</ul></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Menu Levels"><a
@@ -930,18 +912,18 @@
 	</div>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
-	<script src="vendor/popper/popper.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="dashboard/vendor/jquery/jquery.min.js"></script>
+	<script src="dashboard/vendor/popper/popper.min.js"></script>
+	<script src="dashboard/vendor/bootstrap/js/bootstrap.min.js"></script>
 
 	<!-- Plugin JavaScript -->
-	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-	<script src="vendor/chart.js/Chart.min.js"></script>
-	<script src="vendor/datatables/jquery.dataTables.js"></script>
-	<script src="vendor/datatables/dataTables.bootstrap4.js"></script>
+	<script src="dashboard/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="dashboard/vendor/chart.js/Chart.min.js"></script>
+	<script src="dashboard/vendor/datatables/jquery.dataTables.js"></script>
+	<script src="dashboard/vendor/datatables/dataTables.bootstrap4.js"></script>
 
 	<!-- Custom scripts for this template -->
-	<script src="js/sb-admin.min.js"></script>
+	<script src="dashboard/js/sb-admin.min.js"></script>
 
 </body>
 
