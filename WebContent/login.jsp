@@ -7,7 +7,7 @@
 	//if(request.getParameter("userC") != null && request.getParameter("signup") != null)
 	if (isPost == true) {
 		if (request.getParameter("userC") != null && request.getParameter("passC") != null) {
-			int keyc = new login().ID(request.getParameter("userC"), request.getParameter("passC"));
+			int keyc = new Cust_login().ID(request.getParameter("userC"), request.getParameter("passC"));
 			if (keyc == 122) {
 				msg = "*Invalid Username or Password.";
 			} else {
@@ -17,7 +17,7 @@
 			}
 		}
 		if (request.getParameter("userP") != null && request.getParameter("passP") != null) {
-			int keyp = new agent_login().ID(request.getParameter("userP"), request.getParameter("passP"));
+			int keyp = new Agent_login().ID(request.getParameter("userP"), request.getParameter("passP"));
 			if (keyp == 122) {
 				msg = "*Invalid Username or Password.";
 			} else {
@@ -96,11 +96,11 @@
 					<a href="#forgot">Forgot Password?</a>
 				</div>	-->
 					</div>
-					<h3 style="color: red">
+					<h2 style="color: red">
 						<%
 							out.println(msg);
 						%>
-					</h3>
+					</h2>
 
 				</div>
 			</div>
