@@ -10,24 +10,25 @@
 
 		$('#main').load('main.jsp');
 
-		
 		$("#myPolicies").click(function() {
 			$('#main').load('myPolicies.jsp');
+		});
+
+		$("#dashboard").click(function() {
+			$('#main').load('main.jsp');
 		});
 
 		$("#policyPayment").click(function() {
 			$('#main').load('policyPayment.jsp');
 		});
-		
+
 		$("#myProfile").click(function() {
 			$('#main').load('myProfile.jsp');
 		});
-		
+
 		$("#agentInfo").click(function() {
 			$('#main').load('agentInfo.jsp');
 		});
-
-
 
 	});
 </script>
@@ -99,10 +100,13 @@
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item active" data-toggle="tooltip"
-					data-placement="right" title="Dashboard"><a class="nav-link"
-					href="#"> <i class="fa fa-fw fa-dashboard"></i> <span
-						class="nav-link-text"> Dashboard</span>
-				</a></li>
+					data-placement="right" title="Dashboard">
+					<div id="dashboard">
+						<a class="nav-link"> <i class="fa fa-fw fa-dashboard"></i> <span
+							class="nav-link-text"> Dashboard</span>
+						</a>
+					</div>
+				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
 					<div id="myPolicies">
@@ -144,7 +148,7 @@
 							Invoice</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
-						<li><a href="dashboard/login.html">Login Page</a></li>
+						<li><a href="dashboard/login.jsp">Login Page</a></li>
 						<li><a href="dashboard/register.html">Registration Page</a></li>
 						<li><a href="dashboard/forgot-password.html">Forgot
 								Password Page</a></li>
@@ -290,9 +294,8 @@
 			</ol> -->
 
 			<!-- Icon Cards -->
-			 </div>
-		<!-- /.container-fluid -->
 
+		</div>
 	</div>
 	<!-- /.content-wrapper -->
 
@@ -315,18 +318,17 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Logout</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">Select "Logout" below if you are ready
-					to end your current session.</div>
+				<div class="modal-body">Are you sure you want to logout?</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.html">Logout</a>
+					<a class="btn btn-primary" href="login.jsp">Logout</a>
 				</div>
 			</div>
 		</div>

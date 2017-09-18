@@ -7,10 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%
-session.setAttribute("userid", null);
-session.invalidate();
-response.sendRedirect("login.jsp");
-%>
+<p>
+This is a sample text
+</p>
 </body>
 </html>
