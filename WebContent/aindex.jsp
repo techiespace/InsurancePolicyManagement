@@ -59,7 +59,9 @@
 					rs.next();
 					out.println(rs.getString(1) + " " + rs.getString(2));
 				}
-				
+			} catch (Exception e) {
+				System.out.println(e);
+			}
 		%> <!-- session.getAttribute("userid")-->
 		</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
@@ -104,7 +106,7 @@
 							Example Pages</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
-						<li><a href="dashboard/login.jsp">Login Page</a></li>
+						<li><a href="dashboard/login.html">Login Page</a></li>
 						<li><a href="dashboard/register.html">Registration Page</a></li>
 						<li><a href="dashboard/forgot-password.html">Forgot Password Page</a></li>
 						<li><a href="dashboard/blank.html">Blank Page</a></li>
@@ -317,18 +319,7 @@
 					<!-- Example Notifications Card -->
 					<div class="card mb-3">
 						<div class="card-header">
-							<i class="fa fa-bell-o"></i> Feed Example<%
-							
-							String sql = "select c_fname,c_mname,c_lname from customer where cust_id=?";
-							PreparedStatement stmt = conn.prepareStatement(sql);
-							stmt.setInt(1, id);
-							ResultSet rs = stmt.executeQuery();
-							rs.next();
-							out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		%>
+							<i class="fa fa-bell-o"></i> Feed Example
 						</div>
 						<div class="list-group list-group-flush small">
 							<a href="#" class="list-group-item list-group-item-action">
@@ -903,17 +894,18 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Logout</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body">Are you sure you want to logout?</div>
+				<div class="modal-body">Select "Logout" below if you are ready
+					to end your current session.</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.jsp">Logout</a>
+					<a class="btn btn-primary" href="login.html">Logout</a>
 				</div>
 			</div>
 		</div>
