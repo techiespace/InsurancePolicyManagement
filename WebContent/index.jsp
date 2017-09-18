@@ -4,7 +4,33 @@
 <%@ page import="java.sql.*,JDBC.jsp.*"%>
 
 <head>
+<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
 
+		$('#main').load('main.jsp');
+
+		
+		$("#myPolicies").click(function() {
+			$('#main').load('myPolicies.jsp');
+		});
+
+		$("#policyPayment").click(function() {
+			$('#main').load('policyPayment.jsp');
+		});
+		
+		$("#myProfile").click(function() {
+			$('#main').load('myProfile.jsp');
+		});
+		
+		$("#agentInfo").click(function() {
+			$('#main').load('agentInfo.jsp');
+		});
+
+
+
+	});
+</script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -63,57 +89,65 @@
 				System.out.println(e);
 			}
 		%> <!-- session.getAttribute("userid")-->
-</a>
-		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-          <li class="nav-item active" data-toggle="tooltip" data-placement="right" title="Dashboard">
-            <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-dashboard"></i>
-              <span class="nav-link-text">
-                Dashboard</span>
-            </a>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-            <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-server"></i>
-              <span class="nav-link-text">
-                My Policies</span>
-            </a>
-          </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-            <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-money"></i>
-              <span class="nav-link-text">
-                Policy Payment</span>
-            </a>
-          </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-            <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-address-card-o"></i>
-              <span class="nav-link-text">
-                My Profile</span>
-            </a>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-            <a class="nav-link" href="#">
-              <i class="fa fa-fw fa-user-o"></i>
-              <span class="nav-link-text">
-                Agent Info</span>
-            </a>
-          </li>
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-print"></i>
-              <span class="nav-link-text">
-                Invoice</span>
-            </a>
+		</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button"
+			data-toggle="collapse" data-target="#navbarResponsive"
+			aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+				<li class="nav-item active" data-toggle="tooltip"
+					data-placement="right" title="Dashboard"><a class="nav-link"
+					href="#"> <i class="fa fa-fw fa-dashboard"></i> <span
+						class="nav-link-text"> Dashboard</span>
+				</a></li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Charts">
+					<div id="myPolicies">
+						<a class="nav-link"> <i class="fa fa-fw fa-server"></i> <span
+							class="nav-link-text"> My Policies</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Charts">
+					<div id="policyPayment">
+						<a class="nav-link"> <i class="fa fa-fw fa-money"></i> <span
+							class="nav-link-text"> Policy Payment</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Charts">
+					<div id="myProfile">
+						<a class="nav-link" href="#"> <i
+							class="fa fa-fw fa-address-card-o"></i> <span
+							class="nav-link-text"> My Profile</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Tables">
+					<div id="agentInfo">
+						<a class="nav-link" href="#"> <i class="fa fa-fw fa-user-o"></i>
+							<span class="nav-link-text"> Agent Info</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Components"><a
+					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
+					href="#collapseComponents" data-parent="#exampleAccordion"> <i
+						class="fa fa-fw fa-print"></i> <span class="nav-link-text">
+							Invoice</span>
+				</a>
 					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
 						<li><a href="dashboard/login.html">Login Page</a></li>
 						<li><a href="dashboard/register.html">Registration Page</a></li>
-						<li><a href="dashboard/forgot-password.html">Forgot Password Page</a></li>
+						<li><a href="dashboard/forgot-password.html">Forgot
+								Password Page</a></li>
 						<li><a href="dashboard/blank.html">Blank Page</a></li>
 					</ul></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
@@ -247,7 +281,7 @@
 
 	<div class="content-wrapper">
 
-		<div class="container-fluid">
+		<div id="main" class="container-fluid">
 
 			<!-- Breadcrumbs -->
 			<!-- <ol class="breadcrumb">
@@ -256,193 +290,7 @@
 			</ol> -->
 
 			<!-- Icon Cards -->
-			<div class="row">
-				<div class="col-xl-6 col-sm-6 mb-3">
-					<div class="card text-white bg-primary o-hidden h-100">
-						<div class="card-body">
-							<div class="card-body-icon">
-								<i class="fa fa-fw fa-server"></i>
-							</div>
-							<div class="mr-5" style="font-size:1.5em">My Policies</div>
-						</div>
-						<a href="#" class="card-footer text-white clearfix small z-1">
-							<span class="float-left" style="font-size:1.2em">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
-						</span>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-6 col-sm-6 mb-3" style="display:block;">
-					<div class="card text-white bg-warning o-hidden h-100" ;">
-						<div class="card-body">
-							<div class="card-body-icon">
-								<i class="fa fa-fw fa-money"></i>
-							</div>
-							<div class="mr-5" style="font-size:1.5em">Premium Payment</div>
-						</div>
-						<a href="#" class="card-footer text-white clearfix small z-1">
-							<span class="float-left" style="font-size:1.2em">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
-						</span>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-6 col-sm-6 mb-3">
-					<div class="card text-white bg-success o-hidden h-100">
-						<div class="card-body">
-							<div class="card-body-icon">
-								<i class="fa fa-fw fa-address-card-o"></i>
-							</div>
-							<div class="mr-5" style="font-size:1.5em">My Profile</div>
-						</div>
-						<a href="#" class="card-footer text-white clearfix small z-1">
-							<span class="float-left"style="font-size:1.2em">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
-						</span>
-						</a>
-					</div>
-				</div>
-				<div class="col-xl-6 col-sm-6 mb-3">
-					<div class="card text-white bg-danger o-hidden h-100">
-						<div class="card-body">
-							<div class="card-body-icon">
-								<i class="fa fa-fw fa-newspaper-o"></i>
-							</div>
-							<div class="mr-5" style="font-size:1.5em">New plans by LIC!</div>
-						</div>
-						<a href="#" class="card-footer text-white clearfix small z-1">
-							<span class="float-left" style="font-size:1.2em">View Details</span> <span
-							class="float-right"> <i class="fa fa-angle-right"></i>
-						</span>
-						</a>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-12">
-					<!-- Example Notifications Card -->
-					<div class="card mb-3">
-						<div class="card-header">
-							<i class="fa fa-bell-o"></i> Feed Example
-						</div>
-						<div class="list-group list-group-flush small">
-							<a href="#" class="list-group-item list-group-item-action">
-								<div class="media">
-									<img class="d-flex mr-3 rounded-circle"
-										src="http://placehold.it/45x45" alt="">
-									<div class="media-body">
-										<strong>David Miller</strong> posted a new article to <strong>David
-											Miller Website</strong>.
-										<div class="text-muted smaller">Today at 5:43 PM - 5m
-											ago</div>
-									</div>
-								</div>
-							</a> <a href="#" class="list-group-item list-group-item-action">
-								<div class="media">
-									<img class="d-flex mr-3 rounded-circle"
-										src="http://placehold.it/45x45" alt="">
-									<div class="media-body">
-										<strong>Samantha King</strong> sent you a new message!
-										<div class="text-muted smaller">Today at 4:37 PM - 1hr
-											ago</div>
-									</div>
-								</div>
-							</a> <a href="#" class="list-group-item list-group-item-action">
-								<div class="media">
-									<img class="d-flex mr-3 rounded-circle"
-										src="http://placehold.it/45x45" alt="">
-									<div class="media-body">
-										<strong>Jeffery Wellings</strong> added a new photo to the
-										album <strong>Beach</strong>.
-										<div class="text-muted smaller">Today at 4:31 PM - 1hr
-											ago</div>
-									</div>
-								</div>
-							</a> <a href="#" class="list-group-item list-group-item-action">
-								<div class="media">
-									<img class="d-flex mr-3 rounded-circle"
-										src="http://placehold.it/45x45" alt="">
-									<div class="media-body">
-										<i class="fa fa-code-fork"></i> <strong>Monica Dennis</strong>
-										forked the <strong>startbootstrap-sb-admin</strong> repository
-										on <strong>GitHub</strong>.
-										<div class="text-muted smaller">Today at 3:54 PM - 2hrs
-											ago</div>
-									</div>
-								</div>
-							</a> <a href="#" class="list-group-item list-group-item-action">
-								View all activity... </a>
-						</div>
-						<div class="card-footer small text-muted">Updated yesterday
-							at 11:59 PM</div>
-					</div>
-				</div>
-			</div>
-
-			<!-- Example Tables Card -->
-			<div class="card mb-3">
-				<div class="card-header">
-					<i class="fa fa-table"></i> Data Table Example
-				</div>
-				<div class="card-body">
-					<div class="table-responsive">
-						<table class="table table-bordered" width="100%" id="dataTable"
-							cellspacing="0">
-							<thead>
-								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
-								</tr>
-							</thead>
-							<tfoot>
-								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
-								</tr>
-							</tfoot>
-							<tbody>
-								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
-									<td>$320,800</td>
-								</tr>
-								<tr>
-									<td>Garrett Winters</td>
-									<td>Accountant</td>
-									<td>Tokyo</td>
-									<td>63</td>
-									<td>2011/07/25</td>
-									<td>$170,750</td>
-								</tr>
-								<tr>
-									<td>Donna Snider</td>
-									<td>Customer Support</td>
-									<td>New York</td>
-									<td>27</td>
-									<td>2011/01/25</td>
-									<td>$112,000</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</div>
-				<div class="card-footer small text-muted">Updated yesterday at
-					11:59 PM</div>
-			</div>
-
-		</div>
+			 </div>
 		<!-- /.container-fluid -->
 
 	</div>
