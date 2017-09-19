@@ -76,7 +76,7 @@
 					stmt.setInt(1, id);
 					ResultSet rs = stmt.executeQuery();
 					rs.next();
-					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " fucker");
+					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
 				} else if (type.equals("agent")) {
 					//out.println("Agent");
 					String sql = "select a_fname,a_lname from agent where agent_id=?";
@@ -101,32 +101,32 @@
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item active" data-toggle="tooltip"
 					data-placement="right" title="Dashboard">
-					<div id="dashboard">
-						<a class="nav-link"> <i class="fa fa-fw fa-dashboard"></i> <span
+					<div id="dashboard" class="nav-link">
+						<a style="color:grey;"> <i class="fa fa-fw fa-dashboard"></i> <span
 							class="nav-link-text"> Dashboard</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="myPolicies">
-						<a class="nav-link"> <i class="fa fa-fw fa-server"></i> <span
+					<div id="myPolicies" class="nav-link">
+						<a style="color:grey;"> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> My Policies</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="policyPayment">
-						<a class="nav-link"> <i class="fa fa-fw fa-money"></i> <span
+					<div id="policyPayment" class="nav-link">
+						<a  style="color:grey"> <i class="fa fa-fw fa-money"></i> <span
 							class="nav-link-text"> Policy Payment</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Charts">
-					<div id="myProfile">
-						<a class="nav-link" href="#"> <i
+					title="Charts"> 
+					<div id="myProfile" class="nav-link">
+						<a style="color:grey;" href="#"> <i
 							class="fa fa-fw fa-address-card-o"></i> <span
 							class="nav-link-text"> My Profile</span>
 						</a>
@@ -134,8 +134,8 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
-					<div id="agentInfo">
-						<a class="nav-link" href="#"> <i class="fa fa-fw fa-user-o"></i>
+					<div id="agentInfo" class="nav-link">
+						<a style="color:grey;" href="#"> <i class="fa fa-fw fa-user-o"></i>
 							<span class="nav-link-text"> Agent Info</span>
 						</a>
 					</div>
@@ -183,7 +183,7 @@
 				</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item dropdown"><a
+				<li class="nav-item dropdown"><a style="visibility:hidden;"
 					class="nav-link dropdown-toggle mr-lg-2" href="#"
 					id="messagesDropdown" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <i class="fa fa-fw fa-envelope"></i> <span
@@ -220,7 +220,7 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item small" href="#"> View all messages </a>
 					</div></li>
-				<li class="nav-item dropdown"><a
+				<li class="nav-item dropdown"><a style="visibility:hidden;"
 					class="nav-link dropdown-toggle mr-lg-2" href="#"
 					id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <i class="fa fa-fw fa-bell"></i> <span
