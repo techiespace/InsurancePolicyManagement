@@ -139,7 +139,7 @@
 					id="sidenavToggler"> <i class="fa fa-fw fa-angle-left"></i>
 				</a></li>
 			</ul>
-			<ul class="navbar-nav ml-auto">
+			<!--<ul class="navbar-nav ml-auto">
 				<li class="nav-item dropdown"><a
 					class="nav-link dropdown-toggle mr-lg-2" href="#"
 					id="messagesDropdown" data-toggle="dropdown" aria-haspopup="true"
@@ -219,6 +219,7 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item small" href="#"> View all alerts </a>
 					</div></li>
+					-->
 				<li class="nav-item">
 					<form class="form-inline my-2 my-lg-0 mr-lg-2">
 						<div class="input-group">

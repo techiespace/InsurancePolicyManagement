@@ -76,7 +76,7 @@
 					stmt.setInt(1, id);
 					ResultSet rs = stmt.executeQuery();
 					rs.next();
-					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3) + " fucker");
+					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
 				} else if (type.equals("agent")) {
 					//out.println("Agent");
 					String sql = "select a_fname,a_lname from agent where agent_id=?";

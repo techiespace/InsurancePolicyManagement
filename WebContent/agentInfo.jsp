@@ -5,7 +5,7 @@
 
 <body>
 
-<h1> Yeah Bitches! Page:agentInfo.jsp</h1>
+<h1> Yeah! Page:agentInfo.jsp</h1>
 </body>
 
 
