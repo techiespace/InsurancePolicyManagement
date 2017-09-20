@@ -3,6 +3,36 @@
 <%@ page import="java.sql.*,JDBC.jsp.*"%>
 
 <head>
+
+<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	
+
+		$("#premium-payment-details").click(function() {
+			$('#main').load('policyPayment.jsp');
+		});
+		
+
+		$("#my-policies-details").click(function() {
+			$('#main').load('myPolicies.jsp');
+		});
+		
+		$("#my-profile-details").click(function() {
+			$('#main').load('myProfile.jsp');
+		});
+		
+		$("#new-plans-details").click(function() {
+			$('#main').load('myPolicies.jsp');
+		});
+
+	
+
+	});
+</script>
+
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -40,7 +70,7 @@
 							<div class="mr-5" style="font-size: 1.5em">My Policies</div>
 						</div>
 						<a href="#" class="card-footer text-white clearfix small z-1">
-							<span class="float-left" style="font-size: 1.2em">View
+							<span  id="my-policies-details" class="float-left" style="font-size: 1.2em">View
 								Details</span> <span class="float-right"> <i
 								class="fa fa-angle-right"></i>
 						</span>
@@ -55,11 +85,14 @@
 							</div>
 							<div class="mr-5" style="font-size: 1.5em">Premium Payment</div>
 						</div>
+						
 						<a href="#" class="card-footer text-white clearfix small z-1">
-							<span class="float-left" style="font-size: 1.2em">View
+						
+							<span id="premium-payment-details" class="float-left " style="font-size: 1.2em">View
 								Details</span> <span class="float-right"> <i
 								class="fa fa-angle-right"></i>
 						</span>
+						
 						</a>
 					</div>
 				</div>
@@ -72,7 +105,7 @@
 							<div class="mr-5" style="font-size: 1.5em">My Profile</div>
 						</div>
 						<a href="#" class="card-footer text-white clearfix small z-1">
-							<span class="float-left" style="font-size: 1.2em">View
+							<span id="my-profile-details" class="float-left" style="font-size: 1.2em">View
 								Details</span> <span class="float-right"> <i
 								class="fa fa-angle-right"></i>
 						</span>
@@ -89,7 +122,7 @@
 								LIC!</div>
 						</div>
 						<a href="#" class="card-footer text-white clearfix small z-1">
-							<span class="float-left" style="font-size: 1.2em">View
+							<span  id="new-plans-details" class="float-left" style="font-size: 1.2em">View
 								Details</span> <span class="float-right"> <i
 								class="fa fa-angle-right"></i>
 						</span>

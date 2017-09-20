@@ -18,7 +18,7 @@
 			$('#main').load('main.jsp');
 		});
 
-		$("#policyPayment").click(function() {
+		$("#policyPayment, #premium-payment-details").click(function() {
 			$('#main').load('policyPayment.jsp');
 		});
 
