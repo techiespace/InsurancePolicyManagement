@@ -11,7 +11,7 @@
 			if (keyc == 122) {
 				msg = "*Invalid Username or Password.";
 			} else {
-				session.setAttribute("type", "user");
+				//session.setAttribute("type", "user");
 				session.setAttribute("Id", keyc);
 				response.sendRedirect("index.jsp");
 			}
@@ -21,9 +21,9 @@
 			if (keyp == 122) {
 				msg = "*Invalid Username or Password.";
 			} else {
-				session.setAttribute("type", "agent");
+				//session.setAttribute("type", "agent");
 				session.setAttribute("Id", keyp);
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("aindex.jsp");
 			}
 		}
 	}
