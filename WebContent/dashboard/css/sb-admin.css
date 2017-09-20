@@ -179,7 +179,7 @@ body.fixed-nav {
   #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link:hover {
     color: #adb5bd; }
 	
-	div#agentInfo:hover, div#myPolicies:hover,div#myProfile:hover,div#dashboard:hover {
+	div#agentInfo:hover, div#myPolicies:hover, div#policyPayment:hover,div#myProfile:hover,div#dashboard:hover {
     background-color: white;
     color: black;
 }
