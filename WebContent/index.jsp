@@ -18,7 +18,7 @@
 			$('#main').load('main.jsp');
 		});
 
-		$("#policyPayment, #premium-payment-details").click(function() {
+		$("#policyPayment").click(function() {
 			$('#main').load('policyPayment.jsp');
 		});
 
@@ -126,7 +126,7 @@
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts"> 
 					<div id="myProfile" class="nav-link">
-						<a style="color:grey;" href="#"> <i
+						<a style="color:grey;" > <i
 							class="fa fa-fw fa-address-card-o"></i> <span
 							class="nav-link-text"> My Profile</span>
 						</a>
@@ -135,7 +135,7 @@
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
 					<div id="agentInfo" class="nav-link">
-						<a style="color:grey;" href="#"> <i class="fa fa-fw fa-user-o"></i>
+						<a style="color:grey;" > <i class="fa fa-fw fa-user-o"></i>
 							<span class="nav-link-text"> Agent Info</span>
 						</a>
 					</div>
