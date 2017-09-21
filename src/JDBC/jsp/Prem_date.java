@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class prem_date {
+public class Prem_date {
 	public  Date due_date(int cust_id, int pol_no) {
 		Date p_date = null;
 		String sql1 = "select prem_pdate from customer_policy where cust_id=? AND pol_no=?";
@@ -25,10 +25,10 @@ public class prem_date {
 		return p_date;
 	}
 	
-	public static void main(String args[])
+	/*public static void main(String args[])
 	{
 		Date d=new prem_date().due_date(1,897456123);
 		System.out.println("Key="+d);
-	}
+	}*/
 	
 }

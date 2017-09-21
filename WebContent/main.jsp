@@ -57,6 +57,7 @@
 <!-- Custom styles for this template -->
 <link href="dashboard/css/sb-admin.css" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -127,7 +128,7 @@
 		<div class="col-lg-12">
 			<!-- Example Notifications Card -->
 			<div class="card mb-3">
-				<div class="card-header">
+				<div class="card-header" style="font-size:larger; font-weight:bolder;">
 					<i class="fa fa-bell-o"></i> Notifications
 				</div>
 				<div class="list-group list-group-flush small">
@@ -175,10 +176,10 @@
 										if (day_diff[acnt] >= 30) {
 											out.println("You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
 											out.println("Next premium is due in " + day_diff[acnt] + " days on "
-													+ new prem_date().due_date(cust_id, pols[acnt]) + ".");
+													+ new Prem_date().due_date(cust_id, pols[acnt]) + ".");
 										} else {
 											out.println("Next premium for Policy Number:" + pols[acnt] + " is due in " + day_diff[acnt]
-													+ " days on " + new prem_date().due_date(cust_id, pols[acnt]) + ".");
+													+ " days on " + new Prem_date().due_date(cust_id, pols[acnt]) + ".");
 										}
 
 									}
@@ -188,16 +189,7 @@
 						</div>
 					</a>
 					<%} %>
-					<!--  <a href="#" class="list-group-item list-group-item-action"
-						style="padding: 1.5em">
-						<div class="media">
-							
-							<div class="media-body">
-								<strong>Samantha King</strong> sent you a new message!
-
-							</div>
-						</div>
-					</a> <a href="#" class="list-group-item list-group-item-action"
+					 <!--<a href="#" class="list-group-item list-group-item-action"
 						style="padding: 1.5em">
 						<div class="media">
 							

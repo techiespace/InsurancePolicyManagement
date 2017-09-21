@@ -119,7 +119,7 @@
 					title="Charts">
 					<div id="policyPayment" class="nav-link">
 						<a  style="color:grey"> <i class="fa fa-fw fa-money"></i> <span
-							class="nav-link-text"> Policy Payment</span>
+							class="nav-link-text"> Premium Payment</span>
 						</a>
 					</div>
 				</li>
