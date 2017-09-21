@@ -3,6 +3,36 @@
 <%@ page import="java.sql.*,JDBC.jsp.*"%>
 
 <head>
+
+<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+	
+
+		$("#premium-payment-details").click(function() {
+			$('#main').load('policyPayment.jsp');
+		});
+		
+
+		$("#my-policies-details").click(function() {
+			$('#main').load('myPolicies.jsp');
+		});
+		
+		$("#my-profile-details").click(function() {
+			$('#main').load('myProfile.jsp');
+		});
+		
+		$("#new-plans-details").click(function() {
+			$('#main').load('myPolicies.jsp');
+		});
+
+	
+
+	});
+</script>
+
+
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"

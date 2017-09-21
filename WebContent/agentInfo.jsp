@@ -1,5 +1,6 @@
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.PreparedStatement"%>
+<%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.DatabaseMetaData"%>
 <%@ page import="java.sql.DriverManager"%>
@@ -30,9 +31,13 @@ try {
 	String type = (String) session.getAttribute("type");
 	Connection conn = new Connect().myDBConnect();
 	int id = (Integer) session.getAttribute("Id");
+	String agentid = "select agent_id from customer_agent where cust_id="+id;
+	Statement s = conn.createStatement();
+	ResultSet agentlist = s.executeQuery(agentid);
+	while(agentlist.next()){
 		String sql = "select a_fname, a_lname, a_phone, a_email, a_addr from agent where agent_id=?";
 		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, id);
+		stmt.setInt(1, agentlist.getInt(1));
 		ResultSet rs = stmt.executeQuery();
 		while(rs.next()){
 			afName = rs.getString(1);
@@ -52,24 +57,16 @@ try {
         </div>
         <div class="col-md-8">
           <h3><%out.println(afName);%><%out.println(alName);%></h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
-          <a class="btn btn-primary" href="#">View Project</a>
+          <p><b>Address: </b><%out.println(aAddress);%><br>
+          <b>Contact Number: </b><%out.println(aContact);%><br>
+          <b>Email: </b><%out.println(aEmail);%></p>
+          <a class="btn btn-primary" href="mailto:<%out.println(aEmail);%>">Send mail</a>
         </div>
       </div>
       <!-- /.row -->
-
-      <hr>
-    
-	<%
-out.println(afName);
-	out.println(alName);
-out.println(aAddress);
-out.println(aContact);
-out.println(aEmail);
-%>
 <hr>
 <%
-		
+		}
 		}
 } catch (Exception e) {
 	System.out.println(e);
