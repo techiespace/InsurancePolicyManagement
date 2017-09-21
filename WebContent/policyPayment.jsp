@@ -14,7 +14,6 @@
 </head>
 
 <body>
-
 	<!-- Page Content -->
 	<div class="container">
 
@@ -29,7 +28,7 @@
 				int id = (Integer) session.getAttribute("Id");
 				System.out.println("ID:" + id);
 				int pols[] = new int[30];
-				int pols_amt[]=new int[30];
+				int pols_amt[] = new int[30];
 				int day_diff[] = new int[30];
 				String pol_names[] = new String[30];
 				int cnt = 0, acnt = 0;
@@ -55,59 +54,64 @@
 					ResultSet rs2 = stmt2.executeQuery();
 					rs2.next();
 					pol_names[acnt] = rs2.getString(1);
-					pols_amt[acnt]=rs2.getInt(2);
+					pols_amt[acnt] = rs2.getInt(2);
 		%>
 		<hr>
 
 		<!-- Project One -->
-		<div  style="margin-left: 0.4em">
+		<div style="margin-left: 0.4em">
 			<div class="row">
-			<div class="col-md-8">
-				<h2>
+				<div class="col-md-8">
+					<h2>
+						<%
+							out.println(pol_names[acnt]);
+						%>
+					</h2>
+				</div>
+				<div class="col-md-4">
+					<a class="btn btn-primary" href="">Pay now</a>
+				</div>
+			</div>
+			<div class="row">
+				<p>
+					<b>Policy Number: </b>
 					<%
-						out.println(pol_names[acnt]);
+						out.println(pols[acnt]);
 					%>
-				</h2>
-			</div>
-			<div class="col-md-4">
-				<a class="btn btn-primary" href="">Pay now</a>
-			</div>
+				</p>
 			</div>
 			<div class="row">
-			<p>
-				<b>Policy Number: </b>
-				<%
-					out.println(pols[acnt]);
-				%>
-			</p>
+				<h6>
+					<b>Premium Amount: </b>
+					<%
+						out.println(pols_amt[acnt]);
+					%>
+				</h6>
 			</div>
 			<div class="row">
-			<h6><b>Premium Amount: </b><%out.println(pols_amt[acnt]); %></h6>
-			</div>
-			<div class="row">
-			<h4>
-				<%
-					if (day_diff[acnt] < 0) {
-								out.println("You have missed your premium due date for Policy Number:" + pols[acnt] + ".");
-								out.println("\nPlease pay it ASAP!");
-							} else if (day_diff[acnt] == 0) {
-								out.println("Your premium due date for Policy Number:" + pols[acnt] + " is today.");
-								out.println("\nPlease pay it ASAP!");
-							} else if (day_diff[acnt] > 0) {
-								if (day_diff[acnt] >= 30) {
-									out.println(
-											"You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
-									out.println("\nNext premium is due in " + day_diff[acnt] + " days on "
-											+ new Prem_date().due_date(id, pols[acnt]) + ".");
-								} else {
-									out.println("Next premium for Policy Number:" + pols[acnt] + " is due in " + day_diff[acnt]
-											+ " days on " + new Prem_date().due_date(id, pols[acnt]) + ".");
-								}
+				<h4>
+					<%
+						if (day_diff[acnt] < 0) {
+									out.println("You have missed your premium due date for Policy Number:" + pols[acnt] + ".");
+									out.println("\nPlease pay it ASAP!");
+								} else if (day_diff[acnt] == 0) {
+									out.println("Your premium due date for Policy Number:" + pols[acnt] + " is today.");
+									out.println("\nPlease pay it ASAP!");
+								} else if (day_diff[acnt] > 0) {
+									if (day_diff[acnt] >= 30) {
+										out.println(
+												"You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
+										out.println("\nNext premium is due in " + day_diff[acnt] + " days on "
+												+ new Prem_date().due_date(id, pols[acnt]) + ".");
+									} else {
+										out.println("Next premium for Policy Number:" + pols[acnt] + " is due in " + day_diff[acnt]
+												+ " days on " + new Prem_date().due_date(id, pols[acnt]) + ".");
+									}
 
-							}
-				%>
-			</h4>
-		</div>
+								}
+					%>
+				</h4>
+			</div>
 		</div>
 		<hr>
 
