@@ -14,7 +14,6 @@
 		id="contact_form">
 
 		<fieldset>
-
 			<!-- Form Name -->
 			<legend>Contact Us Today!</legend>
 
@@ -68,8 +67,6 @@
 					</div>
 				</div>
 			</div>
-
-
 			<!-- Text input-->
 
 			<div class="form-group">

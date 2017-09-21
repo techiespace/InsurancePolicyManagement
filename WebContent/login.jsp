@@ -10,17 +10,14 @@
 			int keyc = new Cust_login().ID(request.getParameter("userC"), request.getParameter("passC"));
 			if (keyc == 122) {
 				msg = "*Invalid Username or Password.";
-				
+
 			} else {
 				String username = request.getParameter("userC");
 				session.setAttribute("current_user", username);
-				
-				
-				session.setAttribute("type", "user");
+				//session.setAttribute("type", "user");
 				session.setAttribute("Id", keyc);
 				response.sendRedirect("index.jsp");
 				//response.sendRedirect("myProfile.jsp");
-
 			}
 		}
 		if (request.getParameter("userP") != null && request.getParameter("passP") != null) {
@@ -28,9 +25,9 @@
 			if (keyp == 122) {
 				msg = "*Invalid Username or Password.";
 			} else {
-				session.setAttribute("type", "agent");
+				//session.setAttribute("type", "agent");
 				session.setAttribute("Id", keyp);
-				response.sendRedirect("index.jsp");
+				response.sendRedirect("aindex.jsp");
 			}
 		}
 	}
