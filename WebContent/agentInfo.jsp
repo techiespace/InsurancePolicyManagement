@@ -21,29 +21,29 @@
 		<!-- Page Heading -->
 		<h1 class="my-4">Agent Information</h1>
 		<%
-String afName = "";
-String alName = "";
-String aAddress = "";
-String aContact = "";
-String aEmail = "";
-try {
-	String type = (String) session.getAttribute("type");
-	Connection conn = new Connect().myDBConnect();
-	int id = (Integer) session.getAttribute("Id");
-	String agentid = "select agent_id from customer_agent where cust_id="+id;
-	Statement s = conn.createStatement();
-	ResultSet agentlist = s.executeQuery(agentid);
-	while(agentlist.next()){
-		String sql = "select a_fname, a_lname, a_phone, a_email, a_addr from agent where agent_id=?";
-		PreparedStatement stmt = conn.prepareStatement(sql);
-		stmt.setInt(1, agentlist.getInt(1));
-		ResultSet rs = stmt.executeQuery();
-		while(rs.next()){
-			afName = rs.getString(1);
-			alName = rs.getString(2);
-			aAddress = rs.getString(5);
-			aContact = rs.getString(3);
-			aEmail = rs.getString(4);		
+			String afName = "";
+			String alName = "";
+			String aAddress = "";
+			String aContact = "";
+			String aEmail = "";
+			try {
+				String type = (String) session.getAttribute("type");
+				Connection conn = new Connect().myDBConnect();
+				int id = (Integer) session.getAttribute("Id");
+				String agentid = "select agent_id from customer_agent where cust_id=" + id;
+				Statement s = conn.createStatement();
+				ResultSet agentlist = s.executeQuery(agentid);
+				while (agentlist.next()) {
+					String sql = "select a_fname, a_lname, a_phone, a_email, a_addr from agent where agent_id=?";
+					PreparedStatement stmt = conn.prepareStatement(sql);
+					stmt.setInt(1, agentlist.getInt(1));
+					ResultSet rs = stmt.executeQuery();
+					while (rs.next()) {
+						afName = rs.getString(1);
+						alName = rs.getString(2);
+						aAddress = rs.getString(5);
+						aContact = rs.getString(3);
+						aEmail = rs.getString(4);
 		%>
 		<hr>
 
@@ -56,14 +56,24 @@ try {
 			</div>
 			<div class="col-md-8">
 				<h3>
-					<%out.println(afName);%>
-					<%out.println(alName);%>
+					<%
+						out.println(afName);
+					%>
+					<%
+						out.println(alName);
+					%>
 				</h3>
 				<p>
 					<b>Address: </b>
-					<%out.println(aAddress);%><br> <b>Contact Number: </b>
-					<%out.println(aContact);%><br> <b>Email: </b>
-					<%out.println(aEmail);%>
+					<%
+						out.println(aAddress);
+					%><br> <b>Contact Number: </b>
+					<%
+						out.println(aContact);
+					%><br> <b>Email: </b>
+					<%
+						out.println(aEmail);
+					%>
 				</p>
 				<a class="btn btn-primary" href="mailto:<%out.println(aEmail);%>">Send
 					mail</a>
@@ -72,12 +82,12 @@ try {
 		<!-- /.row -->
 		<hr>
 		<%
-		}
-		}
-} catch (Exception e) {
-	System.out.println(e);
-}
-%>
+			}
+				}
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		%>
 	</div>
 	<!-- /.container -->
 </body>

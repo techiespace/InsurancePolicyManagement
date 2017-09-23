@@ -8,26 +8,21 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-	
-
 		$("#premium-payment-details").click(function() {
 			$('#main').load('policyPayment.jsp');
 		});
-		
 
 		$("#my-policies-details").click(function() {
 			$('#main').load('myPolicies.jsp');
 		});
-		
+
 		$("#my-profile-details").click(function() {
 			$('#main').load('myProfile.jsp');
 		});
-		
+
 		$("#new-plans-details").click(function() {
 			$('#main').load('myPolicies.jsp');
 		});
-
-	
 
 	});
 </script>
@@ -57,6 +52,7 @@
 <!-- Custom styles for this template -->
 <link href="dashboard/css/sb-admin.css" rel="stylesheet">
 
+
 </head>
 
 <body>
@@ -70,7 +66,8 @@
 					<div class="mr-5" style="font-size: 1.5em">My Policies</div>
 				</div>
 				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id = "my-policies-details" class="float-left" style="font-size: 1.2em">View Details</span> <span
+					id="my-policies-details" class="float-left"
+					style="font-size: 1.2em">View Details</span> <span
 					class="float-right"> <i class="fa fa-angle-right"></i>
 				</span>
 				</a>
@@ -84,8 +81,9 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">Premium Payment</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span id="premium-payment-details"
-					class="float-left" style="font-size: 1.2em">View Details</span> <span
+				<a href="#" class="card-footer text-white clearfix small z-1"> <span
+					id="premium-payment-details" class="float-left"
+					style="font-size: 1.2em">View Details</span> <span
 					class="float-right"> <i class="fa fa-angle-right"></i>
 				</span>
 				</a>
@@ -99,9 +97,10 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">My Profile</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span id="my-profile-details"
-					class="float-left" style="font-size: 1.2em">View Details</span> <span
-					class="float-right"> <i class="fa fa-angle-right"></i>
+				<a href="#" class="card-footer text-white clearfix small z-1"> <span
+					id="my-profile-details" class="float-left" style="font-size: 1.2em">View
+						Details</span> <span class="float-right"> <i
+						class="fa fa-angle-right"></i>
 				</span>
 				</a>
 			</div>
@@ -114,9 +113,10 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">New plans by LIC!</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span id="new-plans-details"
-					class="float-left" style="font-size: 1.2em">View Details</span> <span
-					class="float-right"> <i class="fa fa-angle-right"></i>
+				<a href="#" class="card-footer text-white clearfix small z-1"> <span
+					id="new-plans-details" class="float-left" style="font-size: 1.2em">View
+						Details</span> <span class="float-right"> <i
+						class="fa fa-angle-right"></i>
 				</span>
 				</a>
 			</div>
@@ -127,7 +127,8 @@
 		<div class="col-lg-12">
 			<!-- Example Notifications Card -->
 			<div class="card mb-3">
-				<div class="card-header">
+				<div class="card-header"
+					style="font-size: larger; font-weight: bolder;">
 					<i class="fa fa-bell-o"></i> Notifications
 				</div>
 				<div class="list-group list-group-flush small">
@@ -155,8 +156,7 @@
 						} catch (Exception e) {
 							System.out.println(e);
 						}
-						for(acnt=0;acnt<cnt;acnt++)
-						{
+						for (acnt = 0; acnt < cnt; acnt++) {
 					%>
 					<a href="#" class="list-group-item list-group-item-action"
 						style="padding: 1.5em">
@@ -166,38 +166,31 @@
 							<div class="media-body">
 								<%
 									if (day_diff[acnt] < 0) {
-										out.println("You have missed your premium due date for Policy Number:" + pols[acnt] + ".");
-										out.println("Please pay it ASAP!");
-									} else if (day_diff[acnt] == 0) {
-										out.println("Your premium due date for Policy Number:" + pols[acnt] + " is today.");
-										out.println("Please pay it ASAP!");
-									} else if (day_diff[acnt] > 0) {
-										if (day_diff[acnt] >= 30) {
-											out.println("You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
-											out.println("Next premium is due in " + day_diff[acnt] + " days on "
-													+ new prem_date().due_date(cust_id, pols[acnt]) + ".");
-										} else {
-											out.println("Next premium for Policy Number:" + pols[acnt] + " is due in " + day_diff[acnt]
-													+ " days on " + new prem_date().due_date(cust_id, pols[acnt]) + ".");
-										}
+											out.println("You have missed your premium due date for Policy Number:" + pols[acnt] + ".");
+											out.println("Please pay it ASAP!");
+										} else if (day_diff[acnt] == 0) {
+											out.println("Your premium due date for Policy Number:" + pols[acnt] + " is today.");
+											out.println("Please pay it ASAP!");
+										} else if (day_diff[acnt] > 0) {
+											if (day_diff[acnt] >= 30) {
+												out.println("You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
+												out.println("Next premium is due in " + day_diff[acnt] + " days on "
+														+ new Prem_date().due_date(cust_id, pols[acnt]) + ".");
+											} else {
+												out.println("Next premium for Policy Number:" + pols[acnt] + " is due in " + day_diff[acnt]
+														+ " days on " + new Prem_date().due_date(cust_id, pols[acnt]) + ".");
+											}
 
-									}
+										}
 								%>
 
 							</div>
 						</div>
 					</a>
-					<%} %>
-					<!--  <a href="#" class="list-group-item list-group-item-action"
-						style="padding: 1.5em">
-						<div class="media">
-							
-							<div class="media-body">
-								<strong>Samantha King</strong> sent you a new message!
-
-							</div>
-						</div>
-					</a> <a href="#" class="list-group-item list-group-item-action"
+					<%
+						}
+					%>
+					<!--<a href="#" class="list-group-item list-group-item-action"
 						style="padding: 1.5em">
 						<div class="media">
 							
@@ -221,13 +214,13 @@
 						style="padding: 1.5em"> View all activity... </a>
 				</div>
 				<div class="card-footer small text-muted">Updated yesterday at
-					11:59 PM</div>--> 
+					11:59 PM</div>-->
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- Example Tables Card -->
-	<!-- <div class="card mb-3">
+		<!-- Example Tables Card -->
+		<!-- <div class="card mb-3">
 		<div class="card-header">
 			<i class="fa fa-table"></i> Data Table Example
 		</div>
