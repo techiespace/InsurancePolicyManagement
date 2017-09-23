@@ -173,6 +173,7 @@
 											out.println("Please pay it ASAP!");
 										} else if (day_diff[acnt] > 0) {
 											if (day_diff[acnt] >= 30) {
+												//Date d=new Prem_date().due_date(cust_id, pols[acnt]);
 												out.println("You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
 												out.println("Next premium is due in " + day_diff[acnt] + " days on "
 														+ new Prem_date().due_date(cust_id, pols[acnt]) + ".");

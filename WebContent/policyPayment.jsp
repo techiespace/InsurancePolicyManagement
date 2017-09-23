@@ -11,6 +11,19 @@
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
+<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$(".checkout_done").click(function() {
+	         var pol_no=$(this).attr('id');
+			$('#main').load('checkout.jsp?pol_no='+pol_no);
+		});
+
+	});
+</script>
+
+
 </head>
 
 <body>
@@ -69,7 +82,7 @@
 					</h2>
 				</div>
 				<div class="col-md-4">
-					<a class="btn btn-primary" href="">Pay now</a>
+					<a class=" btn btn-primary checkout_done" id="<%out.print(pols[acnt]);%>">Pay now</a>
 				</div>
 			</div>
 			<div class="row">
