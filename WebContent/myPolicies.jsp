@@ -26,6 +26,7 @@
 			String pLatefee = "";
 			String pPremium = "";
 			String pComission = "";
+			int modeli = 1;
 			try {
 				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
@@ -48,6 +49,7 @@
 		<hr>
 
 		<!-- Project One -->
+
 		<div class="row">
 			<div class="col-md-4">
 				<a href="#"> <img class="img-fluid rounded mb-3 mb-md-0"
@@ -77,29 +79,38 @@
 				</p>
 				<!-- Button trigger modal -->
 				<button type="button" class="btn btn-primary" data-toggle="modal"
-					data-target="#polDetModal">Policy Details</button>
+					data-target="#polDetModal<%out.print(modeli);%>">Policy
+					Details</button>
 
-				<%String polDetailsSql = "select descp from policy_description where p_name='"+pName+"';"; 
-				Statement polDetCon = conn.createStatement();
-				ResultSet polDescRes = polDetCon.executeQuery(polDetailsSql);
-				polDescRes.next();
-				
+				<%
+					String polDetailsSql = "select descp from policy_description where p_name='" + pName + "';";
+								Statement polDetCon = conn.createStatement();
+								ResultSet polDescRes = polDetCon.executeQuery(polDetailsSql);
+								polDescRes.next();
 				%>
-				
+
 				<!-- Modal -->
-				<div class="modal fade" id="polDetModal" tabindex="-1"
-					role="dialog" aria-labelledby="exampleModalLabel"
+				<div class="modal fade" id="polDetModal<%out.print(modeli);%>"
+					tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 					aria-hidden="true">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title" id="exampleModalLabel"><%out.println(pName); %></h5>
+								<h5 class="modal-title" id="exampleModalLabel">
+									<%
+										out.println(pName);
+									%>
+								</h5>
 								<button type="button" class="close" data-dismiss="modal"
 									aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
-							<div class="modal-body"><%out.println(polDescRes.getString(1)); %></div>
+							<div class="modal-body">
+								<%
+									out.println(polDescRes.getString(1));
+								%>
+							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Close</button>
@@ -112,7 +123,8 @@
 		<!-- /.row -->
 		<hr>
 		<%
-			}
+			modeli++;
+					}
 				}
 			} catch (Exception e) {
 				System.out.println(e);
