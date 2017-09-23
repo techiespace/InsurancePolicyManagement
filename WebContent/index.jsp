@@ -29,6 +29,9 @@
 		$("#agentInfo").click(function() {
 			$('#main').load('agentInfo.jsp');
 		});
+		$("#link").click(function() {
+			$('#main').load('payment.html');
+		});
 
 	});
 </script>
@@ -171,7 +174,7 @@
 								<li><a href="#">Third Level Item</a></li>
 							</ul></li>
 					</ul></li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+				<li id="link" class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Link"><a class="nav-link" href="#"> <i
 						class="fa fa-fw fa-link"></i> <span class="nav-link-text">
 							Link</span>
