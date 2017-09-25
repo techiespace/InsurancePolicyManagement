@@ -1,28 +1,26 @@
 package JDBC.jsp;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-public class Prem_date {
-	public  Date due_date(int cust_id, int pol_no) {
-		Date p_date = null;
-		String sql1 = "select prem_pdate from customer_policy where cust_id=? AND pol_no=?";
+public class Prem_name {
+	public  String p_name(int pol_no) {
+		String name = null;
+		String sql1 = "select p_name from policy where pol_no=?";
 		try {
 			Connection conn = new Connect().myDBConnect();
 			PreparedStatement stmt1 = conn.prepareStatement(sql1);
-			stmt1.setInt(1, cust_id);
-			stmt1.setInt(2, pol_no);
+			stmt1.setInt(1, pol_no);
 			ResultSet rs1 = stmt1.executeQuery();
 			rs1.next();
-			p_date= rs1.getDate("prem_pdate");
+			name= rs1.getString("p_name");
 			//System.out.println("Date:"+p_date);
 			//return p_date;
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return p_date;
+		return name;
 	}
 	
 	/*public static void main(String args[])
