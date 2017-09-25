@@ -126,8 +126,29 @@
 				</div>
 			</div>
 		</div>
-
-		<button class="checkout">Checkout</button>
+	<a style="margin-left:90%; font-size: 1.2em; margin-top:15%; " class="nav-link" data-toggle="modal"
+					data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
+						Checkout
+				</a>
+		<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">Transaction Successful! <br> Reference id: 432423</div>
+				<div class="modal-footer">
+					<a  class="btn btn-primary" href="index.jsp">Yay!</a>
+				</div>
+			</div>
+		</div>
+	</div>
+		
 
 	</div>
 	<script
