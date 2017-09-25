@@ -11,6 +11,8 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="CSS/paystyle.css">
 
+
+
 <%
 	String pol = request.getParameter("pol_no");
 	int pol_no = Integer.parseInt(pol);
@@ -29,6 +31,11 @@
 	}
 	double tax = (premium + act_latefee) * 0.05;
 	double total = premium + tax + act_latefee;
+	double perc=commision/100.00;
+	System.out.println("acom:"+commision);
+	System.out.println("perc:"+perc);
+	double commision1=premium*perc;
+	System.out.println("Com:"+commision1);
 %>
 
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
@@ -39,13 +46,13 @@
 				$(".checkout").click(
 						function() {
 							var pol_no =
-<%out.print(total);%>
-	;
-							var total =
 <%out.print(pol_no);%>
 	;
+							var total =
+<%out.print(total);%>
+	;
 							var commision =
-<%out.print(commision);%>
+<%out.print(commision1);%>
 	;
 							$('#main').load(
 									'transaction.jsp?pol_no=' + pol_no
@@ -127,7 +134,13 @@
 			</div>
 		</div>
 
-		<button class="checkout">Checkout</button>
+		<div class="modal-body">Transaction Successful!<br>Reference Number: 321321 </div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Back</button>
+					<a class="btn btn-primary" href="index.jsp">Checkout</a>
+				</div>
+			</div>
 
 	</div>
 	<script

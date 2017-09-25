@@ -6,15 +6,18 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Invoice {
-	public void enter(int pol_no) {
-		int details[] = new int[3];
-		String sql1 = "insert into payment()";
+		public void enter(int cust_id, int agent_id, Double total, int pol_no, int commision) {
+			String sql1 = "insert into payment(cust_id,agent_id,date,amt,pol_no,commision) VALUES (?,?,curdate(),?,?,?)";
 
 		try {
 			Connection conn = new Connect().myDBConnect();
-			Statement stmt;
-			stmt = conn.createStatement();
-			stmt.executeUpdate(sql1);
+			PreparedStatement stmt = conn.prepareStatement(sql1);
+			stmt.setInt(1,cust_id);
+			stmt.setInt(2, agent_id);
+			stmt.setDouble(3,total);
+			stmt.setInt(4, pol_no);
+			stmt.setInt(5, commision);
+			stmt.execute();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
