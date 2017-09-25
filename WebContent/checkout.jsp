@@ -68,7 +68,7 @@
 		<div class="column-labels">
 			<label class="product-details">Product</label> <label
 				class="product-price">Policy Number</label> <label
-				class="product-quantity">Term</label> <label class="product-removal">Remove</label>
+				class="product-quantity">Term</label>
 			<label class="product-line-price">Cost</label>
 		</div>
 		<div class="product">
