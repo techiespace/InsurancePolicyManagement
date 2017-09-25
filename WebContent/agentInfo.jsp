@@ -26,6 +26,7 @@
 			String aAddress = "";
 			String aContact = "";
 			String aEmail = "";
+			String imgUrl = "";
 			try {
 				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
@@ -34,7 +35,7 @@
 				Statement s = conn.createStatement();
 				ResultSet agentlist = s.executeQuery(agentid);
 				while (agentlist.next()) {
-					String sql = "select a_fname, a_lname, a_phone, a_email, a_addr from agent where agent_id=?";
+					String sql = "select a_fname, a_lname, a_phone, a_email, a_addr, image from agent where agent_id=?";
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
 					ResultSet rs = stmt.executeQuery();
@@ -44,17 +45,17 @@
 						aAddress = rs.getString(5);
 						aContact = rs.getString(3);
 						aEmail = rs.getString(4);
+						imgUrl = rs.getString(6);
 		%>
 		<hr>
 
 		<!-- Project One -->
 		<div class="row">
-			<div class="col-md-4">
-				<a href="#"> <img class="img-fluid rounded mb-3 mb-md-0"
-					src="http://placehold.it/700x300" alt="">
-				</a>
+			<div class="col-md-3">
+				<img class="img-responsive img-fluid rounded mb-3 mb-md-0"
+					src="<%out.print(imgUrl); %>" alt="">
 			</div>
-			<div class="col-md-8">
+			<div class="col-md-9">
 				<h3>
 					<%
 						out.println(afName);

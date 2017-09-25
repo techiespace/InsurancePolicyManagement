@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body style="color:#03275A !important;">
 
 	<!-- Page Content -->
 	<div class="container">
@@ -78,7 +78,7 @@
 					%>
 				</p>
 				<!-- Button trigger modal -->
-				<button type="button" class="btn btn-primary" data-toggle="modal"
+				<button type="button" style="margin-left:80%;margin-top:-40%;" class="btn btn-primary" data-toggle="modal"
 					data-target="#polDetModal<%out.print(modeli);%>">Policy
 					Details</button>
 

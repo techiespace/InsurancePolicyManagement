@@ -1,3 +1,5 @@
+
+<html>
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Statement"%>
@@ -6,10 +8,22 @@
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
-<html>
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+
+<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$(".checkout_done").click(function() {
+	         var pol_no=$(this).attr('id');
+			$('#main').load('checkout.jsp?pol_no='+pol_no);
+		});
+
+	});
+</script>
+
 
 </head>
 
@@ -18,9 +32,11 @@
 	<div class="container">
 
 		<!-- Page Heading -->
-		<h1 class="my-4">Premium Payments</h1>
+		<h1  style="color:#03275A;"class="my-4">Premium Payments</h1>
+		<hr>
 		<%
-			try {
+
+		try {
 
 				//String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
@@ -56,43 +72,49 @@
 					pol_names[acnt] = rs2.getString(1);
 					pols_amt[acnt] = rs2.getInt(2);
 		%>
-		<hr>
+		
 
+		
 		<!-- Project One -->
-		<div style="margin-left: 0.4em">
-			<div class="row">
+		<div style="margin-left: 0.4em; background-color:white; color:#F2B809; padding:0.3em; margin-right:5em; ">
+			<div class="row" >
 				<div class="col-md-8">
-					<h2>
+					<h2 style="padding:0.5em;  background-color:white; color:#03275A; margin-top:0; margin-bottom:0.2em;">
+					
 						<%
 							out.println(pol_names[acnt]);
 						%>
 					</h2>
 				</div>
 				<div class="col-md-4">
-					<a class="btn btn-primary" href="">Pay now</a>
+					<a class=" btn btn-primary checkout_done" style="color:white; margin-top:1em;" id="<%out.print(pols[acnt]);%>">Pay now</a>
 				</div>
 			</div>
-			<div class="row">
+			<div style= "width:90%;padding:0.5em;">
+			<div class="row" style="margin-left: 0.6em; color:#03275A ">
 				<p>
 					<b>Policy Number: </b>
+					
 					<%
 						out.println(pols[acnt]);
 					%>
 				</p>
 			</div>
-			<div class="row">
-				<h6>
-					<b>Premium Amount: </b>
+			<div class="row" style="margin-left: 0.6em; color:#03275A">
+				 <p>
+					<b> Premium Amount: </b>
 					<%
 						out.println(pols_amt[acnt]);
 					%>
-				</h6>
+					<p>
+					
+				
 			</div>
-			<div class="row">
+			<div class="row" style="margin-left: 0.6em; color:#03275A">
 				<h4>
 					<%
 						if (day_diff[acnt] < 0) {
-									out.println("You have missed your premium due date for Policy Number:" + pols[acnt] + ".");
+									out.println("You have missed your premium due date for Policy Number:" + pols[acnt] + ".<br>");
 									out.println("\nPlease pay it ASAP!");
 								} else if (day_diff[acnt] == 0) {
 									out.println("Your premium due date for Policy Number:" + pols[acnt] + " is today.");
@@ -100,7 +122,7 @@
 								} else if (day_diff[acnt] > 0) {
 									if (day_diff[acnt] >= 30) {
 										out.println(
-												"You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
+												"You have paid your premium for Policy Number:" + pols[acnt] + " for this month. <br>");
 										out.println("\nNext premium is due in " + day_diff[acnt] + " days on "
 												+ new Prem_date().due_date(id, pols[acnt]) + ".");
 									} else {
@@ -109,11 +131,13 @@
 									}
 
 								}
+								out.println("<hr>");
 					%>
 				</h4>
 			</div>
+			</div>
 		</div>
-		<hr>
+		
 
 		<%
 			}

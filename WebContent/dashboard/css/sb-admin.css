@@ -182,12 +182,25 @@ body.fixed-nav {
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link {
   color: #868e96; }
-  #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item > .nav-link:hover {
-    color: #adb5bd; }
+ 
 	
-	div#agentInfo:hover, div#myPolicies:hover,div#myProfile:hover,div#dashboard:hover,div#policyPayment:hover {
-    background-color: white;
-    color: black;
+	div#agentInfo:hover, div#myPolicies:hover,div#myProfile:hover,div#dashboard:hover,#policyPayment:hover {
+    background-color: #F2B809;
+    color: #03275A;
+}
+
+.bg-des{
+	background-color: #03275A !important;
+	
+}
+
+.mod{
+	color: #03275A!important;
+}
+
+.active{
+	background-color: #F2B809 !important;
+    color: #03275A;	
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,
@@ -206,10 +219,9 @@ body.fixed-nav {
    /* background: #343a40; */}
 	
 	
-span.nav-link-text:hover{
-	color:#adb5bd;
-	
-}
+
+
+
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
       //background-color: white !important;
        }

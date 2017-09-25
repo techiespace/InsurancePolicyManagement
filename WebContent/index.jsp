@@ -29,8 +29,13 @@
 		$("#agentInfo").click(function() {
 			$('#main').load('agentInfo.jsp');
 		});
-		$("#link").click(function() {
-			$('#main').load('payment.html');
+		
+		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo").hover(function(){
+		$(this).toggleClass("mod");
+		});
+		
+		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo").click(function(){
+		$(this).toggleClass(".active");
 		});
 
 	});
@@ -62,33 +67,33 @@
 </head>
 
 
-<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<body class="fixed-nav sticky-footer bg-des" id="page-top">
 	<!-- Navigation -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top"
+	<nav class="navbar navbar-expand-lg navbar-dark bg-des fixed-top"
 		id="mainNav">
-		<a class="navbar-brand" href="#">LIC Welcome, <%
+		<a class="navbar-brand" href="#" style="color:#F2B809">LIC Welcome, <%
 			try {
 
 				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
-				//out.println("Cust");
-				String sql = "select c_fname,c_mname,c_lname from customer where cust_id=?";
-				PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setInt(1, id);
-				ResultSet rs = stmt.executeQuery();
-				rs.next();
-				out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
-			}
-			/*else if (type.equals("agent")) {
-				//out.println("Agent");
-				String sql = "select a_fname,a_lname from agent where agent_id=?";
-				PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setInt(1, id);
-				ResultSet rs = stmt.executeQuery();
-				rs.next();
-				out.println(rs.getString(1) + " " + rs.getString(2));
-			}*/
+					//out.println("Cust");
+					String sql = "select c_fname,c_mname,c_lname from customer where cust_id=?";
+					PreparedStatement stmt = conn.prepareStatement(sql);
+					stmt.setInt(1, id);
+					ResultSet rs = stmt.executeQuery();
+					rs.next();
+					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
+				} 
+				/*else if (type.equals("agent")) {
+					//out.println("Agent");
+					String sql = "select a_fname,a_lname from agent where agent_id=?";
+					PreparedStatement stmt = conn.prepareStatement(sql);
+					stmt.setInt(1, id);
+					ResultSet rs = stmt.executeQuery();
+					rs.next();
+					out.println(rs.getString(1) + " " + rs.getString(2));
+				}*/
 			catch (Exception e) {
 				System.out.println(e);
 			}
@@ -102,34 +107,34 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-				<li class="nav-item active" data-toggle="tooltip"
+				<li class="nav-item" data-toggle="tooltip"
 					data-placement="right" title="Dashboard">
-					<div id="dashboard" class="nav-link">
-						<a style="color: grey;"> <i class="fa fa-fw fa-dashboard"></i>
-							<span class="nav-link-text"> Dashboard</span>
+					<div id="dashboard" class="nav-link" style="color:#F2B809;">
+						<a > <i class="fa fa-fw fa-dashboard"></i> <span
+							class="nav-link-text"> Dashboard</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="myPolicies" class="nav-link">
-						<a style="color: grey;"> <i class="fa fa-fw fa-server"></i> <span
+					<div id="myPolicies" class="nav-link" style="color:#F2B809;" >
+						<a  > <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> My Policies</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="policyPayment" class="nav-link">
-						<a style="color: grey"> <i class="fa fa-fw fa-money"></i> <span
-							class="nav-link-text"> Premium Payment</span>
+					<div id="policyPayment" class="nav-link" style="color:#F2B809;">
+						<a  > <i class="fa fa-fw fa-money"></i> <span
+							class="nav-link-text"> Policy Payment</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Charts">
-					<div id="myProfile" class="nav-link">
-						<a style="color: grey;"> <i
+					title="Charts"> 
+					<div id="myProfile" class="nav-link" style="color:#F2B809;">
+						<a > <i
 							class="fa fa-fw fa-address-card-o"></i> <span
 							class="nav-link-text"> My Profile</span>
 						</a>
@@ -137,17 +142,17 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
-					<div id="agentInfo" class="nav-link">
-						<a style="color: grey;"> <i class="fa fa-fw fa-user-o"></i> <span
-							class="nav-link-text"> Agent Info</span>
+					<div id="agentInfo" class="nav-link" style="color:#F2B809;">
+						<a > <i class="fa fa-fw fa-user-o"></i>
+							<span class="nav-link-text"> Agent Info</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Components"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
-					href="#collapseComponents" data-parent="#exampleAccordion"> <i
-						class="fa fa-fw fa-print"></i> <span class="nav-link-text">
+					href="#collapseComponents" style="color:#F2B809;" data-parent="#exampleAccordion"> <i
+						class="fa fa-fw fa-print"></i> <span class="nav-link-text" >
 							Invoice</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
@@ -160,8 +165,8 @@
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Menu Levels"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
-					href="#collapseMulti" data-parent="#exampleAccordion"> <i
-						class="fa fa-fw fa-sitemap"></i> <span class="nav-link-text">
+					href="#collapseMulti" style="color:#F2B809;" data-parent="#exampleAccordion"> <i
+						class="fa fa-fw fa-sitemap""></i> <span class="nav-link-text" >
 							Menu Levels</span>
 				</a>
 					<ul class="sidenav-second-level collapse" id="collapseMulti">
@@ -174,9 +179,9 @@
 								<li><a href="#">Third Level Item</a></li>
 							</ul></li>
 					</ul></li>
-				<li id="link" class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Link"><a class="nav-link" href="#"> <i
-						class="fa fa-fw fa-link"></i> <span class="nav-link-text">
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Link"><a class="nav-link" href="#" style="color:#F2B809;"> <i
+						class="fa fa-fw fa-link"></i> <span class="nav-link-text" >
 							Link</span>
 				</a></li>
 			</ul>
@@ -186,7 +191,7 @@
 				</a></li>
 			</ul>
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item dropdown"><a style="visibility: hidden;"
+				<li class="nav-item dropdown"><a style="visibility:hidden;"
 					class="nav-link dropdown-toggle mr-lg-2" href="#"
 					id="messagesDropdown" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <i class="fa fa-fw fa-envelope"></i> <span
@@ -223,7 +228,7 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item small" href="#"> View all messages </a>
 					</div></li>
-				<li class="nav-item dropdown"><a style="visibility: hidden;"
+				<li class="nav-item dropdown"><a style="visibility:hidden;"
 					class="nav-link dropdown-toggle mr-lg-2" href="#"
 					id="alertsDropdown" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false"> <i class="fa fa-fw fa-bell"></i> <span
@@ -285,6 +290,7 @@
 			</ul>
 		</div>
 	</nav>
+
 
 	<div class="content-wrapper">
 
