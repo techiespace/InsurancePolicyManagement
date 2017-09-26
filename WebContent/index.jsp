@@ -30,6 +30,10 @@
 			$('#main').load('agentInfo.jsp');
 		});
 		
+		$("#newplans").click(function() {
+			$('#main').load('allPlans.jsp');
+		});
+		
 		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo").hover(function(){
 		$(this).toggleClass("mod");
 		});
@@ -137,6 +141,14 @@
 						<a > <i
 							class="fa fa-fw fa-address-card-o"></i> <span
 							class="nav-link-text"> My Profile</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Charts">
+					<div id="newplans" class="nav-link" style="color:#F2B809;" >
+						<a  > <i class="fa fa-fw fa-server"></i> 
+						<span class="nav-link-text">New Plans</span>
 						</a>
 					</div>
 				</li>
