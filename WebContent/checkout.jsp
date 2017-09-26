@@ -40,28 +40,21 @@
 
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
-	$(document).ready(
-			function() {
-
-				$(".checkout").click(
-						function() {
-							var pol_no =
-<%out.print(pol_no);%>
-	;
-							var total =
-<%out.print(total);%>
-	;
-							var commision =
-<%out.print(commision1);%>
-	;
-							$('#main').load(
-									'transaction.jsp?pol_no=' + pol_no
-											+ '&total=' + total + '&commision='
-
-											+ commision);
-						});
-
+$(document).ready(
+function() {
+$(".checkout").click(function() {
+			var pol_no =<%out.print(pol_no);%>;
+		    var total =<%out.print(total);%>;
+			var commision =<%out.print(commision1);%>;
+		$('#main').load('transaction.jsp?pol_no=' + pol_no+ '&total=' + total + '&commision='+ commision);
+				});
 			});
+			
+$("#pay_done").click(function(){
+	<%int agent_id = new Get_Agent().agent_no(cust_id, pol_no);
+new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
+	
+});			
 </script>
 
 </head>
@@ -133,7 +126,7 @@
 				</div>
 			</div>
 		</div>
-	<a style="color:white; margin-left:82%; margin-right:5%; font-size: 1.2em; margin-top:16%;" class="nav-link btn btn-primary" data-toggle="modal"
+	<a id="pay_done" style="color:white; margin-left:82%; margin-right:5%; font-size: 1.2em; margin-top:16%;" class="nav-link btn btn-primary" data-toggle="modal"
 					data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
 						Checkout
 				</a>
