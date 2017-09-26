@@ -17,12 +17,12 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 
 .product-price {
   float: left;
-  width: 12%;
+  width: 25%;
 }
 
 .product-quantity {
   float: left;
-  width: 10%;
+  width: 26%;
 }
 
 .product-removal {
@@ -33,7 +33,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 .product-line-price {
   float: left;
   width: 12%;
-  text-align: right;
+  /* text-align: right; */
 }
 
 /* This is used as the traditional .clearfix class */

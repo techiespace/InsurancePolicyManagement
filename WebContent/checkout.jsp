@@ -133,7 +133,7 @@
 				</div>
 			</div>
 		</div>
-	<a style="margin-left:90%; font-size: 1.2em; margin-top:15%; " class="nav-link" data-toggle="modal"
+	<a style="color:white; margin-left:82%; margin-right:5%; font-size: 1.2em; margin-top:16%;" class="nav-link btn btn-primary" data-toggle="modal"
 					data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
 						Checkout
 				</a>
