@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<%@ page import="java.sql.*,a_JDBC.jsp.*"%>
+<%@ page import="java.sql.*,a_JDBC.jsp.*,JDBC.jsp.*"%>
 
 <head>
 
@@ -66,9 +66,9 @@
 					<div class="mr-5" style="font-size: 1.5em">My Customers</div>
 				</div>
 				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="my-customers" class="float-left"
-					style="font-size: 1.2em">View Details</span> <span
-					class="float-right"> <i class="fa fa-angle-right"></i>
+					id="my-customers" class="float-left" style="font-size: 1.2em">View
+						Details</span> <span class="float-right"> <i
+						class="fa fa-angle-right"></i>
 				</span>
 				</a>
 			</div>
@@ -135,29 +135,25 @@
 					<%
 						int agent_id = (Integer) session.getAttribute("Id");
 						int pols[] = new int[30];
+						int day_diff[] = new int[30];
+						int cust_id[] = new int[30];
+						int pol_no[] = new int[30];
 						int cnt = 0, acnt = 0;
-						int details[][]=new Details().c_details(agent_id);
-						
+						int details[][] = new Details().c_details(agent_id);
+
 						/*int day_diff[] = new int[30];
 						String sql1 = "select pol_no from customer_policy where cust_id=?";*/
 						//String sql2 = "select datediff(curdate(),?)";
-						/*try {
-							Connection conn = new Connect().myDBConnect();
-							PreparedStatement stmt1 = conn.prepareStatement(sql1);
-							stmt1.setInt(1, cust_id);
-							ResultSet rs1 = stmt1.executeQuery();
-							while (rs1.next()) {
-								pols[cnt++] = rs1.getInt(1);
+						for (int i = 0; i < 30; i++) {
+							if (details[i][1] == 0) {
+								break;
+							} else {
+								cust_id[cnt] = details[i][0];
+								pol_no[cnt] = details[i][1];
+								day_diff[cnt] = new Premium().date(cust_id[cnt], pol_no[cnt]);
+								cnt++;
 							}
-							for (int i = 0; i < 30; i++) {
-								day_diff[i] = 0;
-							}
-							for (int i = 0; i < cnt; i++) {
-								day_diff[i] = new Premium().date(cust_id, pols[i]);
-							}
-						} catch (Exception e) {
-							System.out.println(e);
-						}*/
+						}
 						for (acnt = 0; acnt < cnt; acnt++) {
 					%>
 					<a href="#" class="list-group-item list-group-item-action"
@@ -166,26 +162,24 @@
 							<!--<img class="d-flex mr-3 "
 										src="http://placehold.it/45x45" alt="">-->
 							<div class="media-body">
-								<!--  
+								<%
+									String name[]=new Cust_name().c_name(cust_id[acnt]);
+									String first=name[0];
+									String mid=name[1];
+									String last=name[2];
+									String full=first+" "+mid+" " +last;
 									if (day_diff[acnt] < 0) {
-											out.println("You have missed your premium due date for Policy Number:" + pols[acnt] + ".");
-											out.println("Please pay it ASAP!");
+											out.println(full+ " has missed his/her premium due date for Policy Number: " + pol_no[acnt] + ".");
 										} else if (day_diff[acnt] == 0) {
-											out.println("Your premium due date for Policy Number:" + pols[acnt] + " is today.");
-											out.println("Please pay it ASAP!");
+											out.println(full+"'s premium due date for Policy Number: " + pol_no[acnt] + " is today.");
 										} else if (day_diff[acnt] > 0) {
-											if (day_diff[acnt] >= 30) {
+											if (day_diff[acnt] <= 5) {
 												//Date d=new Prem_date().due_date(cust_id, pols[acnt]);
-												out.println("You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
-												out.println("Next premium is due in " + day_diff[acnt] + " days on "
-														+ new Prem_date().due_date(cust_id, pols[acnt]) + ".");
-											} else {
-												out.println("Next premium for Policy Number:" + pols[acnt] + " is due in " + day_diff[acnt]
-														+ " days on " + new Prem_date().due_date(cust_id, pols[acnt]) + ".");
+												out.println(full+"'s next premium for Policy Number: " + pol_no[acnt] + " is due in " + day_diff[acnt]
+														+ " days on " + new Prem_date().due_date(cust_id[acnt], pol_no[acnt]) + ".");
 											}
-
 										}
-								-->
+								%>
 
 							</div>
 						</div>
