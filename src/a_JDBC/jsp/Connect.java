@@ -1,4 +1,4 @@
-package JDBC.jsp;
+package a_JDBC.jsp;
 
 import java.sql.*;
 
