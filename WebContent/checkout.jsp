@@ -31,30 +31,41 @@
 	}
 	double tax = (premium + act_latefee) * 0.05;
 	double total = premium + tax + act_latefee;
-	double perc=commision/100.00;
-	System.out.println("acom:"+commision);
-	System.out.println("perc:"+perc);
-	double commision1=premium*perc;
-	System.out.println("Com:"+commision1);
+	double perc = commision / 100.00;
+	System.out.println("acom:" + commision);
+	System.out.println("perc:" + perc);
+	double commision1 = premium * perc;
+	System.out.println("Com:" + commision1);
 %>
 
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
-$(document).ready(
-function() {
-$(".checkout").click(function() {
-			var pol_no =<%out.print(pol_no);%>;
-		    var total =<%out.print(total);%>;
-			var commision =<%out.print(commision1);%>;
-		$('#main').load('transaction.jsp?pol_no=' + pol_no+ '&total=' + total + '&commision='+ commision);
-				});
+	$(document).ready(
+			function() {
+				$(".checkout").click(
+						function() {
+							var pol_no =
+<%out.print(pol_no);%>
+	;
+							var total =
+<%out.print(total);%>
+	;
+							var commision =
+<%out.print(commision1);%>
+	;
+							$('#main').load(
+									'transaction.jsp?pol_no=' + pol_no
+											+ '&total=' + total + '&commision='
+											+ commision);
+						});
 			});
-			
-$("#pay_done").click(function(){
-	<%int agent_id = new Get_Agent().agent_no(cust_id, pol_no);
-new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
-	
-});			
+
+	$("#pay_done")
+			.click(
+					function() {
+<%int agent_id = new Get_Agent().agent_no(cust_id, pol_no);
+			new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
+	});
 </script>
 
 </head>
@@ -68,8 +79,8 @@ new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
 		<div class="column-labels">
 			<label class="product-details">Product</label> <label
 				class="product-price">Policy Number</label> <label
-				class="product-quantity">Term</label>
-			<label class="product-line-price">Cost</label>
+				class="product-quantity">Term</label> <label
+				class="product-line-price">Cost</label>
 		</div>
 		<div class="product">
 			<div class="product-details">
@@ -126,29 +137,33 @@ new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
 				</div>
 			</div>
 		</div>
-	<a id="pay_done" style="color:white; margin-left:82%; margin-right:5%; font-size: 1.2em; margin-top:16%;" class="nav-link btn btn-primary" data-toggle="modal"
-					data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
-						Checkout
-				</a>
+		<a id="pay_done"
+			style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
+			class="nav-link btn btn-primary" data-toggle="modal"
+			data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
+			Checkout
+		</a>
 		<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">Transaction Successful! <br> Reference id: 432423</div>
-				<div class="modal-footer">
-					<a  class="btn btn-primary" href="index.jsp">Yay!</a>
+			aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						Transaction Successful! <br> Reference id: 432423
+					</div>
+					<div class="modal-footer">
+						<a class="btn btn-primary" href="index.jsp">Yay!</a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-		
+
 	</div>
 	<script
 		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
