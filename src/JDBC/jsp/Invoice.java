@@ -6,7 +6,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 public class Invoice {
-		public void enter(int cust_id, int agent_id, Double total, int pol_no, int commision) {
+		public void enter(int cust_id, int agent_id, Double total, int pol_no, Double commision) {
 			String sql1 = "insert into payment(cust_id,agent_id,date,amt,pol_no,commision) VALUES (?,?,curdate(),?,?,?)";
 
 		try {
@@ -16,7 +16,7 @@ public class Invoice {
 			stmt.setInt(2, agent_id);
 			stmt.setDouble(3,total);
 			stmt.setInt(4, pol_no);
-			stmt.setInt(5, commision);
+			stmt.setDouble(5, commision);
 			stmt.execute();
 		} catch (Exception e) {
 			System.out.println(e);

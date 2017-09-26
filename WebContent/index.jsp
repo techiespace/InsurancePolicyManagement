@@ -51,7 +51,7 @@
 
 <meta name="description" content="">
 <meta name="author" content="">
-<title>SB Admin - Start Bootstrap Template</title>
+<title>LIC Customer Login</title>
 
 <!-- Bootstrap core CSS -->
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
