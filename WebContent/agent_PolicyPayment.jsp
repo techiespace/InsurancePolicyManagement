@@ -1,5 +1,7 @@
 <html>
-<%@ page import="JDBC.jsp.*"%>
+
+<%@ page import="a_JDBC.jsp.*"%>
+
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.Connection"%>
@@ -20,90 +22,83 @@
 		<!-- Page Heading -->
 		<h1 style="color: #03275A;" class="my-4">Make Payments</h1>
 		<hr>
+		<br><br>
+		<h2 style="color: #03275A;" class="my-4">Choose Customer</h2>
+		<hr>
 		<%
 			try {
 
-				//String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
 
 				int id = (Integer) session.getAttribute("Id");
 				System.out.println("ID:" + id);
 				
 				int cust[] = new int[30];
-				int cnt=0,cnt2=0;
-				String fname;
-				String mname;
-				String lname;
+				int cnt=0,cnt2=0,cnt3=0;
+				String fname="";
+				String mname="";
+				String lname="";
+				String pol_no[]=new String[30];
 				
 				
-				String sql1 = "select cust_id from customer_agent where agent_id=?";
+				String sql1 = "select cust_id from customer_agent_policy where agent_id=?";
 				String sql2 = "select c_fname,c_mname,c_lname from customer where cust_id=?";
+				String sql3 = "select pol_no from customer_agent_policy where cust_id=? and agent_id=?";
 				PreparedStatement stmt1 = conn.prepareStatement(sql1);
 				PreparedStatement stmt2 = conn.prepareStatement(sql2);
+				PreparedStatement stmt3 = conn.prepareStatement(sql3);
 				stmt1.setInt(1, id);
 				ResultSet rs1 = stmt1.executeQuery();
 				
-				while (rs1.next()) {
-					cust[cnt++] = rs1.getInt(1);
+				
+				while(rs1.next())
+				{
+					cust[cnt++]=rs1.getInt(1);	
 				}
 				
 				
-				for (int i = 0; i < cnt; i++) {
-					
+				for(int i=0;i<cnt;i++)
+				{
 					int j=cust[i];
 					stmt2.setInt(1, j);
 					ResultSet rs2 = stmt2.executeQuery();
 					rs2.next();
-					fname = rs2.getString(1);
-					rs2.next();
-					mname= rs2.getString(2);
-					rs2.next();
-					lname= rs2.getString(3);
-							
+					fname = rs2.getString("c_fname");
+					mname = rs2.getString("c_mname");
+					lname = rs2.getString("c_lname");
+					stmt3.setInt(1, j);
+					stmt3.setInt(2, id);
+					ResultSet rs3 = stmt3.executeQuery();
+					while(rs3.next())
+					{
+						pol_no[cnt3++]=rs3.getString(1);	
+					}
 					
-					
-
-				
-				
 		%>
 
 
 
 		<!-- Project One -->
-		<div
-			style="margin-left: 0.4em; background-color: white; color: #F2B809; padding: 0.3em; margin-right: 5em;">
-			<div class="row">
-				<div class="col-md-8">
+		<div>
+			
 					<h2
 						style="padding: 0.5em; background-color: white; color: #03275A; margin-top: 0; margin-bottom: 0.2em;">
 
 						<%
-							out.println(fname);
+							out.print(fname + " "); out.print(mname + " "); out.print(lname);
+							out.print("<br> <br> Policy number(s): ");
+							for(int k=0;k<10;k++)
+							{
+								if(pol_no[k]!=null)
+								out.print(pol_no[k]);
+							}
+						    out.print("<br> <hr>");
 						%>
 					</h2>
 				</div>
-				<div class="col-md-4">
-					<a class=" btn btn-primary checkout_done"
-						style="color: white; margin-top: 1em;"
-						id="<%out.print(mname);%>">Pay now</a>
-				</div>
-			</div>
-			<div style="width: 90%; padding: 0.5em;">
-				<div class="row" style="margin-left: 0.6em; color: #03275A">
-					<p>
-						<b>Policy Number: </b>
-
-						<%
-							out.println(lname);
-						    out.println("<br> <hr>");
-						%>
-					</p>
-				</div>
-			</div>
-		</div>
-
 
 		<%
+			cnt3=0;
 			}
 			} catch (Exception e) {
 				System.out.println(e);
@@ -111,6 +106,7 @@
 		%>
 	</div>
 	<!-- /.container -->
+
 </body>
 
 
