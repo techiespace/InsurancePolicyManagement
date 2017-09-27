@@ -1,13 +1,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<%@ page import="java.sql.*,JDBC.jsp.*"%>
+<%@ page import="java.sql.*,JDBC.jsp.*,a_JDBC.*"%>
 
 <head>
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
+		
+		$("#myProfile").click(function() {
+			$('#amain').load('agentProfile.jsp');
+		});
+		
 		$('#amain').load('agent_main.jsp');
 
 		$("#myCustomers").click(function() {
@@ -30,12 +35,12 @@
 			$('#amain').load('allPlans.jsp');
 		});
 		
-		$("#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").hover(function(){
+		$("#myProfile,#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").hover(function(){
 		$(this).toggleClass("mod");
 		});
 		
-		$("#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").click(function(){
-		$(this).toggleClass("active");
+		$("#myProfile,#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").click(function(){
+		$(this).toggleClass(".active");
 		});
 
 	});
@@ -113,6 +118,14 @@
 					<div id="dashboard" class="nav-link" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-dashboard"></i> <span
 							class="nav-link-text"> Dashboard</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Charts">
+					<div id="myProfile" class="nav-link" style="color: #F2B809;">
+						<a> <i class="fa fa-fw fa-server"></i> <span
+							class="nav-link-text"> My Profile</span>
 						</a>
 					</div>
 				</li>
@@ -360,4 +373,3 @@
 </body>
 
 </html>
-s
