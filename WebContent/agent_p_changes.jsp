@@ -1,4 +1,4 @@
-<%@ page import="JDBC.jsp.*"%>
+
 <%@ page import="java.sql.*"%>
 <%@ page import="a_JDBC.jsp.*"%>
 <%
