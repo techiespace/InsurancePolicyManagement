@@ -1,6 +1,6 @@
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="a_JDBC.*"%>
+<%@ page import="a_JDBC.jsp.*"%>
 <%
 
 int id = (Integer) session.getAttribute("Id");

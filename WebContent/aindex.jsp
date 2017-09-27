@@ -8,22 +8,23 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		$('#amain').load('amain.jsp');
 		
 		$("#myProfile").click(function() {
 			$('#amain').load('agentProfile.jsp');
 		});
 		
+		$('#amain').load('agent_main.jsp');
+
 		$("#myCustomers").click(function() {
 			$('#amain').load('myCustomers.jsp');
 		});
 
 		$("#dashboard").click(function() {
-			$('#amain').load('amain.jsp');
+			$('#amain').load('agent_main.jsp');
 		});
 
 		$("#aPolicyPayment").click(function() {
-			$('#amain').load('aPolicyPayment.jsp');
+			$('#amain').load('agent_PolicyPayment.jsp');
 		});
 
 		$("#addCustomers").click(function() {

@@ -1,4 +1,4 @@
-<%@ page import="a_JDBC.*"%>
+<%@ page import="a_JDBC.jsp.*"%>
 <% 
 	String username= (String)session.getAttribute("agent_user");
 	System.out.println(username);

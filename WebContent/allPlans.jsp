@@ -1,3 +1,4 @@
+
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Statement"%>
@@ -130,7 +131,6 @@
 			}
 		%>
 	</div>
-	<!-- /.container -->
 </body>
 
 
