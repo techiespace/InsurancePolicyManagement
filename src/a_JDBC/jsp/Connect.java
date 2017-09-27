@@ -7,7 +7,7 @@ public class Connect {
 
 	public Connect() {
 
-		url = "jdbc:mysql://localhost:3306/DBMS";
+		url = "jdbc:mysql://localhost:3306/lic";
 		username = "root";
 		password = "password";
 	}
