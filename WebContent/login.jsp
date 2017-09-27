@@ -25,6 +25,8 @@
 			if (keyp == 122) {
 				msg = "*Invalid Username or Password.";
 			} else {
+				String username = request.getParameter("userP");
+				session.setAttribute("agent_user", username);
 				//session.setAttribute("type", "agent");
 				session.setAttribute("Id", keyp);
 				response.sendRedirect("aindex.jsp");

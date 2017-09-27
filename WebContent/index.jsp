@@ -27,7 +27,7 @@
 		});
 
 		$("#agentInfo").click(function() {
-			$('#main').load('agentInfo.jsp');
+			$('#main').load('myagents.jsp');
 		});
 		
 		$("#newplans").click(function() {
@@ -148,7 +148,7 @@
 					title="Charts">
 					<div id="newplans" class="nav-link" style="color:#F2B809;" >
 						<a  > <i class="fa fa-fw fa-server"></i> 
-						<span class="nav-link-text">New Plans</span>
+						<span class="nav-link-text">All Plans</span>
 						</a>
 					</div>
 				</li>
