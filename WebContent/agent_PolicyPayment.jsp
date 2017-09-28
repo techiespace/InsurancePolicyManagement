@@ -1,112 +1,110 @@
-<html>
 
+<%@ page import="JDBC.jsp.*"%>
 <%@ page import="a_JDBC.jsp.*"%>
-
-<%@ page import="java.sql.PreparedStatement"%>
-<%@ page import="java.sql.Statement"%>
-<%@ page import="java.sql.Connection"%>
-<%@ page import="java.sql.DatabaseMetaData"%>
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.SQLException"%>
+<%@ page import="java.sql.*"%>
+<html>
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+	
+	
+<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$(".checkout_done").click(function() {
+	         var pol_no=$(this).attr('id');
+			$('#amain').load('agent_checkout.jsp?pol_no='+pol_no);
+		});
+
+	});
+</script>	
 
 </head>
 
-<body>
+<body style="color: #03275A !important;">
+
 	<!-- Page Content -->
 	<div class="container">
 
 		<!-- Page Heading -->
-		<h1 style="color: #03275A;" class="my-4">Make Payments</h1>
-		<hr>
-		<br><br>
-		<h2 style="color: #03275A;" class="my-4">Choose Customer</h2>
-		<hr>
+		<h1 class="my-4">Make Payment</h1>
 		<%
-			try {
+		int agent_id = (Integer) session.getAttribute("Id");
+		int pols[] = new int[30];
+		int day_diff[] = new int[30];
+		int cust_id[] = new int[30];
+		int pol_no[] = new int[30];
+		int cnt = 0, acnt = 0;
+		int details[][] = new Details().c_details(agent_id);
 
-				Connection conn = new Connect().myDBConnect();
-
-				int id = (Integer) session.getAttribute("Id");
-				System.out.println("ID:" + id);
-				
-				int cust[] = new int[30];
-				int cnt=0,cnt2=0,cnt3=0;
-				String fname="";
-				String mname="";
-				String lname="";
-				String pol_no[]=new String[30];
-				
-				
-				String sql1 = "select cust_id from customer_agent_policy where agent_id=?";
-				String sql2 = "select c_fname,c_mname,c_lname from customer where cust_id=?";
-				String sql3 = "select pol_no from customer_agent_policy where cust_id=? and agent_id=?";
-				PreparedStatement stmt1 = conn.prepareStatement(sql1);
-				PreparedStatement stmt2 = conn.prepareStatement(sql2);
-				PreparedStatement stmt3 = conn.prepareStatement(sql3);
-				stmt1.setInt(1, id);
-				ResultSet rs1 = stmt1.executeQuery();
-				
-				
-				while(rs1.next())
-				{
-					cust[cnt++]=rs1.getInt(1);	
-				}
-				
-				
-				for(int i=0;i<cnt;i++)
-				{
-					int j=cust[i];
-					stmt2.setInt(1, j);
-					ResultSet rs2 = stmt2.executeQuery();
-					rs2.next();
-					fname = rs2.getString("c_fname");
-					mname = rs2.getString("c_mname");
-					lname = rs2.getString("c_lname");
-					stmt3.setInt(1, j);
-					stmt3.setInt(2, id);
-					ResultSet rs3 = stmt3.executeQuery();
-					while(rs3.next())
-					{
-						pol_no[cnt3++]=rs3.getString(1);	
-					}
-					
+		/*int day_diff[] = new int[30];
+		String sql1 = "select pol_no from customer_policy where cust_id=?";*/
+		//String sql2 = "select datediff(curdate(),?)";
+		for (int i = 0; i < 30; i++) {
+			if (details[i][1] == 0) {
+				break;
+			} else {
+				cust_id[cnt] = details[i][0];
+				pol_no[cnt] = details[i][1];
+				day_diff[cnt] = new Premium().date(cust_id[cnt], pol_no[cnt]);
+				cnt++;
+			}
+		}
+		for(acnt=0;acnt<cnt;acnt++){
+			String name[]=new Cust_name().c_name(cust_id[acnt]);
+			String first=name[0];
+			String mid=name[1];
+			String last=name[2];
+			String full=first+" "+mid+" " +last;
 		%>
-
-
+		<hr>
 
 		<!-- Project One -->
-		<div>
-			
-					<h2
-						style="padding: 0.5em; background-color: white; color: #03275A; margin-top: 0; margin-bottom: 0.2em;">
 
-						<%
-							out.print(fname + " "); out.print(mname + " "); out.print(lname);
-							out.print("<br> <br> Policy number(s): ");
-							for(int k=0;k<10;k++)
-							{
-								if(pol_no[k]!=null)
-								out.print(pol_no[k]);
-							}
-						    out.print("<br> <hr>");
-						%>
-					</h2>
-				</div>
+		<div class="row">
+			<div class="col-md-8">
+				<h3>
+					<%
+						out.println(full);
+					%>
+				</h3>
+				<p>
+					<b>Policy Name: </b>
+					<%
+						out.println(new Prem_name().p_name(pol_no[acnt]));
+					%><br> <b>Policy Number: </b>
+					<%
+						out.println(pol_no[acnt]);
+					%><br> <b>Premium Amount: </b>
+					<%
+						int prem[]=new Prem_amount().p_details(pol_no[acnt]);
+						out.println(prem[0]);
+					%>
+					<br>
+					<%
+					if (day_diff[acnt] < 0) {
+						out.println(full+ " has missed his/her premium due date for Policy Number: " + pol_no[acnt] + ".");
+					} else if (day_diff[acnt] == 0) {
+						out.println(full+"'s premium due date for Policy Number: " + pol_no[acnt] + " is today.");
+					} else if (day_diff[acnt] > 0) {
+							out.println(full+"'s next premium for Policy Number: " + pol_no[acnt] + " is due in " + day_diff[acnt]
+									+ " days on " + new Prem_date().due_date(cust_id[acnt], pol_no[acnt]) + ".");
+					}
+					%>
+				</p>
+				<!-- Button trigger modal -->
+				<button type="button" style="margin-left: 80%; margin-top: -33%;"
+					class="btn btn-primary checkout_done" id="<%out.print(pol_no[acnt]);%>">Make Payment</button>
 
+			</div>
+		</div>
+		<!-- /.row -->
+		<hr>
 		<%
-			cnt3=0;
-			}
-			} catch (Exception e) {
-				System.out.println(e);
-			}
+					} 
 		%>
 	</div>
-	<!-- /.container -->
-
 </body>
 
 
