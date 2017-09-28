@@ -1,5 +1,5 @@
 
-<%@ page import="java.sql.*,JDBC.jsp.*"%>
+<%@ page import="java.sql.*,JDBC.jsp.*,a_JDBC.jsp.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,8 @@
 <%
 	String pol = request.getParameter("pol_no");
 	int pol_no = Integer.parseInt(pol);
-	int cust_id = (Integer) session.getAttribute("Id");
+	int agent_id = (Integer) session.getAttribute("Id");
+	int cust_id = new Get_cust().get_id(agent_id, pol_no);
 	int details[] = new Prem_amount().p_details(pol_no);
 	int premium = details[0];
 	int commision = details[1];
@@ -40,12 +41,11 @@
 
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+$(document).ready(function() {
 	$("#pay_done").click(function() {
-<%int agent_id = new Get_Agent().agent_no(cust_id, pol_no);
-			new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
+<%new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
 	});
-});
+			});
 </script>
 
 </head>
@@ -57,10 +57,11 @@
 		<h1>Policy Payment</h1>
 		<br>
 		<div class="column-labels">
-			<label class="product-details">Product</label> <label
-				class="product-price">Policy Number</label> <label
-				class="product-quantity">Term</label> <label
-				class="product-line-price">Cost</label>
+			<label class="product-details">Product</label>
+			<label class="product-name">Customer Name</label>
+			<label class="product-price">Policy Number</label>
+			<label class="product-quantity">Term</label> 
+			<label class="product-line-price">Cost</label>
 		</div>
 		<div class="product">
 			<div class="product-details">
@@ -70,6 +71,16 @@
 						out.println("<h3>" + pol_name + "</h3>");
 					%>
 				</div>
+			</div>
+			<div class="product-name">
+					<%
+					String name[]=new Cust_name().c_name(cust_id);
+					String first=name[0];
+					String mid=name[1];
+					String last=name[2];
+					String full=first+" "+mid+" " +last;
+						out.println("<h3>" + full + "</h3>");
+					%>
 			</div>
 			<div class="product-price" id="pol">
 				<%
@@ -138,7 +149,7 @@
 						Transaction Successful! <br> Reference id: 432423
 					</div>
 					<div class="modal-footer">
-						<a class="btn btn-primary" href="index.jsp">Yay!</a>
+						<a class="btn btn-primary" href="aindex.jsp">Yay!</a>
 					</div>
 				</div>
 			</div>
