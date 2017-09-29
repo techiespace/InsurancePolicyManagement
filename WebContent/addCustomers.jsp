@@ -1,3 +1,4 @@
+
 <%@ page import="JDBC.jsp.*"%>
 <%
 	/* String username= (String)session.getAttribute("current_user");
@@ -187,5 +188,4 @@
 	</form>
 </div>
 <!-- /.container -->
-
 

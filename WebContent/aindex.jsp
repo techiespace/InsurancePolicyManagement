@@ -1,13 +1,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<%@ page import="java.sql.*,JDBC.jsp.*"%>
+<%@ page import="java.sql.*,JDBC.jsp.*,a_JDBC.*"%>
 
 <head>
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 
+		
+		$("#myProfile").click(function() {
+			$('#amain').load('agentProfile.jsp');
+		});
+		
 		$('#amain').load('agent_main.jsp');
 
 		$("#myCustomers").click(function() {
@@ -30,12 +35,16 @@
 			$('#amain').load('allPlans.jsp');
 		});
 		
-		$("#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").hover(function(){
+		$("#Invoices").click(function() {
+			$('#amain').load('aInvoices.jsp');
+		});
+		
+		$("#myProfile,#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").hover(function(){
 		$(this).toggleClass("mod");
 		});
 		
-		$("#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").click(function(){
-		$(this).toggleClass("active");
+		$("#myProfile,#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").click(function(){
+		$(this).toggleClass(".active");
 		});
 
 	});
@@ -118,6 +127,14 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
+					<div id="myProfile" class="nav-link" style="color: #F2B809;">
+						<a> <i class="fa fa-fw fa-server"></i> <span
+							class="nav-link-text"> My Profile</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Charts">
 					<div id="myCustomers" class="nav-link" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> My Customers</span>
@@ -149,19 +166,14 @@
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Components"><a
-					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
-					href="#collapseComponents" style="color: #F2B809;"
-					data-parent="#exampleAccordion"> <i class="fa fa-fw fa-print"></i>
-						<span class="nav-link-text"> Invoice</span>
-				</a>
-					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
-						<li><a href="dashboard/login.jsp">Login Page</a></li>
-						<li><a href="dashboard/register.html">Registration Page</a></li>
-						<li><a href="dashboard/forgot-password.html">Forgot
-								Password Page</a></li>
-						<li><a href="dashboard/blank.html">Blank Page</a></li>
-					</ul></li>
+					title="Tables">
+					<div id="Invoices" class="nav-link" style="color: #F2B809;">
+						<a> <i class="fa fa-fw fa-print"></i> <span
+							class="nav-link-text">Invoice</span>
+						</a>
+					</div>
+				</li>
+			
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Menu Levels"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
@@ -360,4 +372,3 @@
 </body>
 
 </html>
-s

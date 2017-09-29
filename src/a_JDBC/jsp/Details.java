@@ -33,6 +33,16 @@ public class Details {
 		return details;
 	}
 
-	
-
+	public static void main(String args[])
+	{
+		int details[][]=new Details().c_details(4);
+		for (int i = 0; i < 30; i++) {
+			if (details[i][1] == 0) {
+				break;
+			} else {
+				System.out.println("Cust_id:"+details[i][0]);
+				System.out.println("Pol_no:"+details[i][1]);
+			}
+		}
+	}
 }

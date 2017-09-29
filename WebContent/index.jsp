@@ -27,11 +27,15 @@
 		});
 
 		$("#agentInfo").click(function() {
-			$('#main').load('agentInfo.jsp');
+			$('#main').load('myagents.jsp');
 		});
 		
 		$("#newplans").click(function() {
 			$('#main').load('allPlans.jsp');
+		});
+		
+		$("#invoice").click(function() {
+			$('#main').load('invoice.jsp');
 		});
 		
 		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo").hover(function(){
@@ -148,7 +152,7 @@
 					title="Charts">
 					<div id="newplans" class="nav-link" style="color:#F2B809;" >
 						<a  > <i class="fa fa-fw fa-server"></i> 
-						<span class="nav-link-text">New Plans</span>
+						<span class="nav-link-text">All Plans</span>
 						</a>
 					</div>
 				</li>
@@ -160,20 +164,14 @@
 						</a>
 					</div>
 				</li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Components"><a
-					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
-					href="#collapseComponents" style="color:#F2B809;" data-parent="#exampleAccordion"> <i
-						class="fa fa-fw fa-print"></i> <span class="nav-link-text" >
-							Invoice</span>
-				</a>
-					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
-						<li><a href="dashboard/login.jsp">Login Page</a></li>
-						<li><a href="dashboard/register.html">Registration Page</a></li>
-						<li><a href="dashboard/forgot-password.html">Forgot
-								Password Page</a></li>
-						<li><a href="dashboard/blank.html">Blank Page</a></li>
-					</ul></li>
+					<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Tables">
+					<div id="invoice" class="nav-link" style="color:#F2B809;">
+						<a > <i class="fa fa-fw fa-print"></i>
+							<span class="nav-link-text"> Invoice</span>
+						</a>
+					</div>
+				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Menu Levels"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
