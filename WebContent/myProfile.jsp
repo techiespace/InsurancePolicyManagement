@@ -7,15 +7,15 @@
 
 %>
 <div class="container">
-	<link rel="stylesheet" href="bootstrap.min.css">
-	<link rel="stylesheet" href="bootstrap-theme.min.css">
-	<link rel="stylesheet" href="bootstrapValidator.min.css">
+	<link rel="stylesheet" href="dashboard/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="dashboard/vendor/bootstrap/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="dashboard/vendor/bootstrap/css/bootstrapValidator.min.css">
 	<form class="well form-horizontal" action="cust_p_changes.jsp" method="get"
 		id="contact_form">
 
 		<fieldset>
 			<!-- Form Name -->
-			<legend>Contact Us Today!</legend>
+			<legend>My Profile</legend>
 
 			<!-- Text input-->
 
@@ -110,7 +110,7 @@
 			</div>
       
 
-  <button type="submit" value="Submit">Save Changes</button>
+  <button class="btn btn-primary" type="submit" value="Submit">Save Changes</button>
 
 		</fieldset>
 	</form>

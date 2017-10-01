@@ -65,13 +65,6 @@ $(document).ready(function() {
 		</div>
 		<div class="product">
 			<div class="product-details">
-				<div class="product-title">
-					<%
-						String pol_name = new Prem_name().p_name(pol_no);
-						out.println("<p>" + pol_name + "</p>");
-					%>
-				</div>
-			</div>
 			<div class="product-name">
 					<%
 					String name[]=new Cust_name().c_name(cust_id);
@@ -82,9 +75,22 @@ $(document).ready(function() {
 						out.print("<p>" + full + "</p>");
 					%>
 			</div>
-			<div class="product-price" id="pol">
-				<p style="width:20%"><%=out.print(pol_no)%></p>
 			</div>
+			<div class="product-details">
+				<div class="product-title">
+					<%
+						String pol_name = new Prem_name().p_name(pol_no);
+						out.println("<p>" + pol_name + "</p>");
+					%>
+				</div>
+			</div>
+			<!--  -->
+			<div class="product-details">
+			<div class="product-price" id="pol">
+				<p style="width:20%"><%out.print(pol_no);%></p>
+			</div>
+			</div>
+			<div class="product-details">
 			<div class="product-quantity">
 				<%
 					Date e_date = new Prem_date().due_date(cust_id, pol_no);
@@ -92,11 +98,15 @@ $(document).ready(function() {
 					out.println(s_date + " to " + e_date);
 				%>
 			</div>
+			</div>
+			<div class="product-details">
 			<div class="product-line-price">
 				<%
 					out.println("INR " + premium);
 				%>
 			</div>
+			</div>
+			<!-- </div> -->
 		</div>
 
 		<div class="totals">
