@@ -13,6 +13,7 @@
 
 
 
+
 <%
 	String pol = request.getParameter("pol_no");
 	int pol_no = Integer.parseInt(pol);
@@ -40,14 +41,17 @@
 
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
-	$(document).ready(function() {
+$(document).ready(function() {
+	
 	$("#pay_done").click(function() {
-<%int agent_id = new Get_Agent().agent_no(cust_id, pol_no);
-			new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
+        var pol_no=<%=pol_no%>;
+        var total=<%=total%>;
+        var commision=<%=commision1%>;
+		$('#main').load('ctrans_final.jsp?pol_no='+pol_no+'&total='+total+'&commision='+commision);
 	});
+	
 });
 </script>
-
 </head>
 
 <body>
@@ -117,8 +121,7 @@
 				</div>
 			</div>
 		</div>
-		<a id="pay_done"
-			style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
+		<a style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
 			class="nav-link btn btn-primary" data-toggle="modal"
 			data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
 			Checkout
@@ -135,10 +138,10 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						Transaction Successful! <br> Reference id: 432423
+						Are you sure you want to complete the transaction?
 					</div>
 					<div class="modal-footer">
-						<a class="btn btn-primary" href="index.jsp">Yay!</a>
+						<a class="btn btn-primary" id="pay_done" href="" >Yes</a>
 					</div>
 				</div>
 			</div>

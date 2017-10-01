@@ -42,9 +42,11 @@
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+	
 	$("#pay_done").click(function() {
 <%new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
 	});
+	
 			});
 </script>
 
