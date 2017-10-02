@@ -184,23 +184,24 @@ body.fixed-nav {
   color: #868e96; }
  
 	
-	div#agentInfo:hover, div#myPolicies:hover,div#myProfile:hover,div#dashboard:hover,#policyPayment:hover {
+div#agentInfo:hover, div#myPolicies:hover,div#myProfile:hover,div#dashboard:hover,#policyPayment:hover,#myCustomers:hover,#addCustomers:hover,#aPolicyPayment:hover {
     background-color: #F2B809;
     color: #03275A;
 }
 
 .bg-des{
-	background-color: #03275A !important;
+	background-color: #03275A;
 	
 }
 
 .mod{
-	color: #03275A!important;
+	color: #03275A !important;
+	background-color: #F2B809 !important;
 }
 
 .active{
 	background-color: #F2B809 !important;
-    color: #03275A;	
+    color: #03275A !important;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav > .nav-item .sidenav-second-level > li > a,

@@ -12,39 +12,57 @@
 
 		$("#myPolicies").click(function() {
 			$('#main').load('myPolicies.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 
 		$("#dashboard").click(function() {
 			$('#main').load('main.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 
 		$("#policyPayment").click(function() {
 			$('#main').load('policyPayment.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 
 		$("#myProfile").click(function() {
 			$('#main').load('myProfile.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 
 		$("#agentInfo").click(function() {
 			$('#main').load('myagents.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
-		
+
 		$("#newplans").click(function() {
 			$('#main').load('allPlans.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
-		
+
 		$("#invoice").click(function() {
 			$('#main').load('invoice.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
-		
-		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo").hover(function(){
+
+		$("#summary").click(function() {
+			$('#main').load('summary_maturity.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
+
+
+		$(".highlight").hover(function(){
 		$(this).toggleClass("mod");
 		});
-		
-		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo").click(function(){
-		$(this).toggleClass(".active");
-		});
+
 
 	});
 </script>
@@ -90,7 +108,7 @@
 					ResultSet rs = stmt.executeQuery();
 					rs.next();
 					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
-				} 
+				}
 			catch (Exception e) {
 				System.out.println(e);
 			}
@@ -106,7 +124,7 @@
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item" data-toggle="tooltip"
 					data-placement="right" title="Dashboard">
-					<div id="dashboard" class="nav-link" style="color:#F2B809;">
+					<div id="dashboard" class="nav-link highlight" style="color:#F2B809;">
 						<a > <i class="fa fa-fw fa-dashboard"></i> <span
 							class="nav-link-text"> Dashboard</span>
 						</a>
@@ -114,7 +132,7 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="myPolicies" class="nav-link" style="color:#F2B809;" >
+					<div id="myPolicies" class="nav-link highlight" style="color:#F2B809;" >
 						<a  > <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> My Policies</span>
 						</a>
@@ -122,15 +140,15 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="policyPayment" class="nav-link" style="color:#F2B809;">
+					<div id="policyPayment" class="nav-link highlight" style="color:#F2B809;">
 						<a  > <i class="fa fa-fw fa-money"></i> <span
 							class="nav-link-text"> Policy Payment</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Charts"> 
-					<div id="myProfile" class="nav-link" style="color:#F2B809;">
+					title="Charts">
+					<div id="myProfile" class="nav-link highlight" style="color:#F2B809;">
 						<a > <i
 							class="fa fa-fw fa-address-card-o"></i> <span
 							class="nav-link-text"> My Profile</span>
@@ -139,15 +157,15 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="newplans" class="nav-link" style="color:#F2B809;" >
-						<a  > <i class="fa fa-fw fa-server"></i> 
+					<div id="newplans" class="nav-link highlight" style="color:#F2B809;" >
+						<a  > <i class="fa fa-fw fa-server"></i>
 						<span class="nav-link-text">All Plans</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
-					<div id="agentInfo" class="nav-link" style="color:#F2B809;">
+					<div id="agentInfo" class="nav-link highlight" style="color:#F2B809;">
 						<a > <i class="fa fa-fw fa-user-o"></i>
 							<span class="nav-link-text"> Agent Info</span>
 						</a>
@@ -155,9 +173,17 @@
 				</li>
 					<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
-					<div id="invoice" class="nav-link" style="color:#F2B809;">
+					<div id="invoice" class="nav-link highlight" style="color:#F2B809;">
 						<a > <i class="fa fa-fw fa-print"></i>
 							<span class="nav-link-text"> Invoice</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Tables">
+					<div id="summary" class="nav-link highlight" style="color:#F2B809;">
+						<a > <i class="fa fa-fw fa-user-o"></i>
+							<span class="nav-link-text"> Summary</span>
 						</a>
 					</div>
 				</li>
