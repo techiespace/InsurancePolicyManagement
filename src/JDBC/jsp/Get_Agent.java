@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Get_Agent {
 	public int agent_no(int cust_id, int pol_no) {
@@ -17,8 +18,27 @@ public class Get_Agent {
 			ResultSet rs1 = stmt1.executeQuery();
 			rs1.next();
 			agent_id = rs1.getInt(1);
-			// System.out.println("Date:"+p_date);
-			// return p_date;
+			if (rs1 != null) {
+				try {
+					rs1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (stmt1 != null) {
+				try {
+					stmt1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}

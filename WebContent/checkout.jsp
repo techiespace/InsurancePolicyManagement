@@ -42,14 +42,14 @@
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	
+
 	$("#pay_done").click(function() {
         var pol_no=<%=pol_no%>;
         var total=<%=total%>;
         var commision=<%=commision1%>;
 		$('#main').load('ctrans_final.jsp?pol_no='+pol_no+'&total='+total+'&commision='+commision);
 	});
-	
+
 });
 </script>
 </head>
@@ -121,8 +121,9 @@ $(document).ready(function() {
 				</div>
 			</div>
 		</div>
-		<a style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
-			class="nav-link btn btn-primary" data-toggle="modal"
+		<a id="pay_done"
+			style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
+			class="nav-link btn btn-primary"
 			data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
 			Checkout
 		</a>
@@ -140,8 +141,8 @@ $(document).ready(function() {
 					<div class="modal-body">
 						Are you sure you want to complete the transaction?
 					</div>
-					<div class="modal-footer">
-						<a class="btn btn-primary" id="pay_done" href="" >Yes</a>
+					<div class="modal-footer modal-test">
+						<a class="btn btn-primary" href="index.jsp">Yay!</a>
 					</div>
 				</div>
 			</div>

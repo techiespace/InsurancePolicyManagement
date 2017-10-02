@@ -3,6 +3,7 @@ package a_JDBC.jsp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Get_cust {
 	public int get_id(int agent_id,int pol_no) {
@@ -16,6 +17,27 @@ public class Get_cust {
 			ResultSet rs1 = stmt1.executeQuery();
 			rs1.next();
 			cust_id = rs1.getInt(1);
+			if (rs1 != null) {
+				try {
+					rs1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (stmt1 != null) {
+				try {
+					stmt1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
