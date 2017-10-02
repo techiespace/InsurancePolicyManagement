@@ -123,30 +123,9 @@ $(document).ready(function() {
 		</div>
 		<a id="pay_done"
 			style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
-			class="nav-link btn btn-primary"
-			data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
+			class="nav-link btn btn-primary"> <i class="fa fa-fw fa-sign-out"></i>
 			Checkout
 		</a>
-		<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						Are you sure you want to complete the transaction?
-					</div>
-					<div class="modal-footer modal-test">
-						<a class="btn btn-primary" href="index.jsp">Yay!</a>
-					</div>
-				</div>
-			</div>
-		</div>
 
 	</div>
 	<script

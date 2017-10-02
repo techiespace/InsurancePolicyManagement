@@ -35,16 +35,15 @@
 				Statement s = conn.createStatement();
 				ResultSet agentlist = s.executeQuery(policydetails);
 				while (agentlist.next()) {
-					String sql = "select p_name, duration, late_fee, premium, commision from policy where pol_no=?";
+					String sql = "select p_name, duration, late_fee, premium from policy where pol_no=?";
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
 					ResultSet rs = stmt.executeQuery();
 					while (rs.next()) {
 						pName = rs.getString(1);
 						pDuration = rs.getString(2);
-						pLatefee = rs.getString(5);
-						pPremium = rs.getString(3);
-						pComission = rs.getString(4);
+						pLatefee = rs.getString(3);
+						pPremium = rs.getString(4);
 		%>
 		<hr>
 
@@ -72,9 +71,6 @@
 					%><br> <b>Premium Amount: </b>
 					<%
 						out.println(pPremium);
-					%><br> <b>Agent Comission Amount: </b>
-					<%
-						out.println(pComission);
 					%>
 				</p>
 				<!-- Button trigger modal -->

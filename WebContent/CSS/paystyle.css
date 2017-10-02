@@ -22,7 +22,7 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 
 .product-quantity {
   /* float: left; */
-  width: 20%;
+  /* width: 20%; */
 }
 
 .product-removal {
@@ -31,7 +31,8 @@ Side note: I know that this style of nesting in SASS doesn't result in the most 
 }
 
 .product-line-price {
-  /* float: left; */
+	padding-right: 130px !important;
+  	float: right;
   /* width: 20%; */
   /* text-align: right; */
 }
