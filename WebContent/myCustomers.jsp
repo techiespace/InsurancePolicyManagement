@@ -11,6 +11,8 @@
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
 
+
+
 </head>
 
 <body style="color:#03275A !important;">
@@ -20,8 +22,11 @@
 
 		<!-- Page Heading -->
 		<h1 class="my-4">My Customers</h1>
+
+		
+
 		<%
-	
+
 		try {
 
 			Connection conn = new Connect().myDBConnect();
@@ -39,6 +44,8 @@
 			String email="";
 			String phone="";
 			String addr="";
+
+			String names[]=new String[20];
 
 
 			String sql1 = "select cust_id from customer_agent_policy where agent_id=?";
@@ -80,14 +87,14 @@
 				{
 					pol_no[cnt3++]=rs3.getString(1);
 				}
-				
-				
+
+
 
 	%>
 
 
 
-		
+
 		<hr>
 
 		<!-- Project One -->
@@ -102,8 +109,8 @@
 				<h3>
 					<%out.print(fname + " "); out.print(mname + " "); out.print(lname);
 							%>
-						
-					
+
+
 				</h3>
 				<p>
 				<%out.print("<br> Policy number(s): ");
@@ -113,7 +120,7 @@
 								out.println(pol_no[k] + "<br><span style='padding-left:8em;'></span>");
 							}
 							%>
-					
+
 				</p>
 				<!-- Button trigger modal -->
 				<button type="button" style="margin-left:80%;margin-top:-25%;" class="btn btn-primary" data-toggle="modal"
@@ -155,7 +162,7 @@
 								out.println("Phone: " + rs4.getString("c_phone") + "<br>");
 								out.println("Address: " + rs4.getString("c_addr") + "<br>");
 								out.println("Email: " + rs4.getString("c_email") + "<br>");
-								
+
 								%>
 							</div>
 							<div class="modal-footer">
@@ -170,8 +177,8 @@
 		<!-- /.row -->
 		<hr>
 		<%
-			
-				cnt3=0;	
+
+				cnt3=0;
 				}
 			} catch (Exception e) {
 				System.out.println(e);

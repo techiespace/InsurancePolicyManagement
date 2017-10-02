@@ -5,43 +5,58 @@
 
 <head>
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 
 		
 		$("#myProfile").click(function() {
 			$('#amain').load('agentProfile.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 		
 		$('#amain').load('agent_main.jsp');
 
 		$("#myCustomers").click(function() {
 			$('#amain').load('myCustomers.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 
 		$("#dashboard").click(function() {
 			$('#amain').load('agent_main.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 
 		$("#aPolicyPayment").click(function() {
 			$('#amain').load('agent_PolicyPayment.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 
 		$("#addCustomers").click(function() {
 			$('#amain').load('addCustomers.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 
 		$("#allPlans").click(function() {
 			$('#amain').load('allPlans.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
 		});
 		
-		$("#myProfile,#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").hover(function(){
-		$(this).toggleClass("mod");
+		$(".highlight").hover(function(){
+		$(this).toggleClass("mod ");
 		});
 		
-		$("#myProfile,#myCustomers, #aPolicyPayment, #dashboard, #myCustomers, #allPlans").click(function(){
-		$(this).toggleClass(".active");
-		});
+		
+		
+			
+		
 
 	});
 </script>
@@ -115,7 +130,7 @@
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Dashboard">
-					<div id="dashboard" class="nav-link" style="color: #F2B809;">
+					<div id="dashboard" class="nav-link highlight" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-dashboard"></i> <span
 							class="nav-link-text"> Dashboard</span>
 						</a>
@@ -123,7 +138,7 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="myProfile" class="nav-link" style="color: #F2B809;">
+					<div id="myProfile" class="nav-link highlight" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> My Profile</span>
 						</a>
@@ -131,7 +146,7 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="myCustomers" class="nav-link" style="color: #F2B809;">
+					<div id="myCustomers" class="nav-link highlight" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> My Customers</span>
 						</a>
@@ -139,7 +154,7 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="addCustomers" class="nav-link" style="color: #F2B809;">
+					<div id="addCustomers" class="nav-link highlight" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-money"></i> <span
 							class="nav-link-text"> Add Customers</span>
 						</a>
@@ -147,7 +162,7 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="aPolicyPayment" class="nav-link" style="color: #F2B809;">
+					<div id="aPolicyPayment" class="nav-link highlight" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-address-card-o"></i> <span
 							class="nav-link-text"> Make Payment</span>
 						</a>
@@ -155,7 +170,7 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
-					<div id="allPlans" class="nav-link" style="color: #F2B809;">
+					<div id="allPlans" class="nav-link highlight" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-user-o"></i> <span
 							class="nav-link-text"> All Plans</span>
 						</a>
