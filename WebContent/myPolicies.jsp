@@ -72,7 +72,7 @@
 					%><br> <b>Premium Amount: </b>
 					<%
 						out.println(pPremium);
-					%><br> <b>Agent Comission Amount: </b>
+					%><br> <b>Agent Commission Amount: </b>
 					<%
 						out.println(pComission);
 					%>

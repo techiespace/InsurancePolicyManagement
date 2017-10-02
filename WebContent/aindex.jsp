@@ -10,13 +10,13 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-		
+
 		$("#myProfile").click(function() {
 			$('#amain').load('agentProfile.jsp');
 			$('.highlight').removeClass('active');
 			$(this).addClass('active');
 		});
-		
+
 		$('#amain').load('agent_main.jsp');
 
 		$("#myCustomers").click(function() {
@@ -48,15 +48,21 @@
 			$('.highlight').removeClass('active');
 			$(this).addClass('active');
 		});
-		
+
+		$("#Invoices").click(function() {
+			$('#amain').load('aInvoices.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
+
 		$(".highlight").hover(function(){
 		$(this).toggleClass("mod ");
 		});
-		
-		
-		
-			
-		
+
+
+
+
+
 
 	});
 </script>
@@ -105,7 +111,7 @@
 					ResultSet rs = stmt.executeQuery();
 					rs.next();
 					out.println(rs.getString(1) + " " + rs.getString(2));
-				} 
+				}
 				/*else if (type.equals("agent")) {
 					//out.println("Agent");
 					String sql = "select a_fname,a_lname from agent where agent_id=?";
@@ -177,19 +183,14 @@
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Components"><a
-					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
-					href="#collapseComponents" style="color: #F2B809;"
-					data-parent="#exampleAccordion"> <i class="fa fa-fw fa-print"></i>
-						<span class="nav-link-text"> Invoice</span>
-				</a>
-					<ul class="sidenav-second-level collapse" id="collapseExamplePages">
-						<li><a href="dashboard/login.jsp">Login Page</a></li>
-						<li><a href="dashboard/register.html">Registration Page</a></li>
-						<li><a href="dashboard/forgot-password.html">Forgot
-								Password Page</a></li>
-						<li><a href="dashboard/blank.html">Blank Page</a></li>
-					</ul></li>
+					title="Tables">
+					<div id="Invoices" class="nav-link highlight" style="color: #F2B809;">
+						<a> <i class="fa fa-fw fa-print"></i> <span
+							class="nav-link-text">Invoice</span>
+						</a>
+					</div>
+				</li>
+
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Menu Levels"><a
 					class="nav-link nav-link-collapse collapsed" data-toggle="collapse"
