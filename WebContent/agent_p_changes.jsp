@@ -17,7 +17,7 @@ int id = (Integer) session.getAttribute("Id");
 	sql3 = "update agent "+"set a_lname = '"+lastname+"' where agent_id= " + id + ";";
 	sql4 = "update agent "+"set a_email = '"+email+"' where agent_id= " + id + ";";
 	sql5 = "update agent "+"set a_phone = '"+phone+"' where agent_id= " + id + ";";
-	sql6 = "update agent "+"set a_addr = '"+address+"' where agent_id= " + id + ";";
+	sql6 = "update agent "+"set a_addr = '"+address+"' where s= " + id + ";";
 	
 	
 	//out.println(sql6);

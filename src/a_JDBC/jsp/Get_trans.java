@@ -1,25 +1,22 @@
-package JDBC.jsp;
+package a_JDBC.jsp;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class Prem_date {
-	public Date due_date(int cust_id, int pol_no) {
-		Date p_date = null;
-		String sql1 = "select prem_pdate from customer_policy where cust_id=? AND pol_no=?";
+public class Get_trans {
+	public int get_no(int cust_id,int agent_id) {
+		int trans_no=101;
+		String sql1 = "select trans_no from payment where cust_id=? AND agent_id=? order by(trans_no) desc LIMIT 1;";
 		try {
 			Connection conn = new Connect().myDBConnect();
 			PreparedStatement stmt1 = conn.prepareStatement(sql1);
 			stmt1.setInt(1, cust_id);
-			stmt1.setInt(2, pol_no);
+			stmt1.setInt(2, agent_id);
 			ResultSet rs1 = stmt1.executeQuery();
 			rs1.next();
-			p_date = rs1.getDate("prem_pdate");
-			// System.out.println("Date:"+p_date);
-			// return p_date;
+			trans_no = rs1.getInt(1);
 			if (rs1 != null) {
 				try {
 					rs1.close();
@@ -44,12 +41,6 @@ public class Prem_date {
 		} catch (Exception e) {
 			System.out.println(e);
 		}
-		return p_date;
-	}
-
-	/*
-	 * public static void main(String args[]) { Date d=new
-	 * prem_date().due_date(1,897456123); System.out.println("Key="+d); }
-	 */
-
+		return trans_no;
+}
 }

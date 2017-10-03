@@ -1,10 +1,8 @@
 package a_JDBC.jsp;
-import java.sql.*;
 //import JDBC.jsp.*;
-import java.sql.Connection;
 //import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+
 import JDBC.jsp.Connect;
 
 
@@ -34,11 +32,27 @@ public String[] agent_p(String u_name) {
 						tuple[5]=rs.getString("a_email");
 						
 					}
-					// System.out.println(rs.getInt(1) + " " + rs.getString(2));
-					// String name=rs.getString(1);
-					// cust_id=rs.getInt(2);
-					// System.out.println("\nName="+name+"ID="+cust_id);
-					//return cust_id;
+					if (rs != null) {
+						try {
+							rs.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
+					if (stmt != null) {
+						try {
+							stmt.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
+					if (conn != null) {
+						try {
+							conn.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
 				} catch (Exception e) {
 					System.out.println(e);
 				}

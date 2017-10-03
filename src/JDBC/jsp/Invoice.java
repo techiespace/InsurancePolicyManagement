@@ -3,6 +3,7 @@ package JDBC.jsp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Invoice {
@@ -18,6 +19,20 @@ public class Invoice {
 			stmt.setInt(4, pol_no);
 			stmt.setDouble(5, commision);
 			stmt.execute();
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}

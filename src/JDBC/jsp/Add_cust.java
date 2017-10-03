@@ -81,6 +81,20 @@ public class Add_cust {
 			
 			
 			//rs.next();
+			if (prep != null) {
+				try {
+					prep.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 		} catch (Exception e) {
 			System.out.println("Exception Occured: "+e);
 		}

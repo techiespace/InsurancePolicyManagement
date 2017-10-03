@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Term{
 	public Date term_date(int cust_id, int pol_no) {
@@ -24,6 +25,41 @@ public class Term{
 			ResultSet rs2= stmt2.executeQuery();
 			rs2.next();
 			prem_term=rs2.getDate(1);
+			if (rs1 != null) {
+				try {
+					rs1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (stmt1 != null) {
+				try {
+					stmt1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (rs2 != null) {
+				try {
+					rs2.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (stmt2 != null) {
+				try {
+					stmt2.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
