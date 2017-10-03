@@ -51,8 +51,14 @@
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
-				<input type="text" id="search-name">
-			</div>
+<form >
+			  <div class="input-group" >
+			   <input style=" margin-top:2.0em; "type='text' id="search-name"class='form-control' placeholder='Search all plans...'> <span class="input-group-btn"> 
+			   <button class="btn btn-primary" style=" margin-top:2.0em;" type="button"> <i class="fa fa-search"></i> 
+			   </button>
+			   </span>
+			   </div>
+			   </form>			</div>
 			<div class="col-md-3">
 			</div>
 			<div class="col-md-1"></div>

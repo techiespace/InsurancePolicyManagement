@@ -9,6 +9,7 @@
 	$(document).ready(function() {
 
 		$('#main').load('main.jsp');
+		$('#dashboard').addClass('active');
 
 		$("#myPolicies").click(function() {
 			$('#main').load('myPolicies.jsp');
@@ -52,6 +53,7 @@
 			$(this).addClass('active');
 		});
 
+
 		$("#summary").click(function() {
 			$('#main').load('summary_maturity.jsp');
 			$('.highlight').removeClass('active');
@@ -62,7 +64,10 @@
 		$(".highlight").hover(function(){
 		$(this).toggleClass("mod");
 		});
-
+		
+		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo,#invoice").click(function(){
+		$(this).toggleClass(".active");
+		});
 
 	});
 </script>
@@ -96,8 +101,8 @@
 <body class="fixed-nav sticky-footer bg-des" id="page-top">
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-des fixed-top"
-		id="mainNav">
-		<a class="navbar-brand" href="#" style="color:#F2B809">LIC Welcome, <%
+		id="mainNav" style="padding-bottom:0.1em;">
+		<a class="navbar-brand" href="#" style="color:#F2B809"><span style="font-size:1.2em;">Welcome,   <%
 			try {
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
@@ -111,8 +116,8 @@
 				}
 			catch (Exception e) {
 				System.out.println(e);
-			}
-		%> <!-- session.getAttribute("userid")-->
+			} 
+		%> <!-- session.getAttribute("userid")--> </span>
 		</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"
@@ -295,7 +300,7 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item small" href="#"> View all alerts </a>
 					</div></li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<form class="form-inline my-2 my-lg-0 mr-lg-2">
 						<div class="input-group">
 							<input type="text" class="form-control"
@@ -307,10 +312,10 @@
 							</span>
 						</div>
 					</form>
-				</li>
-				<li class="nav-item"><a class="nav-link" data-toggle="modal"
-					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"></i>
-						Logout
+				</li>-->
+				<li class="nav-item" ><a class="nav-link" data-toggle="modal" 
+					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out" style="color: #F2B809; font-size:1.2em;"></i>
+						<span style="color: #F2B809; font-size:1.2em">Logout</span>
 				</a></li>
 			</ul>
 		</div>
