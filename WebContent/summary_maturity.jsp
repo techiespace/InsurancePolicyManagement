@@ -6,12 +6,16 @@
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
-<%@ page import="java.text.DecimalFormat" %>
-
 <html>
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+
+<style>
+.content-wrapper {
+	background-color: #e8e8e8;
+}
+</style>
 
 </head>
 
@@ -22,7 +26,8 @@
 
 
 	<div class="container">
-		<h1 style="margin:3%; margin-bottom:0; margin-left:0;">Summary</h1>
+		<h1
+			style="margin: 3%; margin-bottom: 0; margin-left: 0; font-size: 4.2em;">Summary</h1>
 
 		<%
 			String pName = "";
@@ -31,8 +36,7 @@
 			String pPremium = "";
 			String pComission = "";
 			double pMaturity;
-			DecimalFormat decFor = new DecimalFormat(".00");
-
+			int modeli = 1;
 			try {
 				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
@@ -50,54 +54,100 @@
 						pDuration = rs.getString(2);
 						pLatefee = rs.getString(3);
 						pPremium = rs.getString(4);
-						pComission = rs.getString(5);
-						double dDuration= Double.parseDouble(pDuration);
-						double dPremium= Double.parseDouble(pPremium);
+						pComission = rs.getString(4);
+						double dDuration = Double.parseDouble(pDuration);
+						double dPremium = Double.parseDouble(pPremium);
 
-						pMaturity= 1.10 * dDuration * dPremium;
+						pMaturity = 1.10 * dDuration * dPremium;
+						pMaturity = Math.round(pMaturity * 100) / 100;
 		%>
 
 
-		<hr>
+
 
 		<!-- Project One -->
 
-		<div class="row">
+		<div class="row"
+			style="border: solid grey 1px; box-shadow: 1px 1px 1px 1px grey; margin-top: 1.7em; margin-bottom: 3em; padding: 2em; background-color: white;">
 
-			<div class="col-md-8">
-				<h3>
-					<%
-						out.println(pName);
-					%>
-				</h3>
-				<p>
-					<b>Maturity Amount: </b>
-					<%
-						out.println("%1.2f" + pMaturity);
-					%><br> <b>Late Fee: </b>
-					<%
-						out.println(pLatefee);
-					%><br> <b>Premium Amount: </b>
-					<%
-						out.println(pPremium);
-					%><br> <b>Agent Commission Amount: </b>
-					<%
-						out.println(pComission);
-					%>
-				</p>
+			<div class="col-md-12">
+
+				<div class="row" style="text-align: center;">
+
+					<div class="col-md-3">
+
+						<span style="color: grey; font-size: 1.2em;">Policy name </span>
+
+					</div>
+					<div class="col-md-3">
+						<span style="color: grey; font-size: 1.2em;">Amount on
+							maturity </span>
+					</div>
+
+					<div class="col-md-2">
+						<span style="color: grey; font-size: 1.2em;">Late Fee </span>
+					</div>
+					<div class="col-md-2">
+						<span style="color: grey; font-size: 1.2em;">Premium Amount<br></span>
+					</div>
+					<div class="col-md-2">
+						<span style="color: grey; font-size: 1.2em">Commission<br></span>
+					</div>
+				</div>
+				<hr>
+				<div class="row" style="text-align:center;">
+
+					<div class="col-md-3">
+
+						<span style="font-size: 2em;"> <%
+ 	out.println(pName);
+ %>
+						</span>
+					</div>
+
+					<div class="col-md-3">
+						<span style="font-size: 1.6em;"> <%
+ 	out.println("INR <br>" + pMaturity);
+ %>
+						</span>
+					</div>
+
+					<div class="col-md-2">
+
+						<span style="font-size: 1.6em;"> <%
+ 	out.println(pLatefee);
+ %>
+						</span>
+					</div>
+
+					<div class="col-md-2">
+
+						<span style="font-size: 1.6em;"> <%
+ 	out.println(pPremium);
+ %>
+						</span>
+					</div>
+					<div class="col-md-2">
+
+						<span style="font-size: 1.6em;"> <%
+ 	out.println(pComission);
+ %>
+						</span>
+					</div>
+				</div>
 
 			</div>
 		</div>
 
 		<!-- /.row -->
-		<hr>
+
 		<%
-		}
 			}
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	%>
+				}
+			} catch (Exception e) {
+				System.out.println(e);
+			}
+		%>
 		<!-- /.container -->
 	</div>
 </body>

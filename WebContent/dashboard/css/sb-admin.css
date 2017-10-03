@@ -10,6 +10,7 @@ html {
 body.sticky-footer {
   margin-bottom: 56px; }
   body.sticky-footer .content-wrapper {
+  
     min-height: calc(100vh - 56px - 56px); }
 
 body.fixed-nav {
@@ -195,8 +196,8 @@ div#agentInfo:hover, div#myPolicies:hover,div#myProfile:hover,div#dashboard:hove
 }
 
 .mod{
-	color: #03275A !important;
-	background-color: #F2B809 !important;
+	color:  #F2B809 !important;
+	background-color: #001635 !important;
 }
 
 .active{
