@@ -58,7 +58,7 @@
 				<div class="col-md-4 selectContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-list"></i></span> <select name="desig"
+							class="fa fa-address-card"></i></span> <select name="desig"
 							class="form-control selectpicker" data-bv-field="state">
 							<option value=" ">Designation</option>
 							<option>Mr.</option>
@@ -71,21 +71,6 @@
 					<small data-bv-validator="notEmpty" data-bv-validator-for="state"
 						class="help-block" style="display: none;">Please select
 						your state</small>
-				</div>
-			</div>
-
-
-			<!-- Text input-->
-
-			<div class="form-group">
-				<label class="col-md-4 control-label">Designation</label>
-				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="fa fa-address-card" aria-hidden="true"></i><i
-							class="glyphicon glyphicon-user"></i></span> <input name="desig"
-							placeholder="Designation" class="form-control" type="text">
-					</div>
 				</div>
 			</div>
 
@@ -111,7 +96,7 @@
 						<span class="input-group-addon"><i
 							class="fa fa-address-card" aria-hidden="true"></i><i
 							class="glyphicon glyphicon-user"></i></span> <input name="middle_name"
-							placeholder="First Name" class="form-control" type="text">
+							placeholder="Middle Name" class="form-control" type="text">
 					</div>
 				</div>
 			</div>
@@ -137,7 +122,7 @@
 				<div class="col-md-4 selectContainer">
 					<div class="input-group">
 						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-list"></i></span> 
+							class="fa fa-fw fa-server"></i></span> 
 							<select name="policy"
 							class="form-control selectpicker" data-bv-field="state">
 							<option value=" ">Select Policy</option>
