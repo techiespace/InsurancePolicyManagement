@@ -42,6 +42,12 @@
 			$('.highlight').removeClass('active');
 			$(this).addClass('active');
 		});
+		
+		$("#addPolicy").click(function() {
+			$('#amain').load('addPolicy.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
 
 		$("#allPlans").click(function() {
 			$('#amain').load('allPlans.jsp');
@@ -100,8 +106,6 @@
 		<a class="navbar-brand" href="#" style="color: #F2B809">LIC
 			Welcome, <%
 			try {
-
-				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
 					//out.println("Cust");
@@ -112,15 +116,6 @@
 					rs.next();
 					out.println(rs.getString(1) + " " + rs.getString(2));
 				}
-				/*else if (type.equals("agent")) {
-					//out.println("Agent");
-					String sql = "select a_fname,a_lname from agent where agent_id=?";
-					PreparedStatement stmt = conn.prepareStatement(sql);
-					stmt.setInt(1, id);
-					ResultSet rs = stmt.executeQuery();
-					rs.next();
-					out.println(rs.getString(1) + " " + rs.getString(2));
-				}*/
 			catch (Exception e) {
 				System.out.println(e);
 			}
@@ -163,6 +158,14 @@
 					<div id="addCustomers" class="nav-link highlight" style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-money"></i> <span
 							class="nav-link-text"> Add Customers</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Charts">
+					<div id="addPolicy" class="nav-link highlight" style="color: #F2B809;">
+						<a> <i class="fa fa-fw fa-money"></i> <span
+							class="nav-link-text"> Add Policy</span>
 						</a>
 					</div>
 				</li>
