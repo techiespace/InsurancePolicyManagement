@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import JDBC.jsp.Connect;
 
 public class Agent_login {
@@ -22,7 +24,27 @@ public class Agent_login {
 			ResultSet rs = stmt.executeQuery();
 			rs.next();
 			agent_id = rs.getInt("agent_id");
-			return agent_id;
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}

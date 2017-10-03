@@ -11,6 +11,27 @@
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+	
+	<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+
+		$("#search-name").keyup(function() {
+			console.log="Yeess";
+			name = $("#search-name").val();
+			$.ajax({
+				type : "POST",
+				url : "search_plans.jsp",
+				data : "name=" + name,
+				success : function(data) {
+					$("#cont").html(data);
+				}
+			});
+		});
+
+	});
+</script>
 
 </head>
 
@@ -20,7 +41,19 @@
 	<div class="container">
 
 		<!-- Page Heading -->
-		<h1 class="my-4">All Plans</h1>
+				<div class="row">
+			<div class="col-md-4">
+				<h1 class="my-4">All Plans</h1>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<input type="text" id="search-name">
+			</div>
+			<div class="col-md-3">
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div id="cont">
 		<%
 			String pName = "";
 			String pDuration = "";
@@ -50,9 +83,9 @@
 						pComission = rs.getString(4);
 		%>
 		<hr>
-
+        
 		<!-- Project One -->
-
+		
 		<div class="row">
 			<div class="col-md-4">
 				<a href="#"> <img class="img-fluid rounded mb-3 mb-md-0"
@@ -126,10 +159,32 @@
 			modeli++;
 					}
 				//}
+					if (rs != null) {
+						try {
+							rs.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
+					if (stmt != null) {
+						try {
+							stmt.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
+					if (conn != null) {
+						try {
+							conn.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
 			} catch (Exception e) {
 				System.out.println(e);
 			}
 		%>
+		</div>
 	</div>
 </body>
 

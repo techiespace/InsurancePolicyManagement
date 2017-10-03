@@ -5,22 +5,9 @@
 <%@ page import="java.sql.DatabaseMetaData"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.SQLException"%>
-<html>
-<head>
-<link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-
-</head>
-
-<body style="color:#03275A !important;">
-
-	<!-- Page Content -->
-	<div class="container">
-
-		<!-- Page Heading -->
-		<h1 class="my-4">My Policies</h1>
+<%@ page import="java.sql.SQLException"%>	
 		<%
+		String r_name = request.getParameter("name");
 			String pName = "";
 			String pDuration = "";
 			String pLatefee = "";
@@ -30,25 +17,30 @@
 			try {
 				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
-				int id = (Integer) session.getAttribute("Id");
-				String policydetails = "select pol_no from customer_policy where cust_id=" + id;
+				int id = (Integer) session.getAttribute("Id");/* 
+				String policydetails = "select pol_no from customer_policy ";
 				Statement s = conn.createStatement();
-				ResultSet agentlist = s.executeQuery(policydetails);
-				while (agentlist.next()) {
-					String sql = "select p_name, duration, late_fee, premium from policy where pol_no=?";
+				ResultSet agentlist = s.executeQuery(policydetails); */
+		// 		while (agentlist.next()) {
+					
+					String sql = "select p_name, duration, late_fee, premium, commision from policy";
+
+				//	stmt.setInt(1, agentlist.getInt(1));*/
 					PreparedStatement stmt = conn.prepareStatement(sql);
-					stmt.setInt(1, agentlist.getInt(1));
-					ResultSet rs = stmt.executeQuery();
+					ResultSet rs = stmt.executeQuery(); 
 					while (rs.next()) {
 						pName = rs.getString(1);
+						if((!pName.toLowerCase().contains(r_name.toLowerCase())))
+							continue;
 						pDuration = rs.getString(2);
-						pLatefee = rs.getString(3);
-						pPremium = rs.getString(4);
+						pLatefee = rs.getString(5);
+						pPremium = rs.getString(3);
+						pComission = rs.getString(4);
 		%>
 		<hr>
-
+        
 		<!-- Project One -->
-
+		
 		<div class="row">
 			<div class="col-md-4">
 				<a href="#"> <img class="img-fluid rounded mb-3 mb-md-0"
@@ -74,7 +66,7 @@
 					%>
 				</p>
 				<!-- Button trigger modal -->
-				<button type="button" style="margin-left:80%;margin-top:-40%;" class="btn btn-primary" data-toggle="modal"
+				<button type="button" style="margin-left:80%;margin-top:-33%;" class="btn btn-primary" data-toggle="modal"
 					data-target="#polDetModal<%out.print(modeli);%>">Policy
 					Details</button>
 
@@ -121,14 +113,28 @@
 		<%
 			modeli++;
 					}
-				}
+					if (rs != null) {
+						try {
+							rs.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
+					if (stmt != null) {
+						try {
+							stmt.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
+					if (conn != null) {
+						try {
+							conn.close();
+						} catch (SQLException e) {
+							System.out.println(e);
+						}
+					}
 			} catch (Exception e) {
 				System.out.println(e);
 			}
 		%>
-	</div>
-	<!-- /.container -->
-</body>
-
-
-</html>

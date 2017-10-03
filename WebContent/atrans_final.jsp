@@ -1,13 +1,13 @@
-<%@ page import="java.sql.*,JDBC.jsp.*"%>
+<%@ page import="java.sql.*,JDBC.jsp.*,a_JDBC.jsp.*"%>
 <%
-int cust_id = (Integer) session.getAttribute("Id");
+int agent_id = (Integer) session.getAttribute("Id");
 String pol=request.getParameter("pol_no");
 int pol_no=Integer.parseInt(pol);
 String tot=request.getParameter("total");
 double total=Double.parseDouble(tot);
 String com=request.getParameter("commision");
 double commision=Double.parseDouble(com);
-int agent_id = new Get_Agent().agent_no(cust_id, pol_no);
+int cust_id = new Get_cust().get_id(agent_id, pol_no);
 new Invoice().enter(cust_id, agent_id, total, pol_no, commision);
 %>
 <html>
@@ -18,7 +18,7 @@ new Invoice().enter(cust_id, agent_id, total, pol_no, commision);
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#goHome").click(function() {
-		$('#main').load('main.jsp');
+		$('#main').load('amain.jsp');
 	});
 });
 

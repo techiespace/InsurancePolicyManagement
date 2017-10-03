@@ -52,7 +52,7 @@
 			$('.highlight').removeClass('active');
 			$(this).addClass('active');
 		});
-		
+
 		$("#summary").click(function() {
 			$('#main').load('summary_maturity.jsp');
 			$('.highlight').removeClass('active');
@@ -100,8 +100,6 @@
 		id="mainNav" style="padding-bottom:0.1em;">
 		<a class="navbar-brand" href="#" style="color:#F2B809"><span style="font-size:1.2em;">Welcome,   <%
 			try {
-
-				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
 					//out.println("Cust");
@@ -112,15 +110,6 @@
 					rs.next();
 					out.println(rs.getString(1) + " " + rs.getString(2) + " " + rs.getString(3));
 				}
-				/*else if (type.equals("agent")) {
-					//out.println("Agent");
-					String sql = "select a_fname,a_lname from agent where agent_id=?";
-					PreparedStatement stmt = conn.prepareStatement(sql);
-					stmt.setInt(1, id);
-					ResultSet rs = stmt.executeQuery();
-					rs.next();
-					out.println(rs.getString(1) + " " + rs.getString(2));
-				}*/
 			catch (Exception e) {
 				System.out.println(e);
 			} 

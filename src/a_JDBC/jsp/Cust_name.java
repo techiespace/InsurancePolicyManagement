@@ -1,8 +1,6 @@
 package a_JDBC.jsp;
 
 import java.sql.*;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 
 public class Cust_name {
 	public  String[] c_name(int cust_id) {
@@ -17,6 +15,27 @@ public class Cust_name {
 			name[0]= rs1.getString(1);
 			name[1]= rs1.getString(2);
 			name[2]= rs1.getString(3);
+			if (rs1 != null) {
+				try {
+					rs1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (stmt1 != null) {
+				try {
+					stmt1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}

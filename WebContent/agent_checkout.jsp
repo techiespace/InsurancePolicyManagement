@@ -42,9 +42,14 @@
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
+
 	$("#pay_done").click(function() {
-<%new Invoice().enter(cust_id, agent_id, total, pol_no, commision1);%>
+        var pol_no=<%=pol_no%>;
+        var total=<%=total%>;
+        var commision=<%=commision1%>;
+		$('#amain').load('atrans_final.jsp?pol_no='+pol_no+'&total='+total+'&commision='+commision);
 	});
+
 			});
 </script>
 
@@ -57,10 +62,10 @@ $(document).ready(function() {
 		<h1>Policy Payment</h1>
 		<br>
 		<div class="column-labels">
-			<label class="product-details">Customer Name</label> 
+			<label class="product-details">Customer Name</label>
 			<label class="product-name"style="width:20%">Policy Name</label>
-			<label class="product-price">Policy Number</label> 
-			<label class="product-quantity">Term</label> 
+			<label class="product-price">Policy Number</label>
+			<label class="product-quantity">Term</label>
 			<label class="product-line-price">Cost</label>
 		</div>
 		<div class="product">
@@ -75,6 +80,8 @@ $(document).ready(function() {
 						out.print("<p>" + full + "</p>");
 					%>
 			</div>
+			<div class="product-price" id="pol">
+				<p style="width:20%"><%out.print(pol_no);%></p>
 			</div>
 			<div class="product-details">
 				<div class="product-title">
@@ -138,31 +145,9 @@ $(document).ready(function() {
 		</div>
 		<a id="pay_done"
 			style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
-			class="nav-link btn btn-primary" data-toggle="modal"
-			data-target="#exampleModal1"> <i class="fa fa-fw fa-sign-out"></i>
+			class="nav-link btn btn-primary" data-toggle="modal"> <i class="fa fa-fw fa-sign-out"></i>
 			Checkout
 		</a>
-		<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
-			aria-labelledby="exampleModalLabel" aria-hidden="true">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body">
-						Transaction Successful! <br> Reference id: 432423
-					</div>
-					<div class="modal-footer">
-						<a class="btn btn-primary" href="aindex.jsp">Yay!</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
 	</div>
 	<script
 		src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
