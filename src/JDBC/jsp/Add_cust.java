@@ -5,10 +5,11 @@ import java.text.SimpleDateFormat;
 
 
 public class Add_cust {
-	public void addCustInfo(String fname, String mname, String lname, String email, String phone, String add, String dob, String uname, String passwd, String desig) {
+	public void addCustInfo(int aid, String fname, String mname, String lname, String email, String phone, String add, String dob, String uname, String passwd, String desig, String policy) {
 		String sql = "INSERT INTO customer(c_uname,c_passwd,c_email,c_phone,c_dob,c_addr,c_fname,c_mname,c_lname,desig) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-		 
+		String cusAgPolsql = "INSERT INTO customer_agent_policy(cust_id,agent_id,pol_no) VALUES (?,?,?)";
+		String getCusIdsql = "SELECT cust_id from customer where c_uname='"+uname+"'";
 		
 		
 		try {
@@ -28,6 +29,19 @@ public class Add_cust {
 			prep.setString(9, lname);
 			prep.setString(10, desig);
 			prep.execute();
+			
+			Statement prepgetCusId = conn.createStatement();
+			ResultSet rsCusId = prepgetCusId.executeQuery(getCusIdsql);
+			rsCusId.next();
+			int custId= rsCusId.getInt("cust_id");
+			
+			PreparedStatement prepcusAgPolsql = conn.prepareStatement(cusAgPolsql);
+			int polint = Integer.parseInt(policy);
+			prepcusAgPolsql.setInt(1, custId);
+			prepcusAgPolsql.setInt(2, aid);
+			prepcusAgPolsql.setInt(3, polint);
+			prepcusAgPolsql.execute();
+			
 			//rs.next();
 		} catch (Exception e) {
 			System.out.println("Exception Occured: "+e);
