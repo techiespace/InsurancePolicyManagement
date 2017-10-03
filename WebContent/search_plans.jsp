@@ -1,4 +1,3 @@
-
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Statement"%>
@@ -6,55 +5,9 @@
 <%@ page import="java.sql.DatabaseMetaData"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.SQLException"%>
-<html>
-<head>
-<link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-	
-	<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
-
-
-		$("#search-name").keyup(function() {
-			console.log="Yeess";
-			name = $("#search-name").val();
-			$.ajax({
-				type : "POST",
-				url : "search_plans.jsp",
-				data : "name=" + name,
-				success : function(data) {
-					$("#cont").html(data);
-				}
-			});
-		});
-
-	});
-</script>
-
-</head>
-
-<body style="color:#03275A !important;">
-
-	<!-- Page Content -->
-	<div class="container">
-
-		<!-- Page Heading -->
-				<div class="row">
-			<div class="col-md-4">
-				<h1 class="my-4">All Plans</h1>
-			</div>
-			<div class="col-md-1"></div>
-			<div class="col-md-3">
-				<input type="text" id="search-name">
-			</div>
-			<div class="col-md-3">
-			</div>
-			<div class="col-md-1"></div>
-		</div>
-		<div id="cont">
+<%@ page import="java.sql.SQLException"%>	
 		<%
+		String r_name = request.getParameter("name");
 			String pName = "";
 			String pDuration = "";
 			String pLatefee = "";
@@ -77,6 +30,8 @@
 					ResultSet rs = stmt.executeQuery(); 
 					while (rs.next()) {
 						pName = rs.getString(1);
+						if((!pName.toLowerCase().contains(r_name.toLowerCase())))
+							continue;
 						pDuration = rs.getString(2);
 						pLatefee = rs.getString(5);
 						pPremium = rs.getString(3);
@@ -158,7 +113,6 @@
 		<%
 			modeli++;
 					}
-				//}
 					if (rs != null) {
 						try {
 							rs.close();
@@ -184,9 +138,3 @@
 				System.out.println(e);
 			}
 		%>
-		</div>
-	</div>
-</body>
-
-
-</html>

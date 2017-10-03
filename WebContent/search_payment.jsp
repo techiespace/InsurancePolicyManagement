@@ -1,12 +1,7 @@
 <%@ page import="java.sql.*,JDBC.jsp.*,a_JDBC.jsp.*"%>
 
 		<%
-		int flag=0;
 		String r_name = request.getParameter("name");
-		if(r_name.length() == 0)
-		{
-			flag=1;
-		}
 		int agent_id = (Integer) session.getAttribute("Id");
 		int pols[] = new int[30];
 		int day_diff[] = new int[30];
@@ -34,7 +29,7 @@
 			String mid=name[1];
 			String last=name[2];
 			String full=first+" "+mid+" " +last;
-			if((!full.toLowerCase().contains(r_name.toLowerCase())) && flag==0)
+			if((!full.toLowerCase().contains(r_name.toLowerCase())))
 				continue;
 		%>
 		<hr>
