@@ -2,10 +2,6 @@ package JDBC.jsp;
 
 import java.sql.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import JDBC.jsp.Connect;
 public class cust_profile {
 
@@ -34,11 +30,27 @@ public class cust_profile {
 					tuple[6]=rs.getString("c_email");
 					
 				}
-				// System.out.println(rs.getInt(1) + " " + rs.getString(2));
-				// String name=rs.getString(1);
-				// cust_id=rs.getInt(2);
-				// System.out.println("\nName="+name+"ID="+cust_id);
-				//return cust_id;
+				if (rs != null) {
+					try {
+						rs.close();
+					} catch (SQLException e) {
+						System.out.println(e);
+					}
+				}
+				if (stmt != null) {
+					try {
+						stmt.close();
+					} catch (SQLException e) {
+						System.out.println(e);
+					}
+				}
+				if (conn != null) {
+					try {
+						conn.close();
+					} catch (SQLException e) {
+						System.out.println(e);
+					}
+				}
 			} catch (Exception e) {
 				System.out.println(e);
 			}

@@ -2,10 +2,6 @@ package JDBC.jsp;
 
 import java.sql.*;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import JDBC.jsp.Connect;
 
 public class Cust_login {
@@ -28,9 +24,27 @@ public class Cust_login {
 			// System.out.println(rs.getInt(1) + " " + rs.getString(2));
 			cust_id = rs.getInt("cust_id");
 			name = rs.getString("c_fname");
-			// String name=rs.getString(1);
-			// cust_id=rs.getInt(2);
-			// System.out.println("\nName="+name+"ID="+cust_id);
+			if (rs != null) {
+				try {
+					rs.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (stmt != null) {
+				try {
+					stmt.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 			return cust_id;
 		} catch (Exception e) {
 			System.out.println(e);

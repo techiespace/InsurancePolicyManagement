@@ -10,7 +10,13 @@
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
+<style>
+.fixsize{
+width:220px;
+height:220px;
+}
 
+</style>
 </head>
 
 <body>
@@ -52,7 +58,7 @@
 		<!-- Project One -->
 		<div class="row">
 			<div class="col-md-3">
-				<img class="img-responsive img-fluid rounded mb-3 mb-md-0"
+				<img class="fixsize img-responsive img-fluid rounded mb-3 mb-md-0"
 					src="<%out.print(imgUrl); %>" alt="">
 			</div>
 			<div class="col-md-9">

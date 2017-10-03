@@ -6,7 +6,6 @@ public class Connect {
 	String url, username, password, sql;
 
 	public Connect() {
-
 		url = "jdbc:mysql://localhost:3306/lic";
 		username = "root";
 		password = "password";

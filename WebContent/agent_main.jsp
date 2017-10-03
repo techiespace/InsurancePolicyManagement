@@ -9,7 +9,7 @@
 	$(document).ready(function() {
 
 		$("#premium-payment-details").click(function() {
-			$('#amain').load('agent_PolicyPayment.jsp');
+			$('#amain').load('agentPayment.jsp');
 		});
 
 		$("#my-customers").click(function() {
@@ -155,6 +155,8 @@
 							}
 						}
 						for (acnt = 0; acnt < cnt; acnt++) {
+							if(day_diff[acnt] > 5)
+								continue;
 					%>
 					<a href="#" class="list-group-item list-group-item-action"
 						style="padding: 1.5em">

@@ -48,10 +48,12 @@
 				Statement s = conn.createStatement();
 				ResultSet agentlist = s.executeQuery(policydetails);
 				while (agentlist.next()) {
+
 					int f = agentlist.getInt(1);
 
 					String sql = "select p_name, duration, premium, prem_edate from customer_policy,policy where customer_policy.pol_no=? and policy.pol_no=? and cust_id="
 							+ id;
+
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
 					stmt.setInt(2, agentlist.getInt(1));

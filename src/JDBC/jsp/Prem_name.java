@@ -3,6 +3,7 @@ package JDBC.jsp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class Prem_name {
 	public  String p_name(int pol_no) {
@@ -17,6 +18,27 @@ public class Prem_name {
 			name= rs1.getString("p_name");
 			//System.out.println("Date:"+p_date);
 			//return p_date;
+			if (rs1 != null) {
+				try {
+					rs1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (stmt1 != null) {
+				try {
+					stmt1.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					System.out.println(e);
+				}
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
