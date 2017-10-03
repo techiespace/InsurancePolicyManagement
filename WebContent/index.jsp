@@ -310,8 +310,8 @@
 					</form>
 				</li>-->
 				<li class="nav-item" ><a class="nav-link" data-toggle="modal" 
-					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out" style="color: #F2B809;"></i>
-						<span style="color: #F2B809;">Logout</span>
+					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out" style="color: #F2B809; font-size:1.2em;"></i>
+						<span style="color: #F2B809; font-size:1.2em">Logout</span>
 				</a></li>
 			</ul>
 		</div>
