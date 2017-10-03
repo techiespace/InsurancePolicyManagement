@@ -58,13 +58,13 @@ $(document).ready(function() {
 
 	<div class="shopping-cart">
 		<br>
-		<h1>Policy Payment</h1>
+		<h1 style="text-align:center;">Policy Payment</h1>
 		<br>
 		<div class="column-labels">
-			<label class="product-details">Product</label> <label
-				class="product-price">Policy Number</label> <label
-				class="product-quantity">Term</label> <label
-				class="product-line-price">Cost</label>
+			<label class="product-details">Product</label> 
+			<label class="product-price">Policy Number</label> 
+			<label class="product-quantity">Term</label> 
+			<label class="product-line-price" style="padding-right: 341px !important;">Cost</label>
 		</div>
 		<div class="product">
 			<div class="product-details">
@@ -75,11 +75,14 @@ $(document).ready(function() {
 					%>
 				</div>
 			</div>
-			<div class="product-price" id="pol">
+			<div class="product-details">
+			<div style="padding-left: 4px;" class="product-price" id="pol">
 				<%
 					out.println(pol_no);
 				%>
 			</div>
+			</div>
+			<div class="product-details">
 			<div class="product-quantity">
 				<%
 					Date e_date = new Prem_date().due_date(cust_id, pol_no);
@@ -87,10 +90,13 @@ $(document).ready(function() {
 					out.println(e_date + " to " + s_date);
 				%>
 			</div>
-			<div class="product-line-price">
+			</div>
+			<div class="product-details">
+			<div class="product-line-price" style="padding-right: 94px !important;">
 				<%
 					out.println("INR " + premium);
 				%>
+			</div>
 			</div>
 		</div>
 

@@ -49,8 +49,7 @@ $(document).ready(function() {
         var commision=<%=commision1%>;
 		$('#amain').load('atrans_final.jsp?pol_no='+pol_no+'&total='+total+'&commision='+commision);
 	});
-
-			});
+});
 </script>
 
 </head>
@@ -59,7 +58,7 @@ $(document).ready(function() {
 
 	<div class="shopping-cart">
 		<br>
-		<h1>Policy Payment</h1>
+		<h1 style="text-align:center;">Policy Payment</h1>
 		<br>
 		<div class="column-labels">
 			<label class="product-details">Customer Name</label>
@@ -93,7 +92,7 @@ $(document).ready(function() {
 			</div>
 			<!--  -->
 			<div class="product-details">
-			<div class="product-price" id="pol">
+			<div style="padding-left: 4px;" class="product-price" id="pol">
 				<p style="width:20%"><%out.print(pol_no);%></p>
 			</div>
 			</div>
@@ -107,7 +106,7 @@ $(document).ready(function() {
 			</div>
 			</div>
 			<div class="product-details">
-			<div class="product-line-price">
+			<div class="product-line-price" style="padding-right: 94px !important;">
 				<%
 					out.println("INR " + premium);
 				%>
