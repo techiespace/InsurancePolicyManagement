@@ -54,7 +54,7 @@
 							<th>Policy No</th>
 							<th>Term</th>
 							<th>Agent-Name</th>
-							<th>Premium Date</th>
+							<th>Date of Transaction</th>
 							<th>Amount</th>
 
 						</tr>
@@ -66,13 +66,13 @@
 							String policyNo = "";
 							String agentName = "";
 							String pPremium = "";
-							String date = "";
+							String date = "",sdate="",edate="";
 							
 							try {
 								//String type = (String) session.getAttribute("type");
 								Connection conn = new Connect().myDBConnect();
 								int id = (Integer) session.getAttribute("Id");										
-									String sql = "select trans_no,pol_no,agent_id,amt,date from payment where cust_id=" + id;
+									String sql = "select trans_no,pol_no,agent_id,amt,date,sdate,edate from payment where cust_id=" + id;
 									Statement stmt = conn.createStatement();
 									ResultSet rs = stmt.executeQuery(sql);
 									
@@ -88,6 +88,8 @@
 										agentName = rs1.getString(1)+" "+rs1.getString(2);
 										pPremium = rs.getString(4);
 										date = rs.getString(5);
+										sdate=rs.getString(6);
+										edate=rs.getString(7);
 						%>
 						<tr>
 							<td>
@@ -102,7 +104,7 @@
 								%>
 							</td>
 							<td>
-								
+							<%out.print(sdate+"&nbsp to &nbsp"+edate); %>	
 							</td>
 							<td>
 								<%
