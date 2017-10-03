@@ -38,11 +38,11 @@
 			$('#main').load('invoice.jsp');
 		});
 		
-		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo").hover(function(){
+		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo,#invoice").hover(function(){
 		$(this).toggleClass("mod");
 		});
 		
-		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo").click(function(){
+		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo,#invoice").click(function(){
 		$(this).toggleClass(".active");
 		});
 

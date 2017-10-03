@@ -184,7 +184,7 @@ body.fixed-nav {
   color: #868e96; }
  
 	
-	div#agentInfo:hover, div#myPolicies:hover,div#myProfile:hover,div#dashboard:hover,#policyPayment:hover {
+	div#agentInfo:hover, div#myPolicies:hover,div#myProfile:hover,div#dashboard:hover,#policyPayment:hover,#invoices {
     background-color: #F2B809;
     color: #03275A;
 }
