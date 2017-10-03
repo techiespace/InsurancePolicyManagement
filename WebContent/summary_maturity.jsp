@@ -48,6 +48,7 @@
 					String sql = "select p_name, duration, late_fee, premium, commision from policy where pol_no=?";
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
+					int pol=(agentlist.getInt(1));
 					ResultSet rs = stmt.executeQuery();
 					while (rs.next()) {
 						pName = rs.getString(1);
@@ -80,22 +81,25 @@
 
 					</div>
 					<div class="col-md-3">
-						<span style="color: grey; font-size: 1.2em;">Amount on
-							maturity </span>
+						<span style="color: grey; font-size: 1.2em;">Invested
+							Amount </span>
 					</div>
 
 					<div class="col-md-2">
-						<span style="color: grey; font-size: 1.2em;">Late Fee </span>
+						<span style="color: grey; font-size: 1.2em;">Amount on
+							Maturity </span>
 					</div>
 					<div class="col-md-2">
-						<span style="color: grey; font-size: 1.2em;">Premium Amount<br></span>
+						<span style="color: grey; font-size: 1.2em;">Amount on
+							surrender<br>
+						</span>
 					</div>
 					<div class="col-md-2">
 						<span style="color: grey; font-size: 1.2em">Commission<br></span>
 					</div>
 				</div>
 				<hr>
-				<div class="row" style="text-align:center;">
+				<div class="row" style="text-align: center;">
 
 					<div class="col-md-3">
 
@@ -106,8 +110,7 @@
 					</div>
 
 					<div class="col-md-3">
-						<span style="font-size: 1.6em;"> <%
- 	out.println("INR <br>" + pMaturity);
+						<span style="font-size: 1.6em;"> <%= new custInvestments().myInvestments(pol, id)
  %>
 						</span>
 					</div>
@@ -115,7 +118,7 @@
 					<div class="col-md-2">
 
 						<span style="font-size: 1.6em;"> <%
- 	out.println(pLatefee);
+ 	out.println("INR <br>" + pMaturity);
  %>
 						</span>
 					</div>
