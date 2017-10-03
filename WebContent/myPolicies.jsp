@@ -2,10 +2,22 @@
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.Connection"%>
+<%@ page import="java.sql.Date"%>
+
 <%@ page import="java.sql.DatabaseMetaData"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$(".surrender").click(function() {
+			var pol_no = $(this).attr('id');
+			$('#main').load('Surrender.jsp?pol_no=' + pol_no);
+		});
+
+	});
+</script>
 <html>
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
@@ -13,7 +25,7 @@
 
 </head>
 
-<body style="color:#03275A !important;">
+<body style="color: #03275A !important;">
 
 	<!-- Page Content -->
 	<div class="container">
@@ -25,7 +37,8 @@
 			String pDuration = "";
 			String pLatefee = "";
 			String pPremium = "";
-			String pComission = "";
+			Date maturity;
+
 			int modeli = 1;
 			try {
 				String type = (String) session.getAttribute("type");
@@ -35,15 +48,23 @@
 				Statement s = conn.createStatement();
 				ResultSet agentlist = s.executeQuery(policydetails);
 				while (agentlist.next()) {
-					String sql = "select p_name, duration, late_fee, premium from policy where pol_no=?";
+
+					int f = agentlist.getInt(1);
+
+					String sql = "select p_name, duration, premium, prem_edate from customer_policy,policy where customer_policy.pol_no=? and policy.pol_no=? and cust_id="
+							+ id;
+
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
+					stmt.setInt(2, agentlist.getInt(1));
+
 					ResultSet rs = stmt.executeQuery();
+
 					while (rs.next()) {
 						pName = rs.getString(1);
 						pDuration = rs.getString(2);
-						pLatefee = rs.getString(3);
-						pPremium = rs.getString(4);
+						pPremium = rs.getString(3);
+						maturity = rs.getDate(4);
 		%>
 		<hr>
 
@@ -65,16 +86,17 @@
 					<b>Policy Duration: </b>
 					<%
 						out.println(pDuration);
-					%><br> <b>Late Fee: </b>
-					<%
-						out.println(pLatefee);
 					%><br> <b>Premium Amount: </b>
 					<%
 						out.println(pPremium);
+					%><br> <b>Maturity Date: </b>
+					<%
+						out.println(maturity);
 					%>
 				</p>
 				<!-- Button trigger modal -->
-				<button type="button" style="margin-left:80%;margin-top:-40%;" class="btn btn-primary" data-toggle="modal"
+				<button type="button" style="margin-left: 80%; margin-top: -35%;"
+					class="btn btn-primary" data-toggle="modal"
 					data-target="#polDetModal<%out.print(modeli);%>">Policy
 					Details</button>
 
@@ -84,6 +106,37 @@
 								ResultSet polDescRes = polDetCon.executeQuery(polDetailsSql);
 								polDescRes.next();
 				%>
+
+
+
+
+
+
+
+
+
+
+
+				<button type="button" style="margin-left: 80%; margin-top: -10%;"
+					class="btn btn-danger surrender" id="<%out.print(f);%>">Surrender</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 				<!-- Modal -->
 				<div class="modal fade" id="polDetModal<%out.print(modeli);%>"
@@ -105,7 +158,7 @@
 							<div class="modal-body">
 								<%
 									out.println(polDescRes.getString(1));
-								%>
+								%>s
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"

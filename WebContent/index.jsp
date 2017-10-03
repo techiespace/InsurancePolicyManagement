@@ -53,6 +53,7 @@
 			$(this).addClass('active');
 		});
 
+
 		$("#summary").click(function() {
 			$('#main').load('summary_maturity.jsp');
 			$('.highlight').removeClass('active');
@@ -63,7 +64,10 @@
 		$(".highlight").hover(function(){
 		$(this).toggleClass("mod");
 		});
-
+		
+		$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo,#invoice").click(function(){
+		$(this).toggleClass(".active");
+		});
 
 	});
 </script>
