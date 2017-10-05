@@ -10,7 +10,7 @@ public class Term{
 	public Date term_date(int cust_id, int pol_no) {
 		Date prem_term = null;
 		String sql1 = "select prem_pdate from customer_policy where cust_id=? AND pol_no=?";
-		String sql2= "select DATE_SUB(?, INTERVAL 1 MONTH)";
+		String sql2= "select DATE_ADD(?, INTERVAL 1 MONTH)";
 		try {
 			Connection conn = new Connect().myDBConnect();
 			PreparedStatement stmt1 = conn.prepareStatement(sql1);

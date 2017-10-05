@@ -4,14 +4,81 @@
 <%@ page import="java.sql.*,JDBC.jsp.*,a_JDBC.*"%>
 
 <head>
+
+<style>
+/*!
+ * Start Bootstrap - Round About (http://startbootstrap.com/)
+ * Copyright 2013-2016 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+ */
+
+/*body {
+    padding-top: 70px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes.
+}*/
+.img-center {
+	margin: 0 auto;
+}
+
+.box {
+	display: inline-block;
+	height: 8em;
+	padding-top: 1.5em;
+	margin-bottom: 1em;
+	width: 20em;
+	border-radius: 2%;
+	box-shadow: 1px 1px 1px 1px #0c1b86;
+	margin-left: 1.5em;
+	top: 0; /*the image won't appear without specifing these*/
+	bottom: 0;
+	left: 0;
+	right: 0;
+	font-weight:bold;
+	background: url(./images/5.jpg);
+    background-size: cover;
+    opacity: 0.94;
+}
+
+.box:hover .after {
+    display: block;
+    background: rgba(0, 0, 0, .6);
+}
+
+.box:hover {
+	border-color: #696969;
+}
+
+.shade {
+	background-color: #d3d3d3;
+}
+
+footer {
+	margin: 50px 0;
+}
+
+/*background*/
+.ancient-bg {
+	position: relative;
+	z-index: 1;
+}
+
+.ancient-bg:before {
+	content: "";
+	position: absolute;
+	z-index: -1;
+}
+
+</style>
+
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		
-		$('#dashboard').addClass('active');
 
+		$('#dashboard').addClass('active');
 
 		$("#myProfile").click(function() {
 			$('#amain').load('agentProfile.jsp');
@@ -45,6 +112,12 @@
 			$(this).addClass('active');
 		});
 
+		$("#addPolicy").click(function() {
+			$('#amain').load('addPolicy.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
+
 		$("#allPlans").click(function() {
 			$('#amain').load('allPlans.jsp');
 			$('.highlight').removeClass('active');
@@ -57,11 +130,11 @@
 			$(this).addClass('active');
 		});
 
-		$(".highlight").hover(function(){
-		$(this).toggleClass("mod ");
+		$(".highlight").hover(function() {
+			$(this).toggleClass("mod ");
 		});
 
-		$("#summery").click(function() {
+		$("#summary").click(function() {
 			$('#amain').load('agentSummary.jsp');
 			$('.highlight').removeClass('active');
 			$(this).addClass('active');
@@ -105,28 +178,16 @@
 		id="mainNav" style="padding-bottom:0.1em;">
 		<a class="navbar-brand" href="#" style="color: #F2B809">Welcome, <%
 			try {
-
-				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
-					//out.println("Cust");
-					String sql = "select a_fname,a_lname from agent where agent_id=?";
-					PreparedStatement stmt = conn.prepareStatement(sql);
-					stmt.setInt(1, id);
-					ResultSet rs = stmt.executeQuery();
-					rs.next();
-					out.println(rs.getString(1) + " " + rs.getString(2));
-				}
-				/*else if (type.equals("agent")) {
-					//out.println("Agent");
-					String sql = "select a_fname,a_lname from agent where agent_id=?";
-					PreparedStatement stmt = conn.prepareStatement(sql);
-					stmt.setInt(1, id);
-					ResultSet rs = stmt.executeQuery();
-					rs.next();
-					out.println(rs.getString(1) + " " + rs.getString(2));
-				}*/
-			catch (Exception e) {
+				//out.println("Cust");
+				String sql = "select a_fname,a_lname from agent where agent_id=?";
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				stmt.setInt(1, id);
+				ResultSet rs = stmt.executeQuery();
+				rs.next();
+				out.println(rs.getString(1) + " " + rs.getString(2));
+			} catch (Exception e) {
 				System.out.println(e);
 			}
 		%> <!-- session.getAttribute("userid")-->
@@ -141,7 +202,8 @@
 			<ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Dashboard">
-					<div id="dashboard" class="nav-link highlight" style="color: #F2B809;">
+					<div id="dashboard" class="nav-link highlight"
+						style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-dashboard"></i> <span
 							class="nav-link-text"> Dashboard</span>
 						</a>
@@ -149,7 +211,8 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="myProfile" class="nav-link highlight" style="color: #F2B809;">
+					<div id="myProfile" class="nav-link highlight"
+						style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> My Profile</span>
 						</a>
@@ -157,7 +220,8 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="myCustomers" class="nav-link highlight" style="color: #F2B809;">
+					<div id="myCustomers" class="nav-link highlight"
+						style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> My Customers</span>
 						</a>
@@ -165,7 +229,8 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="addCustomers" class="nav-link highlight" style="color: #F2B809;">
+					<div id="addCustomers" class="nav-link highlight"
+						style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-money"></i> <span
 							class="nav-link-text"> Add Customers</span>
 						</a>
@@ -173,7 +238,17 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="aPolicyPayment" class="nav-link highlight" style="color: #F2B809;">
+					<div id="addPolicy" class="nav-link highlight"
+						style="color: #F2B809;">
+						<a> <i class="fa fa-fw fa-money"></i> <span
+							class="nav-link-text"> Add Policy</span>
+						</a>
+					</div>
+				</li>
+				<li class="nav-item" data-toggle="tooltip" data-placement="right"
+					title="Charts">
+					<div id="aPolicyPayment" class="nav-link highlight"
+						style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-address-card-o"></i> <span
 							class="nav-link-text"> Make Payment</span>
 						</a>
@@ -181,7 +256,8 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
-					<div id="allPlans" class="nav-link highlight" style="color: #F2B809;">
+					<div id="allPlans" class="nav-link highlight"
+						style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-user-o"></i> <span
 							class="nav-link-text"> All Plans</span>
 						</a>
@@ -189,7 +265,8 @@
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
-					<div id="Invoices" class="nav-link highlight" style="color: #F2B809;">
+					<div id="Invoices" class="nav-link highlight"
+						style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-print"></i> <span
 							class="nav-link-text">Invoice</span>
 						</a>
@@ -214,13 +291,12 @@
 							</ul></li>
 					</ul></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Link">
-				<div id="summery">
-				<a class="nav-link" href="#"
-					style="color: #F2B809;"> <i class="fa fa-fw fa-link"></i> <span
-						class="nav-link-text"> Link</span>
-				</a>
-				</div>
+					title="Tables">
+					<div id="summary" class="nav-link highlight" style="color:#F2B809;">
+						<a > <i class="fa fa-fw fa-user-o"></i>
+							<span class="nav-link-text"> Summary</span>
+						</a>
+					</div>
 				</li>
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">
@@ -308,10 +384,11 @@
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item small" href="#"> View all alerts </a>
 					</div></li>
-			
+
 				<li class="nav-item"><a class="nav-link" data-toggle="modal"
-					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"  style="color: #F2B809; font-size:1.2em;"></i>
-						<span style="color: #F2B809; font-size:1.2em">Logout</span>
+					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"
+						style="color: #F2B809; font-size: 1.2em;"></i> <span
+						style="color: #F2B809; font-size: 1.2em">Logout</span>
 				</a></li>
 			</ul>
 		</div>

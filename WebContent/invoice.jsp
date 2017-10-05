@@ -57,7 +57,7 @@
 							<th>Policy No</th>
 							<th>Term</th>
 							<th>Agent-Name</th>
-							<th>Premium Date</th>
+							<th>Date of Transaction</th>
 							<th>Amount</th>
 							<th class="button_remove"></th>
 
@@ -70,28 +70,30 @@
 							String policyNo = "";
 							String agentName = "";
 							String pPremium = "";
-							String date = "";
+							String date = "",sdate="",edate="";
 
 							try {
 								//String type = (String) session.getAttribute("type");
 								Connection conn = new Connect().myDBConnect();
 								int id = (Integer) session.getAttribute("Id");
-								String sql = "select trans_no,pol_no,agent_id,amt,date from payment where cust_id=" + id;
-								Statement stmt = conn.createStatement();
-								ResultSet rs = stmt.executeQuery(sql);
+									String sql = "select trans_no,pol_no,agent_id,amt,date,sdate,edate from payment where cust_id=" + id;
+									Statement stmt = conn.createStatement();
+									ResultSet rs = stmt.executeQuery(sql);
 
-								while (rs.next()) {
-									int a = rs.getInt(3);
-									String sql1 = "select a_fname,a_lname from agent where agent_id=?";
-									PreparedStatement stmt1 = conn.prepareStatement(sql1);
-									stmt1.setInt(1, a);
-									ResultSet rs1 = stmt1.executeQuery();
-									rs1.next();
-									transacNo = rs.getString(1);
-									policyNo = rs.getString(2);
-									agentName = rs1.getString(1) + " " + rs1.getString(2);
-									pPremium = rs.getString(4);
-									date = rs.getString(5);
+									while (rs.next()) {
+										int a = rs.getInt(3);
+										String sql1 = "select a_fname,a_lname from agent where agent_id=?" ;
+										PreparedStatement stmt1 = conn.prepareStatement(sql1);
+										stmt1.setInt(1,a);
+										ResultSet rs1 = stmt1.executeQuery();
+										rs1.next();
+										transacNo = rs.getString(1);
+										policyNo = rs.getString(2);
+										agentName = rs1.getString(1)+" "+rs1.getString(2);
+										pPremium = rs.getString(4);
+										date = rs.getString(5);
+										sdate=rs.getString(6);
+										edate=rs.getString(7);
 						%>
 						<tr>
 							<td>
@@ -104,7 +106,9 @@
 									out.print(policyNo);
 								%>
 							</td>
-							<td></td>
+							<td>
+							<%out.print(sdate+"&nbsp to &nbsp"+edate); %>
+							</td>
 							<td>
 								<%
 									out.print(agentName);
@@ -195,4 +199,3 @@
 </body>
 
 </html>
-

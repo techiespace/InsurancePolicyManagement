@@ -8,12 +8,9 @@
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".checkout_done").click(function() {
-			var pol_no = $(this).attr('id');
-			$('#amain').load('agent_checkout.jsp?pol_no=' + pol_no);
-		});
 
 		$("#cont").delegate('.checkout_done', 'click', function() {
+			console.log("del");
 			var pol_no = $(this).attr('id');
 			$('#amain').load('agent_checkout.jsp?pol_no=' + pol_no);
 		});
@@ -182,10 +179,11 @@
  %></span>
 						</div>
 
-
+                      <div class="col-md-1">
 						<a class=" btn btn-primary checkout_done"
 							style="color: white; margin-left: 2em; margin-bottom: 2.5em;"
 							id="<%out.print(pol_no[acnt]);%>">Pay now</a>
+					</div>
 					</div>
 
 
