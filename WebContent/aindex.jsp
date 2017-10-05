@@ -13,7 +13,7 @@
  */
 
 /*body {
-    padding-top: 70px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. 
+    padding-top: 70px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes.
 }*/
 .img-center {
 	margin: 0 auto;
@@ -163,12 +163,11 @@ footer {
 </head>
 
 
-<body class="fixed-nav sticky-footer bg-des" id="page-top">
+<body class="fixed-nav sticky-footer bg-des" id="page-top" style="padding:-1em;">
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-des fixed-top"
-		id="mainNav">
-		<a class="navbar-brand" href="#" style="color: #F2B809">LIC
-			Welcome, <%
+		id="mainNav" style="padding-bottom:0.1em;">
+		<a class="navbar-brand" href="#" style="color: #F2B809">Welcome, <%
 			try {
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
@@ -283,10 +282,14 @@ footer {
 							</ul></li>
 					</ul></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Link"><a class="nav-link" href="#"
+					title="Link">
+				<div id="summery">
+				<a class="nav-link" href="#"
 					style="color: #F2B809;"> <i class="fa fa-fw fa-link"></i> <span
 						class="nav-link-text"> Link</span>
-				</a></li>
+				</a>
+				</div>
+				</li>
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">
 				<li class="nav-item"><a class="nav-link text-center"
