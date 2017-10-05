@@ -65,11 +65,11 @@ $(document).ready(function() {
 			<label class="product-name"style="width:20%">Policy Name</label>
 			<label class="product-price">Policy Number</label>
 			<label class="product-quantity">Term</label>
-			<label class="product-line-price">Cost</label>
+			<label class="product-line-price" style="padding-right: 130px !important;">Cost</label>
 		</div>
 		<div class="product">
-			<div class="product-details">
-			<div class="product-name">
+			<div class="">
+			<div class="product-name" style="float:left; width:20%">
 					<%
 					String name[]=new Cust_name().c_name(cust_id);
 					String first=name[0];
@@ -78,9 +78,6 @@ $(document).ready(function() {
 					String full=first+" "+mid+" " +last;
 						out.print("<p>" + full + "</p>");
 					%>
-			</div>
-			<div class="product-price" id="pol">
-				<p style="width:20%"><%out.print(pol_no);%></p>
 			</div>
 			<div class="product-details">
 				<div class="product-title">
@@ -116,7 +113,7 @@ $(document).ready(function() {
 		</div>
 
 		<div class="totals">
-			<div class="totals-item">
+			<div class="totals-item" style="margin-top: 60px;">
 				<label>Late Fee</label>
 				<div class="totals-value" id="cart-shipping">
 					<%
@@ -143,7 +140,7 @@ $(document).ready(function() {
 			</div>
 		</div>
 		<a id="pay_done"
-			style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
+			style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 26%;"
 			class="nav-link btn btn-primary" data-toggle="modal"> <i class="fa fa-fw fa-sign-out"></i>
 			Checkout
 		</a>
