@@ -99,12 +99,11 @@
 </head>
 
 
-<body class="fixed-nav sticky-footer bg-des" id="page-top">
+<body class="fixed-nav sticky-footer bg-des" id="page-top" style="padding:-1em;">
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-des fixed-top"
-		id="mainNav">
-		<a class="navbar-brand" href="#" style="color: #F2B809">LIC
-			Welcome, <%
+		id="mainNav" style="padding-bottom:0.1em;">
+		<a class="navbar-brand" href="#" style="color: #F2B809">Welcome, <%
 			try {
 
 				String type = (String) session.getAttribute("type");
