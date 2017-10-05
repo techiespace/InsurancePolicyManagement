@@ -61,7 +61,7 @@
 		$(this).toggleClass("mod ");
 		});
 
-		$("#summery").click(function() {
+		$("#summary").click(function() {
 			$('#amain').load('agentSummary.jsp');
 			$('.highlight').removeClass('active');
 			$(this).addClass('active');
@@ -214,13 +214,12 @@
 							</ul></li>
 					</ul></li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Link">
-				<div id="summery">
-				<a class="nav-link" href="#"
-					style="color: #F2B809;"> <i class="fa fa-fw fa-link"></i> <span
-						class="nav-link-text"> Link</span>
-				</a>
-				</div>
+					title="Tables">
+					<div id="summary" class="nav-link highlight" style="color:#F2B809;">
+						<a > <i class="fa fa-fw fa-user-o"></i>
+							<span class="nav-link-text"> Summary</span>
+						</a>
+					</div>
 				</li>
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">

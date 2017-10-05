@@ -10,18 +10,28 @@
 
 		$("#premium-payment-details").click(function() {
 			$('#main').load('policyPayment.jsp');
+			$('.highlight').removeClass('active');
+			$('#policyPayment').addClass('active');
 		});
+		
+		
 
 		$("#my-policies-details").click(function() {
 			$('#main').load('myPolicies.jsp');
+			$('.highlight').removeClass('active');
+			$('#myPolicies').addClass('active');
 		});
 
 		$("#my-profile-details").click(function() {
 			$('#main').load('myProfile.jsp');
+			$('.highlight').removeClass('active');
+			$('#myProfile').addClass('active');
 		});
 
 		$("#new-plans-details").click(function() {
-			$('#main').load('myPolicies.jsp');
+			$('#main').load('allPlans.jsp');
+			$('.highlight').removeClass('active');
+			$('#newplans').addClass('active');
 		});
 
 	});

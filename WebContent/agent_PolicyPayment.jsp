@@ -182,10 +182,11 @@
  %></span>
 						</div>
 
-
+                      <div class="col-md-1">
 						<a class=" btn btn-primary checkout_done"
 							style="color: white; margin-left: 2em; margin-bottom: 2.5em;"
 							id="<%out.print(pol_no[acnt]);%>">Pay now</a>
+					</div>
 					</div>
 
 
