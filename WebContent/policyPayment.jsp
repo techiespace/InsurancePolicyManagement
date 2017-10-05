@@ -48,9 +48,10 @@
 						<div class="col-md-2" style="font-size: 1.6em; color: grey;">
 							Policy number</div>
 						<div class="col-md-2" style="font-size: 1.6em; color: grey;">
-						Premium</div>
-						<div class="col-md-1" style="font-size: 1.6em; color: grey;padding-right:1.65em;">
-						Due in</div>
+							Premium</div>
+						<div class="col-md-1"
+							style="font-size: 1.6em; color: grey; padding-right: 1.65em;">
+							Due in</div>
 						<div class="col-md-2" style="font-size: 1.6em; color: grey;">
 							Due Date</div>
 
@@ -107,8 +108,8 @@
 						<div class="col-md-1">
 
 							<span style="font-size: 1.6em;"> <%
-									out.println(acnt+1);
-								%>
+ 	out.println(acnt + 1);
+ %>
 							</span>
 
 
@@ -135,8 +136,8 @@
 						<div class="col-md-2">
 
 							<span style="font-size: 1.6em;"> <%
-									out.println(pols_amt[acnt]);
-								%>
+ 	out.println(pols_amt[acnt]);
+ %>
 							</span>
 
 
@@ -145,35 +146,35 @@
 
 						<div class="col-md-1">
 
-							<span style="font-size: 1.6em; "> <%
-									if (day_diff[acnt] < 0) {
-												out.println("<span style='color:red'>Late</span>");
-											} else if (day_diff[acnt] == 0) {
-												out.println("0 days");
-											} else if (day_diff[acnt] > 0) {
+							<span style="font-size: 1.6em;"> <%
+ 	if (day_diff[acnt] < 0) {
+ 				out.println("<span style='color:red'>Late</span>");
+ 			} else if (day_diff[acnt] == 0) {
+ 				out.println("<span style='color:red'>Today</span>");
+ 			} else if (day_diff[acnt] > 0) {
 
-												out.println(day_diff[acnt] + " days");
-												//+ " days on " + new Prem_date().due_date(id, pols[acnt]) + ".");
+ 				out.println(day_diff[acnt] + " days");
+ 				//+ " days on " + new Prem_date().due_date(id, pols[acnt]) + ".");
 
-											}
-								%>
+ 			}
+ %>
 							</span>
 
 						</div>
 
 
 						<div class="col-md-2">
-							<span style="font-size: 1.6em;padding-left:1.8em;"> <%
-						 if(day_diff[acnt] < 0)
-							 out.println("-");
-							 else
-								 out.println("       "+ new Prem_date().due_date(id, pols[acnt]));
-						%></span>
+							<span style="font-size: 1.6em; padding-left: 1.8em;"> <%
+ 	if (day_diff[acnt] < 0)
+ 				out.println("-");
+ 			else
+ 				out.println("       " + new Prem_date().due_date(id, pols[acnt]));
+ %></span>
 						</div>
 
 
 						<a class=" btn btn-primary checkout_done"
-							style="color: white; margin-left:2em;"
+							style="color: white; margin-left: 2em;"
 							id="<%out.print(pols[acnt]);%>">Pay now</a>
 					</div>
 
