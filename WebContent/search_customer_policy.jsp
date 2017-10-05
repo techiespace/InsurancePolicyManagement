@@ -1,59 +1,10 @@
-<%@ page import="JDBC.jsp.*"%>
-<%@ page import="java.sql.*"%>
-<html>
-<head>
-<link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
-<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
-<script type="text/javascript">
-	$(document).ready(function() {
+<%@ page import="java.sql.*,a_JDBC.jsp.*"%>
 
-		$("#cont").delegate('.add_policy', 'click', function() {
-			var cust_id = $(this).attr('id');
-			$('#amain').load('addPolicyForm.jsp?cust_id=' + cust_id);
-		});
-		
-		$("#search-name").keyup(function() {
-			name = $("#search-name").val();
-			$.ajax({
-				type : "POST",
-				url : "search_customer_policy.jsp",
-				data : "name=" + name,
-				success : function(data) {
-					$("#cont").html(data);
-				}
-			});
-		});
-
-	});
-</script>
-
-
-</head>
-
-<body style="color: #03275A !important;">
-
-	<!-- Page Content -->
-	<div class="container">
-
-		<!-- Page Heading -->
-		<div class="row">
-			<div class="col-md-4">
-				<h1 class="my-4">Add Policy</h1>
-			</div>
-			<div class="col-md-1"></div>
-			<div class="col-md-3">
-				<input type="text" id="search-name">
-			</div>
-			<div class="col-md-3"></div>
-			<div class="col-md-1"></div>
-		</div>
-		<div id="cont">
 			<%
 				try {
 
 					Connection conn = new Connect().myDBConnect();
-
+					String r_name = request.getParameter("name");
 					int id = (Integer) session.getAttribute("Id");
 					System.out.println("ID:" + id);
 
@@ -89,15 +40,18 @@
 					}
 
 					for (int i = 0; i < cnt; i++) {
-						modeli++;
 						int j = cust[i];
 						stmt2.setInt(1, j);
 						ResultSet rs2 = stmt2.executeQuery();
 						rs2.next();
+
 						fname = rs2.getString("c_fname");
 						mname = rs2.getString("c_mname");
 						lname = rs2.getString("c_lname");
 						String full = fname + " " + mname + " " + lname;
+						if ((!full.toLowerCase().contains(r_name.toLowerCase())))
+							continue;
+						modeli++;
 						stmt3.setInt(1, j);
 						stmt3.setInt(2, id);
 						ResultSet rs3 = stmt3.executeQuery();
@@ -186,10 +140,3 @@
 					System.out.println(e);
 				}
 			%>
-		</div>
-	</div>
-	<!-- /.container -->
-</body>
-
-
-</html>
