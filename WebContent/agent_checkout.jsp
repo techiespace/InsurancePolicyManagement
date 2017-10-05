@@ -101,7 +101,7 @@ $(document).ready(function() {
 				<%
 					Date e_date = new Prem_date().due_date(cust_id, pol_no);
 					Date s_date = new Term().term_date(cust_id, pol_no);
-					out.println(s_date + " to " + e_date);
+					out.println(e_date + " to " + s_date);
 				%>
 			</div>
 			</div>

@@ -8,12 +8,9 @@
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(".checkout_done").click(function() {
-			var pol_no = $(this).attr('id');
-			$('#amain').load('agent_checkout.jsp?pol_no=' + pol_no);
-		});
 
 		$("#cont").delegate('.checkout_done', 'click', function() {
+			console.log("del");
 			var pol_no = $(this).attr('id');
 			$('#amain').load('agent_checkout.jsp?pol_no=' + pol_no);
 		});
