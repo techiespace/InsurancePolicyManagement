@@ -58,7 +58,7 @@ $(document).ready(function() {
 
 	<div class="shopping-cart">
 		<br>
-		<h1 style="text-align:center;">Policy Payment</h1>
+		<h1>Policy Payment</h1>
 		<br>
 		<div class="column-labels">
 			<label class="product-details">Customer Name</label>
@@ -132,7 +132,7 @@ $(document).ready(function() {
 
 			<div class="totals-item totals-item-total">
 				<label>Grand Total</label>
-				<div class="totals-value" id="cart-total">
+				<div class="totals-value" id="cart-total" style="color: red;">
 					<%
 						out.println("<h4>INR " + total + "</h4>");
 					%>
