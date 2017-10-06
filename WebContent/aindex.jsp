@@ -52,7 +52,7 @@
 }
 
 footer {
-	margin: 50px 0;
+	margin:0;
 }
 
 /*background*/
