@@ -9,19 +9,27 @@
 	$(document).ready(function() {
 
 		$("#premium-payment-details").click(function() {
-			$('#amain').load('agentPayment.jsp');
+			$('#amain').load('agent_PolicyPayment.jsp');
+			$('.highlight').removeClass('active');
+			$('#aPolicyPayment').addClass('active');
 		});
 
 		$("#my-customers").click(function() {
 			$('#amain').load('myCustomers.jsp');
+			$('.highlight').removeClass('active');
+			$('#myCustomers').addClass('active');
 		});
 
 		$("#new-customer").click(function() {
 			$('#amain').load('addCustomers.jsp');
+			$('.highlight').removeClass('active');
+			$('#addCustomers').addClass('active');
 		});
 
 		$("#plan-details").click(function() {
 			$('#amain').load('allPlans.jsp');
+			$('.highlight').removeClass('active');
+			$('#allPlans').addClass('active');
 		});
 
 	});

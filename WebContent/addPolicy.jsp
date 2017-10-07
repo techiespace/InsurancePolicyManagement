@@ -1,11 +1,5 @@
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.*"%>
-<%@ page import="java.sql.Statement"%>
-<%@ page import="java.sql.Connection"%>
-<%@ page import="java.sql.DatabaseMetaData"%>
-<%@ page import="java.sql.DriverManager"%>
-<%@ page import="java.sql.ResultSet"%>
-<%@ page import="java.sql.SQLException"%>
 <html>
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
@@ -14,12 +8,16 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
+		$("#cont").delegate('.add_policy', 'click', function() {
+			var cust_id = $(this).attr('id');
+			$('#amain').load('addPolicyForm.jsp?cust_id=' + cust_id);
+		});
+		
 		$("#search-name").keyup(function() {
-			console.log = "Yeess";
 			name = $("#search-name").val();
 			$.ajax({
 				type : "POST",
-				url : "search_customers.jsp",
+				url : "search_customer_policy.jsp",
 				data : "name=" + name,
 				success : function(data) {
 					$("#cont").html(data);
@@ -41,18 +39,12 @@
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-md-4">
-				<h1 class="my-4">My Customers</h1>
+				<h1 class="my-4">Add Policy</h1>
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
-<form >
-			  <div class="input-group" style="margin-left:22em;">
-			   <input style=" margin-top:2.0em; "type='text' id="search-name"class='form-control' placeholder='Search all plans...'> <span class="input-group-btn"> 
-			   <button class="btn btn-primary" style=" margin-top:2.0em;" type="button"> <i class="fa fa-search"></i> 
-			   </button>
-			   </span>
-			   </div>
-			   </form>			</div>
+				<input type="text" id="search-name">
+			</div>
 			<div class="col-md-3"></div>
 			<div class="col-md-1"></div>
 		</div>
@@ -145,55 +137,8 @@
 						%>
 
 					</p>
-					<!-- Button trigger modal -->
 					<button type="button" style="margin-left: 80%; margin-top: -25%;"
-						class="btn btn-primary" data-toggle="modal"
-						data-target="#polDetModal<%out.print(modeli);%>">View
-						Details</button>
-
-					<!-- Modal -->
-					<div class="modal fade" id="polDetModal<%out.print(modeli);%>"
-						tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-						aria-hidden="true">
-						<div class="modal-dialog" role="document">
-							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title" id="exampleModalLabel">
-										<%
-											out.println("Details");
-										%>
-									</h5>
-									<button type="button" class="close" data-dismiss="modal"
-										aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<div class="modal-body">
-									<%
-										String sql4 = "select c_phone, c_addr, c_email from customer where cust_id=?";
-												PreparedStatement stmt4 = conn.prepareStatement(sql4);
-												stmt4.setInt(1, j);
-												ResultSet rs4 = stmt4.executeQuery();
-												rs4.next();
-												out.println("Name: " + fname + " " + mname + " " + lname + "<br>");
-												out.println("Policy number(s): ");
-												for (int k = 0; k < 10; k++) {
-													if (pol_no[k] != null)
-														out.println(pol_no[k] + "  ");
-												}
-												out.println("<br>");
-												out.println("Phone: " + rs4.getString("c_phone") + "<br>");
-												out.println("Address: " + rs4.getString("c_addr") + "<br>");
-												out.println("Email: " + rs4.getString("c_email") + "<br>");
-									%>
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary"
-										data-dismiss="modal">Close</button>
-								</div>
-							</div>
-						</div>
-					</div>
+						class="btn btn-primary add_policy" id="<%=j %>" data-toggle="modal">Add Policy</button>
 				</div>
 			</div>
 			<!-- /.row -->

@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.19, for Linux (x86_64)
 --
--- Host: localhost    Database: DBMS
+-- Host: localhost    Database: lic
 -- ------------------------------------------------------
 -- Server version	5.7.19-0ubuntu0.16.04.1
 
@@ -91,8 +91,9 @@ CREATE TABLE `customer` (
   `c_fname` varchar(15) NOT NULL,
   `c_mname` varchar(15) DEFAULT NULL,
   `c_lname` varchar(15) DEFAULT NULL,
+  `desig` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`cust_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -101,7 +102,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (1,'Akash','akash123','akash@gmail.com','9422926454','1996-05-25','Katraj','Akash','Avinash','Kathole'),(2,'Bhushan','bhushan123','bhushan@gmail.com','7787945124','1997-04-14','Ambegaon','Bhushan','Amey','Gujrathi'),(3,'Chaitraj','chaitraj123','chaitraj@gmail.com','7787777124','1998-12-21','Chinchwad','Chaitraj','Vishal','Mete'),(4,'Dinesh','dines123','dinesh@gmail.com','8484339026','1997-09-11','Shaniwarwada','Dinesh','Lalit','Bohra'),(5,'Dilip','dilip123','dilip@gmail.com','8989897544','1998-12-05','Thane','Dilip','Vishwanath','Joshi');
+INSERT INTO `customer` VALUES (1,'Akash','akash123','akash@gmail.com','9422926454','1996-05-25','Katraj','Akash','Avinash','Kathole',NULL),(2,'Bhushan','bhushan123','bhushan@gmail.com','7787945124','1997-04-14','Ambegaon','Bhushan','Amey','Gujrathi',NULL),(3,'Chaitraj','chaitraj123','chaitraj@gmail.com','7787777124','1998-12-21','Chinchwad','Chaitraj','Vishal','Mete',NULL),(4,'Dinesh','dines123','dinesh@gmail.com','8484339026','1997-09-11','Shaniwarwada','Dinesh','Lalit','Bohra',NULL),(5,'Dilip','dilip123','dilip@gmail.com','8989897544','1998-12-05','Thane','Dilip','Vishwanath','Joshi',NULL),(6,'Jayesh','9881107600','thesharanrajani@gmail.com','9881107600','2017-02-02','PICT, PICT,Pune','Jayesh','Naresh','Oswal','Mr.');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -132,7 +133,7 @@ CREATE TABLE `customer_agent_policy` (
 
 LOCK TABLES `customer_agent_policy` WRITE;
 /*!40000 ALTER TABLE `customer_agent_policy` DISABLE KEYS */;
-INSERT INTO `customer_agent_policy` VALUES (1,1,897456123),(1,2,897456126),(2,2,897456123),(2,3,897456124),(3,3,897456125);
+INSERT INTO `customer_agent_policy` VALUES (1,1,897456123),(1,2,897456126),(2,2,897456123),(2,3,897456124),(3,3,897456125),(4,4,897456124),(4,4,897456125),(5,4,897456126),(6,4,897456125);
 /*!40000 ALTER TABLE `customer_agent_policy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -162,7 +163,7 @@ CREATE TABLE `customer_policy` (
 
 LOCK TABLES `customer_policy` WRITE;
 /*!40000 ALTER TABLE `customer_policy` DISABLE KEYS */;
-INSERT INTO `customer_policy` VALUES (1,897456123,'2017-09-12','2018-09-12','2017-10-05'),(1,897456126,'2017-02-20','2019-02-20','2017-09-25'),(2,897456123,'2017-02-25','2019-02-20','2017-10-26'),(2,897456124,'2017-01-01','2018-03-01','2017-09-05'),(3,897456125,'2017-02-19','2017-11-19','2017-10-05');
+INSERT INTO `customer_policy` VALUES (1,897456123,'2017-09-12','2018-09-12','2017-11-05'),(1,897456126,'2017-02-20','2019-02-20','2017-10-25'),(2,897456123,'2017-02-25','2019-02-20','2017-10-26'),(2,897456124,'2017-01-01','2018-03-01','2017-09-05'),(3,897456125,'2017-02-19','2017-11-19','2017-10-05'),(4,897456124,'2017-02-26','2019-08-26','2017-09-26'),(4,897456125,'2017-03-30','2019-08-30','2017-09-30'),(5,897456126,'2017-02-24','2019-08-24','2017-09-24'),(6,897456125,'2017-10-03','2026-11-08','2017-11-08');
 /*!40000 ALTER TABLE `customer_policy` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -181,6 +182,8 @@ CREATE TABLE `payment` (
   `amt` decimal(11,2) DEFAULT NULL,
   `pol_no` int(11) NOT NULL,
   `commision` int(11) DEFAULT NULL,
+  `sdate` date DEFAULT NULL,
+  `edate` date DEFAULT NULL,
   PRIMARY KEY (`trans_no`),
   KEY `cust_id` (`cust_id`),
   KEY `agent_id` (`agent_id`),
@@ -188,7 +191,7 @@ CREATE TABLE `payment` (
   CONSTRAINT `payment_ibfk_1` FOREIGN KEY (`cust_id`) REFERENCES `customer` (`cust_id`),
   CONSTRAINT `payment_ibfk_2` FOREIGN KEY (`agent_id`) REFERENCES `agent` (`agent_id`),
   CONSTRAINT `payment_ibfk_3` FOREIGN KEY (`pol_no`) REFERENCES `policy` (`pol_no`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -197,7 +200,7 @@ CREATE TABLE `payment` (
 
 LOCK TABLES `payment` WRITE;
 /*!40000 ALTER TABLE `payment` DISABLE KEYS */;
-INSERT INTO `payment` VALUES (9,1,2,'2017-09-25',52500.00,897456126,1500),(13,1,1,NULL,NULL,897456123,NULL),(14,1,2,'2017-09-25',52500.00,897456126,1500);
+INSERT INTO `payment` VALUES (17,1,2,'2017-10-03',53550.00,897456126,1500,'2017-09-25','2017-10-25');
 /*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -289,4 +292,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-09-25 18:13:38
+-- Dump completed on 2017-10-03 17:01:18

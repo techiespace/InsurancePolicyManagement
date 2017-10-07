@@ -8,7 +8,9 @@ double total=Double.parseDouble(tot);
 String com=request.getParameter("commision");
 double commision=Double.parseDouble(com);
 int agent_id = new Get_Agent().agent_no(cust_id, pol_no);
-new Invoice().enter(cust_id, agent_id, total, pol_no, commision);
+Date s_date = new Prem_date().due_date(cust_id, pol_no);
+Date e_date = new Term().term_date(cust_id, pol_no);
+new Invoice().enter(cust_id, agent_id, total, pol_no, commision,s_date,e_date);
 %>
 <html>
 <head>

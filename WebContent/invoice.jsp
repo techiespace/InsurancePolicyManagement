@@ -44,6 +44,9 @@
 		<div class="card-header">
 			<i class="fa fa-table"></i> Generate Invoice
 		</div>
+
+
+
 		<div class="card-body">
 			<div class="table-responsive">
 				<table class="table table-bordered" width="100%" id="dataTable"
@@ -54,28 +57,29 @@
 							<th>Policy No</th>
 							<th>Term</th>
 							<th>Agent-Name</th>
-							<th>Premium Date</th>
+							<th>Date of Transaction</th>
 							<th>Amount</th>
+							<th class="button_remove"></th>
 
 						</tr>
 					</thead>
-					
+
 					<tbody>
 						<%
 							String transacNo = "";
 							String policyNo = "";
 							String agentName = "";
 							String pPremium = "";
-							String date = "";
-							
+							String date = "",sdate="",edate="";
+
 							try {
 								//String type = (String) session.getAttribute("type");
 								Connection conn = new Connect().myDBConnect();
-								int id = (Integer) session.getAttribute("Id");										
-									String sql = "select trans_no,pol_no,agent_id,amt,date from payment where cust_id=" + id;
+								int id = (Integer) session.getAttribute("Id");
+									String sql = "select trans_no,pol_no,agent_id,amt,date,sdate,edate from payment where cust_id=" + id;
 									Statement stmt = conn.createStatement();
 									ResultSet rs = stmt.executeQuery(sql);
-									
+
 									while (rs.next()) {
 										int a = rs.getInt(3);
 										String sql1 = "select a_fname,a_lname from agent where agent_id=?" ;
@@ -88,11 +92,12 @@
 										agentName = rs1.getString(1)+" "+rs1.getString(2);
 										pPremium = rs.getString(4);
 										date = rs.getString(5);
+										sdate=rs.getString(6);
+										edate=rs.getString(7);
 						%>
 						<tr>
 							<td>
 								<%
-
 									out.print(transacNo);
 								%>
 							</td>
@@ -102,7 +107,7 @@
 								%>
 							</td>
 							<td>
-								
+							<%out.print(sdate+"&nbsp to &nbsp"+edate); %>
 							</td>
 							<td>
 								<%
@@ -119,14 +124,17 @@
 									out.print(pPremium);
 								%>
 							</td>
+							<td class="button_remove">
+								<button class="btn btn-primary" onclick="myFunction()"
+									style="width: 50%; margin-left: 3.75em;">Print</button>
+							</td>
 
 						</tr>
 
 						<!-- /.row -->
 						<%
-						}
-								}
-							catch (Exception e) {
+							}
+							} catch (Exception e) {
 								System.out.println(e);
 							}
 						%>
@@ -134,8 +142,13 @@
 				</table>
 			</div>
 		</div>
-		<div class="card-footer small text-muted">Updated yesterday at
-			11:59 PM</div>
+
+		<button class="btn btn-primary button_remove" onclick="myFunction()"
+			style="width: 10%; margin-bottom: 2.5em; align-self: center;">Print
+			this page</button>
+
+		<a class="btn btn-primary button_remove" style="width: 10%; margin-bottom: 2.5em; align-self: center;" <a href="http://www.web2pdfconvert.com/convert">Save to PDF</a> >Download</a>
+
 	</div>
 
 	</div>
@@ -172,8 +185,17 @@
 
 	<!-- Custom scripts for this template -->
 	<script src="js/sb-admin.min.js"></script>
+	<script>
+		function myFunction() {
+			$('.checkout_done , .button_remove, .navbar-brand').addClass(
+					'remove');
+			window.print();
+			$('.checkout_done , .button_remove, .navbar-brand').removeClass(
+					'remove').delay(1000);
+
+		}
+	</script>
 
 </body>
 
 </html>
-

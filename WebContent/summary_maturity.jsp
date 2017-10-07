@@ -6,6 +6,8 @@
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
+<%@ page import="java.sql.*,JDBC.jsp.*"%>
+
 <html>
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
@@ -41,15 +43,18 @@
 				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
-				String policydetails = "select pol_no from customer_policy where cust_id=" + id;
+				String policydetails = "select pol_no, prem_edate from customer_policy where cust_id=" + id;
 				Statement s = conn.createStatement();
 				ResultSet agentlist = s.executeQuery(policydetails);
 				while (agentlist.next()) {
 					String sql = "select p_name, duration, late_fee, premium, commision from policy where pol_no=?";
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
-					int pol=(agentlist.getInt(1));
-					String pol_no= Integer.toString(pol);
+
+					Date maturityDate = null;
+					maturityDate = agentlist.getDate(2);
+					int pol = (agentlist.getInt(1));
+					String pol_no = Integer.toString(pol);
 					ResultSet rs = stmt.executeQuery();
 					while (rs.next()) {
 						pName = rs.getString(1);
@@ -82,6 +87,9 @@
 
 					</div>
 					<div class="col-md-3">
+						<span style="color: grey; font-size: 1.2em">Maturity Date<br></span>
+					</div>
+					<div class="col-md-2">
 						<span style="color: grey; font-size: 1.2em;">Invested
 							Amount </span>
 					</div>
@@ -92,12 +100,10 @@
 					</div>
 					<div class="col-md-2">
 						<span style="color: grey; font-size: 1.2em;">Amount on
-							surrender<br>
+							Surrender<br>
 						</span>
 					</div>
-					<div class="col-md-2">
-						<span style="color: grey; font-size: 1.2em">Commission<br></span>
-					</div>
+
 				</div>
 				<hr>
 				<div class="row" style="text-align: center;">
@@ -109,10 +115,18 @@
  %>
 						</span>
 					</div>
-
 					<div class="col-md-3">
-						<span style="font-size: 1.6em;"> <%= new custInvestments().myInvestments(pol_no, id)
+
+
+						<span style="font-size: 1.6em;"> <%
+ 	out.println(maturityDate);
  %>
+						</span>
+					</div>
+					<div class="col-md-2">
+						<span style="font-size: 1.6em;"> <%
+ 	out.print("INR <br>");
+ %> <%=new custInvestments().myInvestments(pol_no, id)%>
 						</span>
 					</div>
 
@@ -127,17 +141,12 @@
 					<div class="col-md-2">
 
 						<span style="font-size: 1.6em;"> <%
- 	out.println(pPremium);
- %>
-						</span>
-					</div>
-					<div class="col-md-2">
+ 	out.print("INR <br>");
+ %><%=1.05 * new custInvestments().myInvestments(pol_no, id)%>
 
-						<span style="font-size: 1.6em;"> <%
- 	out.println(pComission);
- %>
 						</span>
 					</div>
+
 				</div>
 
 			</div>
