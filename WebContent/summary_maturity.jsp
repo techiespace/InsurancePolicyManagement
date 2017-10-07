@@ -49,6 +49,7 @@
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
 					int pol=(agentlist.getInt(1));
+					String pol_no= Integer.toString(pol);
 					ResultSet rs = stmt.executeQuery();
 					while (rs.next()) {
 						pName = rs.getString(1);
@@ -110,7 +111,7 @@
 					</div>
 
 					<div class="col-md-3">
-						<span style="font-size: 1.6em;"> <%= new custInvestments().myInvestments(pol, id)
+						<span style="font-size: 1.6em;"> <%= new custInvestments().myInvestments(pol_no, id)
  %>
 						</span>
 					</div>
