@@ -37,16 +37,27 @@
 	<div class="container">
 
 		<!-- Page Heading -->
-		<div class="row">
+				<div class="row">
 			<div class="col-md-4">
-				<h1 class="my-4">Add Policy</h1>
+				<h1 class="my-4">All Policy</h1>
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
-				<input type="text" id="search-name">
+			
+			<form >
+			  <div class="input-group" style="margin-left:22em;">
+			   <input style=" margin-top:2.0em; "type='text' id="search-name"class='form-control' placeholder='Search Customers...'> <span class="input-group-btn"> 
+			   <button class="btn btn-primary" style=" margin-top:2.0em;" type="button"> <i class="fa fa-search"></i> 
+			   </button>
+			   </span>
+			   </div>
+			   </form>
+				<!-- <input type="text" id="search-name">-->	
 			</div>
-			<div class="col-md-3"></div>
+			<div class="col-md-3">
+			</div>
 			<div class="col-md-1"></div>
+			
 		</div>
 		<div id="cont">
 			<%

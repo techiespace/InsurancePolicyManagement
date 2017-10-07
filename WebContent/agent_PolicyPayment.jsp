@@ -38,11 +38,13 @@
 	<div class="container" style="max-width: 150%;">
 
 		<!-- Page Heading -->
-		<span style="font-size:2.5em;color: #03275A;" class="my-4">Premium Payments</span>
-		<form style="margin-top:-2em;">
+		<span style="font-size: 2.5em; color: #03275A;" class="my-4">Premium
+			Payments</span>
+		<form style="margin-top: -2em;">
 			<div class="input-group">
-				<input style="margin-top: 2.0em;margin-left:78%;max-width:15%;" type='text' id="search-name"
-					class='form-control' placeholder='Search all plans...'> <span
+				<input style="margin-top: 2.0em; margin-left: 78%; max-width: 15%;"
+					type='text' id="search-name" class='form-control'
+					placeholder='Search all plans...'> <span
 					class="input-group-btn">
 					<button class="btn btn-primary" style="margin-top: 2.0em;"
 						type="button">
@@ -58,23 +60,24 @@
 				style="padding: 3em; padding-left: 0; color: #03275A">
 				<div class="col-md-12">
 					<div class="row" style="text-align: center;">
-						<div class="col-md-1" style="font-size: 1.6em; color: grey;">
+						<div class="col-md-1" style="font-size: 1em; color: grey;">
 
 						</div>
-						<div class="col-md-3" style="font-size: 1.6em; color: grey;">
+						<div class="col-md-3" style="font-size: 1em; color: grey;">
 							Customer name</div>
-						<div class="col-md-2" style="font-size: 1.6em; color: grey;">
+						<div class="col-md-2" style="font-size: 1em; color: grey;">
 							Policy name</div>
-						<div class="col-md-2" style="font-size: 1.6em; color: grey;">
+						<div class="col-md-2" style="font-size: 1em; color: grey;">
 							Premium</div>
 						<div class="col-md-1"
-							style="font-size: 1.6em; color: grey; padding-right: 1.65em;">
+							style="font-size: 1em; color: grey; padding-right: 1.65em;">
 							Due in</div>
-						<div class="col-md-2" style="font-size: 1.6em; color: grey;">
+						<div class="col-md-2" style="font-size: 1em; color: grey;">
 							Due Date</div>
 
 					</div>
 					<hr>
+					<div id="cont">
 					<%
 						int agent_id = (Integer) session.getAttribute("Id");
 						int pols[] = new int[30];
@@ -114,7 +117,7 @@
 
 						<div class="col-md-1">
 
-							<span style="font-size: 1.6em;"> <%
+							<span style="font-size: 1em;"> <%
  	out.println(acnt + 1);
  %>
 							</span>
@@ -122,26 +125,26 @@
 
 						</div>
 						<div class="col-md-3">
-							<h2>
-								<%
-									out.println(full);
-								%>
-							</h2>
+							<span style="font-size: 1.5em;"> <%
+ 	out.println(full);
+ %>
+							</span>
 						</div>
 
 
 
 						<div class="col-md-2">
 
-							<span style="font-size: 1.6em;"> <%
-									out.println(new Prem_name().p_name(pol_no[acnt])); %>
+							<span style="font-size: 1em;"> <%
+ 	out.println(new Prem_name().p_name(pol_no[acnt]));
+ %>
 							</span>
 
 						</div>
 
 						<div class="col-md-2">
 
-							<span style="font-size: 1.6em;"> <%
+							<span style="font-size: 1em;"> <%
  	int prem[] = new Prem_amount().p_details(pol_no[acnt]);
  		out.println(prem[0]);
  %>
@@ -153,7 +156,7 @@
 
 						<div class="col-md-1">
 
-							<span style="font-size: 1.6em;"> <%
+							<span style="font-size: 1em;"> <%
  	if (day_diff[acnt] < 0) {
  			out.println("<span style='color:red'>Late</span>");
  		} else if (day_diff[acnt] == 0) {
@@ -171,7 +174,7 @@
 
 
 						<div class="col-md-2">
-							<span style="font-size: 1.6em; padding-left: 1.8em;"> <%
+							<span style="font-size: 1em; padding-left: 1.8em;"> <%
  	if (day_diff[acnt] < 0)
  			out.println("-");
  		else
@@ -179,13 +182,12 @@
  %></span>
 						</div>
 
-                      <div class="col-md-1">
-						<a class=" btn btn-primary checkout_done"
-							style="color: white; margin-left: 2em; margin-bottom: 2.5em;"
-							id="<%out.print(pol_no[acnt]);%>">Pay now</a>
+						<div class="col-md-1">
+							<a class=" btn btn-primary checkout_done"
+								style="color: white; margin-left: 2em;"
+								id="<%out.print(pol_no[acnt]);%>">Pay now</a>
+						</div>
 					</div>
-					</div>
-
 
 
 
@@ -194,6 +196,7 @@
 					<%
 						}
 					%>
+					</div>
 				</div>
 			</div>
 		</div>
