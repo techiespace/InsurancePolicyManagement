@@ -54,7 +54,7 @@ $(document).ready(function() {
 </script>
 </head>
 
-<body>
+<body style="margin-top:-27px">
 
 	<div class="shopping-cart">
 		<br>

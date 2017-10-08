@@ -102,7 +102,9 @@ public class Add_cust {
 	}
 	
 	/*public static void main(String args[]) {
-		Add_cust.addCustInfo("a","b","c","d","e","f","12/12/1990","h","i","j");
+		Add_cust c = new Add_cust();
+		//c.addCustInfo(aid, fname, mname, lname, email, phone, add, dob, uname, passwd, desig, policy);
+		c.addCustInfo(1, "w", "e", "r", "t", "y", "ed", "1/2/1993", "u", "i", "o","1");
 		
 	}*/
 	
