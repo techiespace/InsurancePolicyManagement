@@ -56,7 +56,7 @@
 							Due Date</div>
 
 					</div>
-					<hr>
+					<hr style="width:81em">
 					<%
 						try {
 
@@ -182,7 +182,7 @@
 
 
 
-					<hr>
+					<hr style="width:81em">
 
 					<%
 						}

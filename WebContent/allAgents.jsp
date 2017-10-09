@@ -1,17 +1,17 @@
-
 <%@ page import="JDBC.jsp.*"%>
-<%@ page import="java.sql.PreparedStatement"%>
+<%@ page import="a_JDBC.jsp.All_agents"%>
+<%@ page import="java.sql.*"%>
 <%@ page import="java.sql.Statement"%>
 <%@ page import="java.sql.Connection"%>
 <%@ page import="java.sql.DatabaseMetaData"%>
 <%@ page import="java.sql.DriverManager"%>
 <%@ page import="java.sql.ResultSet"%>
 <%@ page import="java.sql.SQLException"%>
+
 <html>
 <head>
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
 	rel="stylesheet">
-
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -21,7 +21,7 @@
 			name = $("#search-name").val();
 			$.ajax({
 				type : "POST",
-				url : "search_plans.jsp",
+				url : "search_agents.jsp",
 				data : "name=" + name,
 				success : function(data) {
 					$("#cont").html(data);
@@ -31,6 +31,7 @@
 
 	});
 </script>
+
 
 </head>
 
@@ -42,16 +43,15 @@
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-md-4">
-				<h1 class="my-4">All Plans</h1>
+				<h1 class="my-4">All Agents</h1>
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
-
 				<form>
 					<div class="input-group" style="margin-left: 22em;">
 						<input style="margin-top: 2.0em;" type='text' id="search-name"
-							class='form-control' placeholder='Search all plans...'> <span
-							class="input-group-btn">
+							class='form-control' placeholder='Search all Agents...'>
+						<span class="input-group-btn">
 							<button class="btn btn-primary" style="margin-top: 2.0em;"
 								type="button">
 								<i class="fa fa-search"></i>
@@ -59,51 +59,33 @@
 						</span>
 					</div>
 				</form>
-				<!-- <input type="text" id="search-name">-->
-
-
-
-
 			</div>
 			<div class="col-md-3"></div>
 			<div class="col-md-1"></div>
-
 		</div>
-
-
-
-
-
 		<div id="cont">
+		<hr>
 			<%
-				String pName = "";
-				String pDuration = "";
-				String pLatefee = "";
-				String pPremium = "";
-				String pComission = "";
-				int modeli = 1;
-				try {
-					String type = (String) session.getAttribute("type");
-					Connection conn = new Connect().myDBConnect();
-					int id = (Integer) session.getAttribute("Id");/* 
-																	String policydetails = "select pol_no from customer_policy ";
-																	Statement s = conn.createStatement();
-																	ResultSet agentlist = s.executeQuery(policydetails); */
-					// 		while (agentlist.next()) {
-
-					String sql = "select p_name, duration, late_fee, premium, commision from policy";
-
-					//	stmt.setInt(1, agentlist.getInt(1));*/
-					PreparedStatement stmt = conn.prepareStatement(sql);
-					ResultSet rs = stmt.executeQuery();
-					while (rs.next()) {
-						pName = rs.getString(1);
-						pDuration = rs.getString(2);
-						pLatefee = rs.getString(5);
-						pPremium = rs.getString(3);
-						pComission = rs.getString(4);
+				int cnt = 0, cnt2 = 0, cnt3 = 0, modeli = 0;
+				String names[][] = new All_agents().all_agn();
+				for (int i = 0; i < 50; i++) {
+					if (names[i][0] == null)
+						break;
+					String full = names[i][0];
+					int agent_id = Integer.parseInt(names[i][1]);
+					modeli++;
+					try {
+						Connection conn = new Connect().myDBConnect();
+						String sql4 = "select a_phone, a_addr, a_email from agent where agent_id=?";
+						PreparedStatement stmt4 = conn.prepareStatement(sql4);
+						stmt4.setInt(1, agent_id);
+						ResultSet rs4 = stmt4.executeQuery();
+						rs4.next();
+						String p_no = rs4.getString("a_phone");
+						String addr = rs4.getString("a_addr");
+						String email = rs4.getString("a_email");
 			%>
-			<hr>
+			
 
 			<!-- Project One -->
 
@@ -114,35 +96,24 @@
 					</a>
 				</div>
 				<div class="col-md-8">
-					<h3>
+					<h3 style="margin-top: 0.4em;">
 						<%
-							out.println(pName);
-						%>
-					</h3>
-					<p>
-						<b>Policy Duration: </b>
-						<%
-							out.println(pDuration);
-						%><br> <b>Late Fee: </b>
-						<%
-							out.println(pLatefee);
-						%><br> <b>Premium Amount: </b>
-						<%
-							out.println(pPremium);
-						%>
-					</p>
+							out.print(full);
+						%></h3>
+						<p style="margin-top:1em">
+							<b>Agent ID: </b>
+							<%
+								out.println(agent_id);
+							%><br> <b>Phone Number: </b>
+							<%
+								out.println(p_no);
+							%>
+						</p>
 					<!-- Button trigger modal -->
-					<button type="button" style="margin-left: 80%; margin-top: -33%;"
+					<button type="button" style="margin-left: 80%; margin-top: -29%;"
 						class="btn btn-primary" data-toggle="modal"
-						data-target="#polDetModal<%out.print(modeli);%>">Policy
+						data-target="#polDetModal<%out.print(modeli);%>">View
 						Details</button>
-
-					<%
-						String polDetailsSql = "select descp from policy_description where p_name='" + pName + "';";
-								Statement polDetCon = conn.createStatement();
-								ResultSet polDescRes = polDetCon.executeQuery(polDetailsSql);
-								polDescRes.next();
-					%>
 
 					<!-- Modal -->
 					<div class="modal fade" id="polDetModal<%out.print(modeli);%>"
@@ -153,7 +124,7 @@
 								<div class="modal-header">
 									<h5 class="modal-title" id="exampleModalLabel">
 										<%
-											out.println(pName);
+											out.println("Details");
 										%>
 									</h5>
 									<button type="button" class="close" data-dismiss="modal"
@@ -163,7 +134,34 @@
 								</div>
 								<div class="modal-body">
 									<%
-										out.println(polDescRes.getString(1));
+										out.println("Name: " + full + "<br>");
+												out.println("Phone: " + p_no + "<br>");
+												out.println("Address: " + addr + "<br>");
+												out.println("Email: " + email + "<br>");
+												if (stmt4 != null) {
+													try {
+														stmt4.close();
+													} catch (SQLException e) {
+														System.out.println(e);
+													}
+												}
+												if (rs4 != null) {
+													try {
+														rs4.close();
+													} catch (SQLException e) {
+														System.out.println(e);
+													}
+												}
+												if (conn != null) {
+													try {
+														conn.close();
+													} catch (SQLException e) {
+														System.out.println(e);
+													}
+												}
+											} catch (Exception e) {
+												System.out.println(e);
+											}
 									%>
 								</div>
 								<div class="modal-footer">
@@ -176,38 +174,14 @@
 				</div>
 			</div>
 			<!-- /.row -->
+
 			<hr>
 			<%
-				modeli++;
-					}
-					//}
-					if (rs != null) {
-						try {
-							rs.close();
-						} catch (SQLException e) {
-							System.out.println(e);
-						}
-					}
-					if (stmt != null) {
-						try {
-							stmt.close();
-						} catch (SQLException e) {
-							System.out.println(e);
-						}
-					}
-					if (conn != null) {
-						try {
-							conn.close();
-						} catch (SQLException e) {
-							System.out.println(e);
-						}
-					}
-				} catch (Exception e) {
-					System.out.println(e);
 				}
 			%>
 		</div>
 	</div>
+	<!-- /.container -->
 </body>
 
 
