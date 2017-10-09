@@ -112,7 +112,7 @@
 
 
 					<div class="row"
-						style="text-align: center; margin-top: 3em; padding: 2em;">
+						style="text-align: center; margin-top: 3em; padding: 0;">
 
 
 						<div class="col-md-1">
@@ -125,7 +125,7 @@
 
 						</div>
 						<div class="col-md-3">
-							<span style="font-size: 1.5em;"> <%
+							<span style="font-size: 1.0em;font-weight:700;"> <%
  	out.println(full);
  %>
 							</span>
