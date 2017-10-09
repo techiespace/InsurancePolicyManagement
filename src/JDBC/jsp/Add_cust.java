@@ -7,16 +7,13 @@ import java.text.SimpleDateFormat;
 public class Add_cust {
 	public void addCustInfo(int aid, String fname, String mname, String lname, String email, String phone, String add, String dob, String uname, String passwd, String desig, String policy) {
 		String sql = "INSERT INTO customer(c_uname,c_passwd,c_email,c_phone,c_dob,c_addr,c_fname,c_mname,c_lname,desig) VALUES (?,?,?,?,?,?,?,?,?,?)";
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyy-MM-dd");
 		String cusAgPolsql = "INSERT INTO customer_agent_policy(cust_id,agent_id,pol_no) VALUES (?,?,?)";
 		String getCusIdsql = "SELECT cust_id from customer where c_uname='"+uname+"'";
 		String cusPolsql = "INSERT INTO customer_policy(cust_id,pol_no,prem_sdate,prem_edate,prem_pdate) VALUES(?,?,curdate(),?,?)";
-		
+		System.out.println("dob"+dob);
 		//get prem_pdate
 		String premPdatesql = "SELECT DATE_ADD((SELECT DATE_ADD(curdate(), INTERVAL 1 MONTH)),INTERVAL 5 DAY);";
-		
-		
-		
 		
 		try {
 			Connection conn = new Connect().myDBConnect();
@@ -27,7 +24,6 @@ public class Add_cust {
 			prep.setString(4, phone);
 			java.util.Date utildate= sdf.parse(dob);
 			java.sql.Date sqldate= new java.sql.Date( utildate.getTime()); 
-			System.out.println(sqldate);
 			prep.setDate(5, sqldate);
 			prep.setString(6, add);
 			prep.setString(7, fname);
@@ -59,7 +55,6 @@ public class Add_cust {
 			Statement preppolTerm = conn.createStatement();
 			ResultSet rspolTerm = preppolTerm.executeQuery(polTermsql);
 			rspolTerm.next();
-			
 			
 			//get prem_edate
 			String premEdatesql = "SELECT DATE_ADD((SELECT DATE_ADD((SELECT DATE_ADD(curdate(), INTERVAL 1 MONTH)),INTERVAL 5 DAY)),INTERVAL "+rspolTerm.getInt(1)+" YEAR);";

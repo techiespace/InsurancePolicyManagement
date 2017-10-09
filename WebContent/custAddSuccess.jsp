@@ -4,16 +4,27 @@
 <%
 		int aid = (Integer) session.getAttribute("Id");
 		String policy = request.getParameter("policy");
+		out.println(policy);
 		String fname = request.getParameter("first_name");
+		out.println(fname);
 		String mname = request.getParameter("middle_name");
+		out.println(mname);
 		String lname = request.getParameter("last_name");
+		out.println(lname);
 		String email = request.getParameter("email");
+		out.println(email);
 		String phone = request.getParameter("phone");
+		out.println(phone);
 		String add = request.getParameter("address");
+		out.println(add);
 		String dob = request.getParameter("dob");
+		out.println(dob);
 		String uname = request.getParameter("uname");
+		out.println(uname);
 		String passwd = request.getParameter("passd");
+		out.println(passwd);
 		String desig = request.getParameter("desig");
+		out.println(desig);
 		Add_cust c = new Add_cust();
 		c.addCustInfo(aid, fname, mname, lname, email, phone, add, dob, uname, passwd, desig, policy);
 		//c.addCustInfo(1, "w", "e", "r", "t", "y", "ed", "01/01/0101", "u", "i", "o","1");

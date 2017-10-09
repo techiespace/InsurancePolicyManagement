@@ -43,7 +43,7 @@
 			console.log(passwd);
 			var desig = $('#desig').val();
 			console.log(desig);
-			$('#amain').load("custAddSuccess.jsp?policy="+policy+"&first_name="+fname+"&middle_name="+mname+"&last_name="+lname+"&email="+email+"&phone="+phone+"&address="+add+"&dob"+dob+"&uname="+uname+"&passd="+passwd+"&desig="+desig);
+			$('#amain').load("custAddSuccess.jsp?policy="+policy+"&first_name="+fname+"&middle_name="+mname+"&last_name="+lname+"&email="+email+"&phone="+phone+"&address="+add+"&dob="+dob+"&uname="+uname+"&passd="+passwd+"&desig="+desig);
 	});
 </script>
 <style>
