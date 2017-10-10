@@ -36,7 +36,7 @@
 							$('.highlight').removeClass('active');
 							$(this).addClass('active');
 						});
-						
+
 						$("#allAgents").click(function() {
 							$('#ad_main').load('allAgents.jsp');
 							$('.highlight').removeClass('active');
@@ -47,7 +47,7 @@
 							$(this).toggleClass("mod");
 						});
 
-						/*$("#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo,#invoice")
+						$(".highlight")
 								.click(function() {
 									$(this).toggleClass(".active");
 								});*/
