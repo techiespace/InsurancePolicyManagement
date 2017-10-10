@@ -3,8 +3,6 @@
 <%
 	String msg = "";
 	boolean isPost = "POST".equals(request.getMethod());
-
-	//if(request.getParameter("userC") != null && request.getParameter("signup") != null)
 	if (isPost == true) {
 		if (request.getParameter("userC") != null && request.getParameter("passC") != null) {
 			int keyc = new Cust_login().ID(request.getParameter("userC"), request.getParameter("passC"));
