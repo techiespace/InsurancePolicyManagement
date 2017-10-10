@@ -85,7 +85,7 @@
 				try {
 					String type = (String) session.getAttribute("type");
 					Connection conn = new Connect().myDBConnect();
-					int id = (Integer) session.getAttribute("Id");/* 
+					int id = (Integer) session.getAttribute("Id");/*
 																	String policydetails = "select pol_no from customer_policy ";
 																	Statement s = conn.createStatement();
 																	ResultSet agentlist = s.executeQuery(policydetails); */

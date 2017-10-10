@@ -50,6 +50,7 @@
 					String sql = "select p_name, duration, late_fee, premium, commision from policy where pol_no=?";
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
+
 					Date maturityDate = null;
 					maturityDate = agentlist.getDate(2);
 					int pol = (agentlist.getInt(1));
@@ -124,8 +125,7 @@
 					<div class="col-md-2">
 						<span style="font-size: 1em;"> <%
  	out.print("INR <br>");
- %>
-							<%=new custInvestments().myInvestments(pol_no, id)%>
+ %> <%=new custInvestments().myInvestments(pol_no, id)%>
 						</span>
 					</div>
 
