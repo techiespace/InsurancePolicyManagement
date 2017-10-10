@@ -1,149 +1,47 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<%@ page import="java.sql.*,JDBC.jsp.*,a_JDBC.*"%>
+<%@ page import="java.sql.*,JDBC.jsp.*"%>
 
 <head>
-
-<style>
-/*!
- * Start Bootstrap - Round About (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
-
-/*body {
-    padding-top: 70px;  Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes.
-}*/
-.img-center {
-	margin: 0 auto;
-}
-
-.box {
-	display: inline-block;
-	height: 8em;
-	padding-top: 1.5em;
-	margin-bottom: 1em;
-	width: 20em;
-	border-radius: 2%;
-	box-shadow: 1px 1px 1px 1px #0c1b86;
-	margin-left: 1.5em;
-	top: 0; /*the image won't appear without specifing these*/
-	bottom: 0;
-	left: 0;
-	right: 0;
-	font-weight:bold;
-	background: url(./images/5.jpg);
-    background-size: cover;
-    opacity: 0.94;
-}
-
-.box:hover .after {
-    display: block;
-    background: rgba(0, 0, 0, .6);
-}
-
-.box:hover {
-	border-color: #696969;
-}
-
-.shade {
-	background-color: #d3d3d3;
-}
-
-footer {
-	margin:0;
-}
-
-/*background*/
-.ancient-bg {
-	position: relative;
-	z-index: 1;
-}
-
-.ancient-bg:before {
-	content: "";
-	position: absolute;
-	z-index: -1;
-}
-
-</style>
-
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-
-
-
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(document)
+			.ready(
+					function() {
 
-		$('#dashboard').addClass('active');
+						$('#main').load('admin_main.jsp');
+						$('#dashboard').addClass('active');
 
-		$("#myProfile").click(function() {
-			$('#amain').load('agentProfile.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
+						$("#addAgent").click(function() {
+							$('#main').load('addAgents.jsp');
+							$('.highlight').removeClass('active');
+							$(this).addClass('active');
+						});
 
-		$('#amain').load('agent_main.jsp');
+						$("#dashboard").click(function() {
+							$('#main').load('main.jsp');
+							$('.highlight').removeClass('active');
+							$(this).addClass('active');
+						});
 
-		$("#myCustomers").click(function() {
-			$('#amain').load('myCustomers.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
+						$("#addPolicy").click(function() {
+							$('#main').load('addPolicy.jsp');
+							$('.highlight').removeClass('active');
+							$(this).addClass('active');
+						});
 
-		$("#dashboard").click(function() {
-			$('#amain').load('agent_main.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
+						$(".highlight").hover(function() {
+							$(this).toggleClass("mod");
+						});
 
-		$("#aPolicyPayment").click(function() {
-			$('#amain').load('agent_PolicyPayment.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
+						$(
+								"#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo,#invoice")
+								.click(function() {
+									$(this).toggleClass(".active");
+								});
 
-		$("#addCustomers").click(function() {
-			$('#amain').load('addCustomers.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
-
-		$("#addPolicy").click(function() {
-			$('#amain').load('addPolicy.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
-
-		$("#allPlans").click(function() {
-			$('#amain').load('allPlans.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
-
-		$("#Invoices").click(function() {
-			$('#amain').load('aInvoices.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
-
-		$(".highlight").hover(function() {
-			$(this).toggleClass("mod ");
-		});
-
-		$("#summary").click(function() {
-			$('#amain').load('agentSummary.jsp');
-			$('.highlight').removeClass('active');
-			$(this).addClass('active');
-		});
-
-
-
-
-	});
+					});
 </script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -152,7 +50,7 @@ footer {
 
 <meta name="description" content="">
 <meta name="author" content="">
-<title>LIC Agent Login</title>
+<title>LIC Customer Login</title>
 
 <!-- Bootstrap core CSS -->
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
@@ -172,26 +70,13 @@ footer {
 </head>
 
 
-<body class="fixed-nav sticky-footer bg-des" id="page-top" style="padding:-1em;">
+<body class="fixed-nav sticky-footer bg-des" id="page-top">
 	<!-- Navigation -->
 	<nav class="navbar navbar-expand-lg navbar-dark bg-des fixed-top"
-		id="mainNav" style="padding-bottom:0.1em;">
-		<a class="navbar-brand" href="#" style="color: #F2B809">Welcome, <%
-			try {
-				Connection conn = new Connect().myDBConnect();
-				int id = (Integer) session.getAttribute("Id");
-				//out.println("Cust");
-				String sql = "select a_fname,a_lname from agent where agent_id=?";
-				PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setInt(1, id);
-				ResultSet rs = stmt.executeQuery();
-				rs.next();
-				out.println(rs.getString(1) + " " + rs.getString(2));
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		%> <!-- session.getAttribute("userid")-->
-		</a>
+		id="mainNav" style="padding-bottom: 0.1em;">
+		<a class="navbar-brand" href="#" style="color: #F2B809"><span
+			style="font-size: 1.2em;">Welcome, Admin <!-- session.getAttribute("userid")-->
+		</span> </a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false"
@@ -211,28 +96,10 @@ footer {
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="myProfile" class="nav-link highlight"
+					<div id="addAgent" class="nav-link highlight"
 						style="color: #F2B809;">
 						<a> <i class="fa fa-fw fa-server"></i> <span
-							class="nav-link-text"> My Profile</span>
-						</a>
-					</div>
-				</li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Charts">
-					<div id="myCustomers" class="nav-link highlight"
-						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-server"></i> <span
-							class="nav-link-text"> My Customers</span>
-						</a>
-					</div>
-				</li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Charts">
-					<div id="addCustomers" class="nav-link highlight"
-						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-money"></i> <span
-							class="nav-link-text"> Add Customers</span>
+							class="nav-link-text"> Add Agent</span>
 						</a>
 					</div>
 				</li>
@@ -247,39 +114,37 @@ footer {
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Charts">
-					<div id="aPolicyPayment" class="nav-link highlight"
+					<div id="allAgents" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-address-card-o"></i> <span
-							class="nav-link-text"> Make Payment</span>
+						<a> <i class="fa fa-fw fa-money"></i> <span
+							class="nav-link-text"> All Agents</span>
 						</a>
 					</div>
 				</li>
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Tables">
+					title="Charts">
 					<div id="allPlans" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-user-o"></i> <span
-							class="nav-link-text"> All Plans</span>
+						<a> <i class="fa fa-fw fa-money"></i> <span
+							class="nav-link-text">All Plans</span>
 						</a>
 					</div>
 				</li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Tables">
-					<div id="Invoices" class="nav-link highlight"
-						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-print"></i> <span
-							class="nav-link-text">Invoice</span>
-						</a>
-					</div>
+
+
+				</a>
+				<ul class="sidenav-second-level collapse" id="collapseMulti">
+					<li><a href="#">Second Level Item</a></li>
+					<li><a href="#">Second Level Item</a></li>
+					<li><a class="nav-link-collapse collapsed"
+						data-toggle="collapse" href="#collapseMulti2">Third Level</a>
+						<ul class="sidenav-third-level collapse" id="collapseMulti2">
+							<li><a href="#">Third Level Item</a></li>
+							<li><a href="#">Third Level Item</a></li>
+						</ul></li>
+				</ul>
 				</li>
-				<li class="nav-item" data-toggle="tooltip" data-placement="right"
-					title="Tables">
-					<div id="summary" class="nav-link highlight" style="color:#F2B809;">
-						<a > <i class="fa fa-fw fa-user-o"></i>
-							<span class="nav-link-text"> Summary</span>
-						</a>
-					</div>
-				</li>
+
 			</ul>
 			<ul class="navbar-nav sidenav-toggler">
 				<li class="nav-item"><a class="nav-link text-center"
@@ -366,7 +231,19 @@ footer {
 						<div class="dropdown-divider"></div>
 						<a class="dropdown-item small" href="#"> View all alerts </a>
 					</div></li>
-
+				<!-- <li class="nav-item">
+					<form class="form-inline my-2 my-lg-0 mr-lg-2">
+						<div class="input-group">
+							<input type="text" class="form-control"
+								placeholder="Search for..."> <span
+								class="input-group-btn">
+								<button class="btn btn-primary" type="button">
+									<i class="fa fa-search"></i>
+								</button>
+							</span>
+						</div>
+					</form>
+				</li>-->
 				<li class="nav-item"><a class="nav-link" data-toggle="modal"
 					data-target="#exampleModal"> <i class="fa fa-fw fa-sign-out"
 						style="color: #F2B809; font-size: 1.2em;"></i> <span
@@ -379,7 +256,7 @@ footer {
 
 	<div class="content-wrapper">
 
-		<div id="amain" class="container-fluid">
+		<div id="main" class="container-fluid">
 
 			<!-- Breadcrumbs -->
 			<!-- <ol class="breadcrumb">
