@@ -180,7 +180,6 @@ footer {
 			try {
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
-				//out.println("Cust");
 				String sql = "select a_fname,a_lname from agent where agent_id=?";
 				PreparedStatement stmt = conn.prepareStatement(sql);
 				stmt.setInt(1, id);

@@ -37,7 +37,7 @@ height:220px;
 				String type = (String) session.getAttribute("type");
 				Connection conn = new Connect().myDBConnect();
 				int id = (Integer) session.getAttribute("Id");
-				String agentid = "select agent_id from customer_agent_policy where cust_id=" + id;
+				String agentid = "select DISTINCT agent_id from customer_agent_policy where cust_id=" + id;
 				Statement s = conn.createStatement();
 				ResultSet agentlist = s.executeQuery(agentid);
 				while (agentlist.next()) {

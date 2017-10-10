@@ -37,22 +37,35 @@
 	<!-- Page Content -->
 	<div class="container" style="max-width: 150%;">
 
-		<!-- Page Heading -->
-		<span style="font-size: 2.5em; color: #03275A;" class="my-4">Premium
-			Payments</span>
-		<form style="margin-top: -2em;">
-			<div class="input-group">
-				<input style="margin-top: 2.0em; margin-left: 78%; max-width: 15%;"
-					type='text' id="search-name" class='form-control'
-					placeholder='Search all plans...'> <span
-					class="input-group-btn">
-					<button class="btn btn-primary" style="margin-top: 2.0em;"
-						type="button">
-						<i class="fa fa-search"></i>
-					</button>
-				</span>
+		<div class="row">
+			<div class="col-md-4">
+				<h1 class="my-4">Policy Payment</h1>
 			</div>
-		</form>
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+
+				<form>
+					<div class="input-group" style="margin-left: 22em;">
+						<input style="margin-top: 2.0em;" type='text' id="search-name"
+							class='form-control' placeholder='Search Customers...'> <span
+							class="input-group-btn">
+							<button class="btn btn-primary" style="margin-top: 2.0em;"
+								type="button">
+								<i class="fa fa-search"></i>
+							</button>
+						</span>
+					</div>
+				</form>
+				<!-- <input type="text" id="search-name">-->
+
+
+
+
+			</div>
+			<div class="col-md-3"></div>
+			<div class="col-md-1"></div>
+
+		</div>
 
 		<div>
 
@@ -76,7 +89,7 @@
 							Due Date</div>
 
 					</div>
-					<hr>
+					<hr style="width:81em">
 					<div id="cont">
 					<%
 						int agent_id = (Integer) session.getAttribute("Id");
@@ -112,7 +125,7 @@
 
 
 					<div class="row"
-						style="text-align: center; margin-top: 3em; padding: 2em;">
+						style="text-align: center; margin-top: 3em; padding: 0;">
 
 
 						<div class="col-md-1">
@@ -125,7 +138,7 @@
 
 						</div>
 						<div class="col-md-3">
-							<span style="font-size: 1.5em;"> <%
+							<span style="font-size: 1.0em;font-weight:700;"> <%
  	out.println(full);
  %>
 							</span>
@@ -184,14 +197,14 @@
 
 						<div class="col-md-1">
 							<a class=" btn btn-primary checkout_done"
-								style="color: white; margin-left: 2em;"
+								style="color: white; margin-left: 2em;margin-top:-0.5em;"
 								id="<%out.print(pol_no[acnt]);%>">Pay now</a>
 						</div>
 					</div>
 
 
 
-					<hr>
+					<hr style="width:81em">
 
 					<%
 						}

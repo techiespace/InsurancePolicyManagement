@@ -58,13 +58,13 @@ $(document).ready(function() {
 
 	<div class="shopping-cart">
 		<br>
-		<h1 style="text-align:center;">Policy Payment</h1>
+		<h1>Policy Payment</h1>
 		<br>
 		<div class="column-labels">
 			<label class="product-details">Product</label> 
 			<label class="product-price">Policy Number</label> 
 			<label class="product-quantity">Term</label> 
-			<label class="product-line-price" style="padding-right: 341px !important;">Cost</label>
+			<label class="product-line-price" style="padding-right: 249px !important;">Cost</label>
 		</div>
 		<div class="product">
 			<div class="product-details">
@@ -92,7 +92,7 @@ $(document).ready(function() {
 			</div>
 			</div>
 			<div class="product-details">
-			<div class="product-line-price" style="padding-right: 94px !important;">
+			<div class="product-line-price" style="padding-right: 0px !important;">
 				<%
 					out.println("INR " + premium);
 				%>

@@ -56,7 +56,7 @@
 							Due Date</div>
 
 					</div>
-					<hr>
+					<hr style="width:81em">
 					<%
 						try {
 
@@ -102,12 +102,12 @@
 
 
 					<div class="row"
-						style="text-align: center; margin-top: 3em; padding: 2em;">
+						style="text-align: center; margin-top: 1em; padding: 0;">
 
 
 						<div class="col-md-1">
 
-							<span style="font-size: 1.6em;"> <%
+							<span style="font-size: 1.0em;"> <%
  	out.println(acnt + 1);
  %>
 							</span>
@@ -115,18 +115,18 @@
 
 						</div>
 						<div class="col-md-3">
-							<h2>
+							<span style="font-size: 1.0em;font-weight:700;">
 								<%
 									out.println(pol_names[acnt]);
 								%>
-							</h2>
+							</span>
 						</div>
 
 
 
 						<div class="col-md-2">
 
-							<span style="font-size: 1.6em;"> <%
+							<span style="font-size: 1em;"> <%
  	out.println(pols[acnt]);
  %>
 							</span>
@@ -135,7 +135,7 @@
 
 						<div class="col-md-2">
 
-							<span style="font-size: 1.6em;"> <%
+							<span style="font-size: 1em;"> <%
  	out.println(pols_amt[acnt]);
  %>
 							</span>
@@ -146,7 +146,7 @@
 
 						<div class="col-md-1">
 
-							<span style="font-size: 1.6em;"> <%
+							<span style="font-size: 1em;"> <%
  	if (day_diff[acnt] < 0) {
  				out.println("<span style='color:red'>Late</span>");
  			} else if (day_diff[acnt] == 0) {
@@ -164,7 +164,7 @@
 
 
 						<div class="col-md-2">
-							<span style="font-size: 1.6em; padding-left: 1.8em;"> <%
+							<span style="font-size: 1em; padding-left: 1.8em;"> <%
  	if (day_diff[acnt] < 0)
  				out.println("-");
  			else
@@ -174,7 +174,7 @@
 
 						<div class="col-md-1">
 						<a class=" btn btn-primary checkout_done"
-							style="color: white; margin-left: 2em;"
+							style="color: white; margin-left: 2em;margin-top:-0.5em;"
 							id="<%out.print(pols[acnt]);%>">Pay now</a>
 					</div>
 					</div>
@@ -182,7 +182,7 @@
 
 
 
-					<hr>
+					<hr style="width:81em">
 
 					<%
 						}

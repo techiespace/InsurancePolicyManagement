@@ -144,10 +144,10 @@
 		</div>
 
 		<button class="btn btn-primary button_remove" onclick="myFunction()"
-			style="width: 10%; margin-bottom: 2.5em; align-self: center;">Print
+			style="width: 12%; margin-bottom: 2.5em; align-self: center;">Print
 			this page</button>
 
-		<a class="btn btn-primary button_remove" style="width: 10%; margin-bottom: 2.5em; align-self: center;" <a href="http://www.web2pdfconvert.com/convert">Save to PDF</a> >Download</a>
+		
 
 	</div>
 

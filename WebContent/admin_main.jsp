@@ -9,25 +9,25 @@
 	$(document).ready(function() {
 
 		$("#premium-payment-details").click(function() {
-			$('#amain').load('agent_PolicyPayment.jsp');
+			$('#admin_main').load('agent_PolicyPayment.jsp');
 			$('.highlight').removeClass('active');
 			$('#aPolicyPayment').addClass('active');
 		});
 
 		$("#my-customers").click(function() {
-			$('#amain').load('myCustomers.jsp');
+			$('#ad_main').load('myCustomers.jsp');
 			$('.highlight').removeClass('active');
 			$('#myCustomers').addClass('active');
 		});
 
 		$("#new-customer").click(function() {
-			$('#amain').load('addCustomers.jsp');
+			$('#ad_main').load('addNewPolicy.jsp');
 			$('.highlight').removeClass('active');
 			$('#addCustomers').addClass('active');
 		});
 
 		$("#plan-details").click(function() {
-			$('#amain').load('allPlans.jsp');
+			$('#ad_main').load('allPlans.jsp');
 			$('.highlight').removeClass('active');
 			$('#allPlans').addClass('active');
 		});
@@ -71,7 +71,7 @@
 					<div class="card-body-icon">
 						<i class="fa fa-fw fa-server"></i>
 					</div>
-					<div class="mr-5" style="font-size: 1.5em">My Customers</div>
+					<div class="mr-5" style="font-size: 1.5em">All Agents</div>
 				</div>
 				<a href="#" class="card-footer text-white clearfix small z-1"> <span
 					id="my-customers" class="float-left" style="font-size: 1.2em">View
@@ -82,12 +82,12 @@
 			</div>
 		</div>
 		<div class="col-xl-6 col-sm-6 mb-3" style="display: block;">
-			<div class="card text-white bg-warning o-hidden h-100";">
+			<div class="card text-white bg-warning o-hidden h-100"">
 				<div class="card-body">
 					<div class="card-body-icon">
 						<i class="fa fa-fw fa-money"></i>
 					</div>
-					<div class="mr-5" style="font-size: 1.5em">Premium Payment</div>
+					<div class="mr-5" style="font-size: 1.5em">Add Agent</div>
 				</div>
 				<a href="#" class="card-footer text-white clearfix small z-1"> <span
 					id="premium-payment-details" class="float-left"
@@ -103,7 +103,7 @@
 					<div class="card-body-icon">
 						<i class="fa fa-fw fa-address-card-o"></i>
 					</div>
-					<div class="mr-5" style="font-size: 1.5em">Add New Customer</div>
+					<div class="mr-5" style="font-size: 1.5em">Add Policy</div>
 				</div>
 				<a href="#" class="card-footer text-white clearfix small z-1"> <span
 					id="new-customer" class="float-left" style="font-size: 1.2em">View
