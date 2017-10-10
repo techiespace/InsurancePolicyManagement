@@ -1,24 +1,30 @@
 <%@ page import="JDBC.jsp.*,java.sql.*"%>
+<%@ page import="java.text.*"%>
+
 
 <html>
-<% int id = (Integer) session.getAttribute("Id"); 
-String pol_no = request.getParameter("pol_no");
-int total=new custInvestments().myInvestments(pol_no,id);
-double i=1.05*total;
+<%
+	int id = (Integer) session.getAttribute("Id");
+	String pol_no = request.getParameter("pol_no");
+	int total = new custInvestments().myInvestments(pol_no, id);
+	double i = 1.05 * total;
+	DecimalFormat df = new DecimalFormat("#.##");
 %>
 <script type="text/javascript">
 	$(document).ready(function() {
 
 		$(".SureSurrender").click(function() {
-	         var pol_no=<%=pol_no%>;
-			$('#main').load('SurrenderFinal.jsp?pol_no='+pol_no);
+			var pol_no =
+<%=pol_no%>
+	;
+			$('#main').load('SurrenderFinal.jsp?pol_no=' + pol_no);
 		});
 		$(".backToMyPolicies").click(function() {
 			$('#main').load('myPolicies.jsp');
 		});
 
 	});
-	</script>
+</script>
 
 
 
@@ -30,42 +36,48 @@ double i=1.05*total;
 	<%
 		String transacNo = "";
 		String agentName = "";
-		String policyName="";
+		String policyName = "";
 		String date = "";
 
-		int pol=Integer.parseInt(pol_no);
+		int pol = Integer.parseInt(pol_no);
 		try {
 			//String type = (String) session.getAttribute("type");
 			Connection conn = new Connect().myDBConnect();
-				String sql = "select sum(amt),agent_id from payment where pol_no=? AND cust_id=?";
-				PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setInt(1,pol);
-				stmt.setInt(2,id);
-				ResultSet rs = stmt.executeQuery();
-				
-				rs.next();
-					int a = rs.getInt(2);
-					String sql1 = "select a_fname,a_lname from agent where agent_id=?" ;
-					PreparedStatement stmt1 = conn.prepareStatement(sql1);
-					stmt1.setInt(1,a);
-					ResultSet rs1 = stmt1.executeQuery();
-					rs1.next();
-					String sql2 = "select p_name from policy where pol_no=?" ;
-					PreparedStatement stmt2 = conn.prepareStatement(sql2);
-					stmt2.setInt(1,pol);
-					ResultSet rs2 = stmt2.executeQuery();
-					rs2.next();
-					String sql3 = "select prem_edate from customer_policy where pol_no=? and cust_id=?" ;
-					PreparedStatement stmt3 = conn.prepareStatement(sql3);
-					stmt3.setInt(1,pol);
-					stmt3.setInt(2, id);
-					ResultSet rs3 = stmt3.executeQuery();
-					rs3.next();
+			String sql = "select sum(amt) from payment where pol_no=? AND cust_id=?";
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, pol);
+			stmt.setInt(2, id);
+			ResultSet rs = stmt.executeQuery();
+			rs.next();
+			/* 
+			
+			String sql9 = "select agent_id from payment where pol_no=? AND cust_id=?";
+			PreparedStatement stmt9 = conn.prepareStatement(sql9);
+			stmt9.setInt(1, pol);
+			stmt9.setInt(2, id);
+			ResultSet rs9 = stmt.executeQuery();
+			rs9.next();
+			int a = rs9.getInt(1);
+			 	String sql1 = "select a_fname,a_lname from agent where agent_id=?" ;
+				PreparedStatement stmt1 = conn.prepareStatement(sql1);
+				stmt1.setInt(1,a);
+				ResultSet rs1 = stmt1.executeQuery();
+				rs1.next();  */
+			String sql2 = "select p_name from policy where pol_no=?";
+			PreparedStatement stmt2 = conn.prepareStatement(sql2);
+			stmt2.setInt(1, pol);
+			ResultSet rs2 = stmt2.executeQuery();
+			rs2.next();
+			String sql3 = "select prem_edate from customer_policy where pol_no=? and cust_id=?";
+			PreparedStatement stmt3 = conn.prepareStatement(sql3);
+			stmt3.setInt(1, pol);
+			stmt3.setInt(2, id);
+			ResultSet rs3 = stmt3.executeQuery();
+			rs3.next();
 
-					agentName = rs1.getString(1)+" "+rs1.getString(2);
-					date = rs3.getString(1);
-					policyName=rs2.getString(1);
-					
+			//agentName = rs1.getString(1)+" "+rs1.getString(2);
+			date = rs3.getString(1);
+			policyName = rs2.getString(1);
 	%>
 
 
@@ -89,9 +101,9 @@ double i=1.05*total;
 					</span>
 				</div>
 
-				<div class="col-md-2">
+				<!-- <div class="col-md-2">
 					<span style="color: grey; font-size: 1.2em;">Agent Name</span>
-				</div>
+				</div> -->
 				<div class="col-md-2">
 					<span style="color: grey; font-size: 1.2em;">Amount on
 						Surrender<br>
@@ -117,17 +129,18 @@ double i=1.05*total;
 					</span>
 				</div>
 
-				<div class="col-md-2">
+				<%-- 	<div class="col-md-2">
 
 					<span style="font-size: 1.6em;"> <%
-							 	out.println(agentName);
+ 	out.println(agentName);
  %>
 					</span>
-				</div>
+				</div> --%>
 
 				<div class="col-md-2">
 
-					<span style="font-size: 1.6em;"> <%= i  %>
+					<span style="font-size: 1.6em;"> <%=df.format(i)%>
+
 					</span>
 				</div>
 				<div class="col-md-2">
@@ -145,23 +158,27 @@ double i=1.05*total;
 	<!-- /.row -->
 
 	<%
-		
-				
-			} catch (Exception e) {
-				System.out.println(e);
-			}
-		%>
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+	%>
 	<!-- /.container -->
 </div>
 <div>
-	<button type="button" style="margin-left: 30%; margin-top: 10%; width:200px;height:65px;font-size:1.7em;"
-		class="btn btn-danger SureSurrender"><b>Yes,I am Sure</b></button>
+	<button type="button"
+		style="margin-left: 30%; margin-top: 10%; width: 200px; height: 65px; font-size: 1.7em;"
+		class="btn btn-danger SureSurrender">
+		<b>Yes,I am Sure</b>
+	</button>
 
 </div>
 
 <div>
-	<button type="button" style="margin-left: 50%; margin-top: -6%; width:200px;height:65px;font-size:1.7em;"
-		class="btn btn-primary backToMyPolicies"><b>No</b></button>
+	<button type="button"
+		style="margin-left: 50%; margin-top: -6%; width: 200px; height: 65px; font-size: 1.7em;"
+		class="btn btn-primary backToMyPolicies">
+		<b>No</b>
+	</button>
 </div>
 
 </html>

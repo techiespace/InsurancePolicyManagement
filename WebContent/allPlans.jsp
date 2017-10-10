@@ -79,6 +79,7 @@
 			String pLatefee = "";
 			String pPremium = "";
 			String pComission = "";
+			String imgUrl="";
 			int modeli = 1;
 			try {
 				String type = (String) session.getAttribute("type");
@@ -89,7 +90,7 @@
 				ResultSet agentlist = s.executeQuery(policydetails); */
 		// 		while (agentlist.next()) {
 					
-					String sql = "select p_name, duration, late_fee, premium, commision from policy";
+					String sql = "select p_name, duration, late_fee, premium, commision,image from policy";
 
 				//	stmt.setInt(1, agentlist.getInt(1));*/
 					PreparedStatement stmt = conn.prepareStatement(sql);
@@ -100,6 +101,7 @@
 						pLatefee = rs.getString(5);
 						pPremium = rs.getString(3);
 						pComission = rs.getString(4);
+						imgUrl=rs.getString(6);
 		%>
 		<hr>
         
@@ -107,8 +109,8 @@
 		
 		<div class="row">
 			<div class="col-md-4">
-				<a href="#"> <img class="img-fluid rounded mb-3 mb-md-0"
-					src="http://placehold.it/700x300" alt="">
+				<a href="#"> <img class="fixsize img-responsive img-fluid rounded mb-3 mb-md-0"
+					src="<%out.print(imgUrl); %>" alt="">
 				</a>
 			</div>
 			<div class="col-md-8">

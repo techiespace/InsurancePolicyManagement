@@ -38,6 +38,8 @@
 			String pLatefee = "";
 			String pPremium = "";
 			Date maturity;
+			String imgUrl = "";
+
 
 			int modeli = 1;
 			try {
@@ -51,7 +53,7 @@
 
 					int f = agentlist.getInt(1);
 
-					String sql = "select p_name, duration, premium, prem_edate from customer_policy,policy where customer_policy.pol_no=? and policy.pol_no=? and cust_id="
+					String sql = "select p_name, duration, premium, prem_edate,image from customer_policy,policy where customer_policy.pol_no=? and policy.pol_no=? and cust_id="
 							+ id;
 
 					PreparedStatement stmt = conn.prepareStatement(sql);
@@ -65,6 +67,8 @@
 						pDuration = rs.getString(2);
 						pPremium = rs.getString(3);
 						maturity = rs.getDate(4);
+						imgUrl = rs.getString(5);
+
 		%>
 		<hr>
 
@@ -72,8 +76,8 @@
 
 		<div class="row">
 			<div class="col-md-4">
-				<a href="#"> <img class="img-fluid rounded mb-3 mb-md-0"
-					src="http://placehold.it/700x300" alt="">
+				<a href="#"> <img class="fixsize img-responsive img-fluid rounded mb-3 mb-md-0"
+					src="<%out.print(imgUrl); %>" alt="">
 				</a>
 			</div>
 			<div class="col-md-8">
