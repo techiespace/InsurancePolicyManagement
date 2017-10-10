@@ -71,15 +71,18 @@ label {
 /* Column headers */
 .column-labels label {
   padding-bottom: 15px;
-  margin-bottom: 15px;
-  border-bottom: 1px solid #eee;
+  margin-bottom: 5px;
+  /* border-bottom: 1px solid #eee; */
 }
+
 .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
  /*  text-indent: -9999px; */
 }
 
 /* Product entries */
 .product {
+  padding-top: 20px !important;
+  border-bottom: 1px solid #eee;
   margin-bottom: 20px;
   padding-bottom: 10px;
   border-bottom: 1px solid #eee;
