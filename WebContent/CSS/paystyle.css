@@ -231,3 +231,8 @@ label {
     width: 40%;
   }
 }
+
+a#pay_done:hover {
+    cursor: pointer;
+}
+
