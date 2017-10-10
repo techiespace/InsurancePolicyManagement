@@ -29,7 +29,7 @@
 
 	<div class="container">
 		<h1
-			style="margin: 3%; margin-bottom: 0; margin-left: 0; font-size: 4.2em;">Summary</h1>
+			style="margin: 3%; margin-bottom: 0; margin-left: 0; font-size: 2.2em;">Summary</h1>
 
 		<%
 			String pName = "";
@@ -75,7 +75,7 @@
 		<!-- Project One -->
 
 		<div class="row"
-			style="border: solid grey 1px; box-shadow: 1px 1px 1px 1px grey; margin-top: 1.7em; margin-bottom: 3em; padding: 2em; background-color: white;">
+			style="border: solid grey 1px; box-shadow: 1px 1px 1px 1px grey; margin-top: 1.7em; margin-bottom: 3em; padding: 1.2em; background-color: white;">
 
 			<div class="col-md-12">
 
@@ -83,23 +83,23 @@
 
 					<div class="col-md-3">
 
-						<span style="color: grey; font-size: 1.2em;">Policy name </span>
+						<span style="color: grey; font-size: 1.1.2em;">Policy name </span>
 
 					</div>
 					<div class="col-md-3">
-						<span style="color: grey; font-size: 1.2em">Maturity Date<br></span>
+						<span style="color: grey; font-size: 1.1.2em">Maturity Date<br></span>
 					</div>
 					<div class="col-md-2">
-						<span style="color: grey; font-size: 1.2em;">Invested
+						<span style="color: grey; font-size: 1.1.2em;">Invested
 							Amount </span>
 					</div>
 
 					<div class="col-md-2">
-						<span style="color: grey; font-size: 1.2em;">Amount on
+						<span style="color: grey; font-size: 1.1.2em;">Amount on
 							Maturity </span>
 					</div>
 					<div class="col-md-2">
-						<span style="color: grey; font-size: 1.2em;">Amount on
+						<span style="color: grey; font-size: 1.1.2em;">Amount on
 							Surrender<br>
 						</span>
 					</div>
@@ -110,21 +110,20 @@
 
 					<div class="col-md-3">
 
-						<span style="font-size: 2em;"> <%
+						<span style="font-size: 1.2em;"> <%
  	out.println(pName);
  %>
 						</span>
 					</div>
 					<div class="col-md-3">
 
-
-						<span style="font-size: 1.6em;"> <%
+						<span style="font-size: 1em;"> <%
  	out.println(maturityDate);
  %>
 						</span>
 					</div>
 					<div class="col-md-2">
-						<span style="font-size: 1.6em;"> <%
+						<span style="font-size: 1em;"> <%
  	out.print("INR <br>");
  %> <%=new custInvestments().myInvestments(pol_no, id)%>
 						</span>
@@ -132,7 +131,7 @@
 
 					<div class="col-md-2">
 
-						<span style="font-size: 1.6em;"> <%
+						<span style="font-size: 1em;"> <%
  	out.println("INR <br>" + pMaturity);
  %>
 						</span>
@@ -140,7 +139,7 @@
 
 					<div class="col-md-2">
 
-						<span style="font-size: 1.6em;"> <%
+						<span style="font-size: 1em;"> <%
  	out.print("INR <br>");
  %><%=1.05 * new custInvestments().myInvestments(pol_no, id)%>
 
