@@ -1,4 +1,4 @@
-<%@ page import="java.sql.*,a_JDBC.jsp.*"%>
+<%@ page import="java.sql.*,a_JDBC.jsp.*,JDBC.jsp.Prem_name"%>
 
 			<%
 				try {
@@ -81,16 +81,16 @@
 
 
 					</h3>
-					<p>
+					<h5>
 						<%
-							out.print("<br> Policy number(s): ");
+							out.print("<br> Policy name(s): ");
 									for (int k = 0; k < cnt3; k++) {
 										if (pol_no[k] != null)
-											out.println(pol_no[k] + "<br><span style='padding-left:8em;'></span>");
+											out.println(new Prem_name().p_name(Integer.parseInt(pol_no[k])) + "<br><span style='padding-left:7.1em;'></span>");
 									}
 						%>
 
-					</p>
+					</h5>
 					<button type="button" style="margin-left: 80%; margin-top: -25%;"
 						class="btn btn-primary add_policy" id="<%=j %>" data-toggle="modal">Add Policy</button>
 				</div>

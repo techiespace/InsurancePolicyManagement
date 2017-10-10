@@ -135,16 +135,16 @@
 
 
 					</h3>
-					<p>
+					<h5>
 						<%
-							out.print("<br> Policy number(s): ");
+							out.print("<br> Policy name(s): ");
 									for (int k = 0; k < cnt3; k++) {
 										if (pol_no[k] != null)
-											out.println(pol_no[k] + "<br><span style='padding-left:8em;'></span>");
+											out.println(new Prem_name().p_name(Integer.parseInt(pol_no[k])) + "<br><span style='padding-left:7.1em;'></span>");
 									}
 						%>
 
-					</p>
+					</h5>
 					<!-- Button trigger modal -->
 					<button type="button" style="margin-left: 80%; margin-top: -25%;"
 						class="btn btn-primary" data-toggle="modal"
