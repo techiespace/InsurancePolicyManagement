@@ -174,7 +174,7 @@
 
 						<div class="col-md-1">
 						<a class=" btn btn-primary checkout_done"
-							style="color: white; margin-left: 2em;"
+							style="color: white; margin-left: 2em;margin-top:-0.5em;"
 							id="<%out.print(pols[acnt]);%>">Pay now</a>
 					</div>
 					</div>
