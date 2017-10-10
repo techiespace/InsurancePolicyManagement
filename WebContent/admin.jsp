@@ -14,7 +14,7 @@
 						$('#dashboard').addClass('active');
 
 						$("#addAgent").click(function() {
-							$('#ad_main').load('addAgents.jsp');
+							$('#ad_main').load('addAgent.jsp');
 							$('.highlight').removeClass('active');
 							$(this).addClass('active');
 						});
