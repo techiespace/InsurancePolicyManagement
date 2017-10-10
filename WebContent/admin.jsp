@@ -26,7 +26,17 @@
 						});
 
 						$("#addPolicy").click(function() {
-							$('#main').load('addPolicy.jsp');
+							$('#main').load('admin_addPolicy.jsp');
+							$('.highlight').removeClass('active');
+							$(this).addClass('active');
+						});
+						$("#allAgents").click(function() {
+							$('#main').load('allAgents.jsp');
+							$('.highlight').removeClass('active');
+							$(this).addClass('active');
+						});
+						$("#allPlans").click(function() {
+							$('#main').load('allPlans.jsp');
 							$('.highlight').removeClass('active');
 							$(this).addClass('active');
 						});
@@ -35,8 +45,7 @@
 							$(this).toggleClass("mod");
 						});
 
-						$(
-								"#myPolicies, #policyPayment, #dashboard, #myProfile, #agentInfo,#invoice")
+						$(".highlight")
 								.click(function() {
 									$(this).toggleClass(".active");
 								});
