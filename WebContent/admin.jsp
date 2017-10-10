@@ -26,7 +26,7 @@
 						});
 
 						$("#addPolicy").click(function() {
-							$('#main').load('admin_addPolicy.jsp');
+							$('#main').load('addNewPolicy.jsp');
 							$('.highlight').removeClass('active');
 							$(this).addClass('active');
 						});
