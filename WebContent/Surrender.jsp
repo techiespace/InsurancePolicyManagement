@@ -7,8 +7,9 @@
 	int id = (Integer) session.getAttribute("Id");
 	String pol_no = request.getParameter("pol_no");
 	int total = new custInvestments().myInvestments(pol_no, id);
-	double i = 1.05 * total;
-	DecimalFormat df = new DecimalFormat("#.##");
+	
+	/* double i = 1.05 * total;
+	DecimalFormat df = new DecimalFormat("#.##"); */
 %>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -139,7 +140,9 @@
 
 				<div class="col-md-2">
 
-					<span style="font-size: 1.6em;"> <%=df.format(i)%>
+					<span style="font-size: 1.6em;"> <%int x1 = new surrenderValueProcedure().surrenderValue(total);
+					out.println(x1);
+					%> <%-- <%=df.format(i)%> --%>
 
 					</span>
 				</div>

@@ -176,19 +176,19 @@
 							<div class="media-body">
 								<%
 									if (day_diff[acnt] < 0) {
-											out.println("You have missed your premium due date for Policy Number:" + pols[acnt] + ".");
+											out.println("You have missed your premium due date for Policy Number: " + pols[acnt] + ".");
 											out.println("Please pay it ASAP!");
 										} else if (day_diff[acnt] == 0) {
-											out.println("Your premium due date for Policy Number:" + pols[acnt] + " is today.");
+											out.println("Your premium due date for Policy Number: " + pols[acnt] + " is today.");
 											out.println("Please pay it ASAP!");
 										} else if (day_diff[acnt] > 0) {
 											if (day_diff[acnt] >= 30) {
 												//Date d=new Prem_date().due_date(cust_id, pols[acnt]);
-												out.println("You have paid your premium for Policy Number:" + pols[acnt] + " for this month.");
+												out.println("You have paid your premium for Policy Number: " + pols[acnt] + " for this month.");
 												out.println("Next premium is due in " + day_diff[acnt] + " days on "
 														+ new Prem_date().due_date(cust_id, pols[acnt]) + ".");
 											} else {
-												out.println("Next premium for Policy Number:" + pols[acnt] + " is due in " + day_diff[acnt]
+												out.println("Next premium for Policy Number: " + pols[acnt] + " is due in " + day_diff[acnt]
 														+ " days on " + new Prem_date().due_date(cust_id, pols[acnt]) + ".");
 											}
 

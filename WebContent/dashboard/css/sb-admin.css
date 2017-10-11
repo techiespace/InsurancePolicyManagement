@@ -295,6 +295,13 @@ div#agentInfo:hover, div#myPolicies:hover, div#myProfile:hover, div#dashboard:ho
 	visibility: hidden;
 }
 
+.addpolicybox:hover{
+	box-shadow: 2px 2px 2px 2px;
+	position:relative;
+	top: -5%;
+	left: -5px;
+}
+
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a,
 	#mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a
 	{

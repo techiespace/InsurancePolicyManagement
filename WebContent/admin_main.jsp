@@ -15,19 +15,19 @@
 		});
 
 		$("#my-customers").click(function() {
-			$('#amain').load('myCustomers.jsp');
+			$('#ad_main').load('myCustomers.jsp');
 			$('.highlight').removeClass('active');
 			$('#myCustomers').addClass('active');
 		});
 
 		$("#new-customer").click(function() {
-			$('#amain').load('addCustomers.jsp');
+			$('#ad_main').load('addNewPolicy.jsp');
 			$('.highlight').removeClass('active');
 			$('#addCustomers').addClass('active');
 		});
 
 		$("#plan-details").click(function() {
-			$('#amain').load('allPlans.jsp');
+			$('#ad_main').load('allPlans.jsp');
 			$('.highlight').removeClass('active');
 			$('#allPlans').addClass('active');
 		});
@@ -82,7 +82,7 @@
 			</div>
 		</div>
 		<div class="col-xl-6 col-sm-6 mb-3" style="display: block;">
-			<div class="card text-white bg-warning o-hidden h-100";">
+			<div class="card text-white bg-warning o-hidden h-100"">
 				<div class="card-body">
 					<div class="card-body-icon">
 						<i class="fa fa-fw fa-money"></i>

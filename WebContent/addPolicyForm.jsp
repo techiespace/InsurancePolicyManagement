@@ -5,8 +5,10 @@ String cust=request.getParameter("cust_id");
 int cust_id=Integer.parseInt(cust);
 %>
 <head>
+<link href="dashboard/css/sb-admin.css" rel="stylesheet">
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
+
 	$(document).ready(function() {
 
 		$("#holder").delegate('.select', 'click', function() {
@@ -35,7 +37,7 @@ int cust_id=Integer.parseInt(cust);
 		if(names[i]==null)
 			break;
 %>
-	<div class="select text-center thumbnail box shade ancient-bg" id="<%=nos[i]%>">
+	<div class="select text-center thumbnail box shade ancient-bg addpolicybox" id="<%=nos[i]%>">
 	<div id="content" style="z-index: 1;opacity:1;">
 		<h3 ><%=names[i] %></h3>
 		<h5 style="margin-top:1em;"><%out.print("Policy no: "+nos[i]); %></h5>
