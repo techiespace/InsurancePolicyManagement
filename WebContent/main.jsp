@@ -75,15 +75,15 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">My Policies</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="my-policies-details" class="float-left"
+				<a href="#" id="my-policies-details" class="card-footer text-white clearfix small z-1"> <span
+					 class="float-left"
 					style="font-size: 1.2em">View Details</span> <span
 					class="float-right"> <i class="fa fa-angle-right"></i>
 				</span>
 				</a>
 			</div>
 		</div>
-		<div class="col-xl-6 col-sm-6 mb-3" style="display: block;">
+		<div class="col-xl-6 col-sm-6 mb-3"  style="display: block;">
 			<div class="card text-white bg-warning o-hidden h-100";">
 				<div class="card-body">
 					<div class="card-body-icon">
@@ -91,8 +91,8 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">Premium Payment</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="premium-payment-details" class="float-left"
+				<a href="#" id="premium-payment-details" class="card-footer text-white clearfix small z-1"> <span
+					class="float-left"
 					style="font-size: 1.2em">View Details</span> <span
 					class="float-right"> <i class="fa fa-angle-right"></i>
 				</span>
@@ -107,8 +107,8 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">My Profile</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="my-profile-details" class="float-left" style="font-size: 1.2em">View
+				<a href="#" id="my-profile-details"  class="card-footer text-white clearfix small z-1"> <span
+					class="float-left" style="font-size: 1.2em">View
 						Details</span> <span class="float-right"> <i
 						class="fa fa-angle-right"></i>
 				</span>
@@ -123,8 +123,8 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">New plans by LIC!</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="new-plans-details" class="float-left" style="font-size: 1.2em">View
+				<a href="#" id="new-plans-details" class="card-footer text-white clearfix small z-1"> <span
+					 class="float-left" style="font-size: 1.2em">View
 						Details</span> <span class="float-right"> <i
 						class="fa fa-angle-right"></i>
 				</span>
