@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <html>
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.PreparedStatement"%>
@@ -136,7 +137,7 @@
 						<div class="col-md-2">
 
 							<span style="font-size: 1em;"> <%
- 	out.println(pols_amt[acnt]);
+ 	out.println("₹ "+pols_amt[acnt]);
  %>
 							</span>
 

@@ -30,4 +30,10 @@ public class surrenderValueProcedure {
 		return ye;
 	}
 
+	public static void main(String[] args)
+	{
+		int x = new surrenderValueProcedure().surrenderValue(100);
+		System.out.println(x);
+	}
+	
 }
