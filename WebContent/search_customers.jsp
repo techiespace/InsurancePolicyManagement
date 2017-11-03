@@ -61,10 +61,6 @@
 %>
 
 
-
-
-<hr>
-
 <!-- Project One -->
 
 <div class="row">

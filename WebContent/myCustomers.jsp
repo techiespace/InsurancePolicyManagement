@@ -15,7 +15,6 @@
 	$(document).ready(function() {
 
 		$("#search-name").keyup(function() {
-			console.log = "Yeess";
 			name = $("#search-name").val();
 			$.ajax({
 				type : "POST",
@@ -56,6 +55,7 @@
 			<div class="col-md-3"></div>
 			<div class="col-md-1"></div>
 		</div>
+		<hr>
 		<div id="cont">
 			<%
 				try {
@@ -117,7 +117,7 @@
 
 
 
-			<hr>
+			
 
 			<!-- Project One -->
 
@@ -135,7 +135,11 @@
 
 
 					</h3>
-					<h5>
+					<button type="button" style="margin-left: 80%; margin-top: -7%;"
+						class="btn btn-primary" data-toggle="modal"
+						data-target="#polDetModal<%out.print(modeli);%>">View
+						Details</button>					
+					<h5 style="margin-top:-1.2em;margin-left:0.2em">
 						<%
 							out.print("<br> Policy name(s): ");
 									for (int k = 0; k < cnt3; k++) {
@@ -146,10 +150,7 @@
 
 					</h5>
 					<!-- Button trigger modal -->
-					<button type="button" style="margin-left: 80%; margin-top: -25%;"
-						class="btn btn-primary" data-toggle="modal"
-						data-target="#polDetModal<%out.print(modeli);%>">View
-						Details</button>
+
 
 					<!-- Modal -->
 					<div class="modal fade" id="polDetModal<%out.print(modeli);%>"
