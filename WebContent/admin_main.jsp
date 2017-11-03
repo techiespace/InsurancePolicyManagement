@@ -73,8 +73,8 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">All Agents</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="my-customers" class="float-left" style="font-size: 1.2em">View
+				<a href="#" id="my-customers" class="card-footer text-white clearfix small z-1"> <span
+					 class="float-left" style="font-size: 1.2em">View
 						Details</span> <span class="float-right"> <i
 						class="fa fa-angle-right"></i>
 				</span>
@@ -89,8 +89,8 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">Add Agent</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="premium-payment-details" class="float-left"
+				<a href="#" id="premium-payment-details" class="card-footer text-white clearfix small z-1"> <span
+					 class="float-left"
 					style="font-size: 1.2em">View Details</span> <span
 					class="float-right"> <i class="fa fa-angle-right"></i>
 				</span>
@@ -105,8 +105,8 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">Add Policy</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="new-customer" class="float-left" style="font-size: 1.2em">View
+				<a href="#" 	id="new-customer" class="card-footer text-white clearfix small z-1"> <span
+				 class="float-left" style="font-size: 1.2em">View
 						Details</span> <span class="float-right"> <i
 						class="fa fa-angle-right"></i>
 				</span>
@@ -121,8 +121,8 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">All plans by LIC!</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="plan-details" class="float-left" style="font-size: 1.2em">View
+				<a href="#" 	id="plan-details" class="card-footer text-white clearfix small z-1"> <span
+				 class="float-left" style="font-size: 1.2em">View
 						Details</span> <span class="float-right"> <i
 						class="fa fa-angle-right"></i>
 				</span>
