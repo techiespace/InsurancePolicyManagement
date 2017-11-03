@@ -29,11 +29,11 @@ $(document).ready(function() {
 <div id="main">
 <center
 			style="height: 100v; width: 50%; margin: 0 auto; position: relative; top: 29vh;
-	/* top: 50%; */ bottom: 50%; left: 0px; right: 0;">
+	 top: 0; bottom: 0; left: 0; right: 0;">
 			<div style="font-size:2em;font-weight:bold">Transaction Successful!</div><br>
 			<br>
-			<button id="goHome" class="btn btn-primary">Home</button>
-		</center>
+			<button style="width:200px;margin:20px;" id="goHome" class="btn btn-primary">Go to Dashboard</button>
+</center>
 </div>
 </body>
 </html>

@@ -38,9 +38,15 @@ $(document).ready(function() {
 </head>
 <body>
 <div id="main">
-<h1>Policy Added Successfully</h1>
-<button id="addPol" class="btn btn-primary">Add another customer</button>
-<button id="goHome" class="btn btn-primary">Go to Dashboard</button>
+
+<center
+			style="height: 100v; width: 50%; margin: 0 auto; position: relative; top: 29vh; bottom: 50%; left: 0px; right: 0;">
+			<div style="font-size:2em;font-weight:bold">Policy Added Successfully</div><br>
+			<br>
+			<button style="width:200px;margin:20px;"id="goHome" class="btn btn-primary">Go to Dashboard</button>
+			<button style="width:200px;margin:20px;" id="addPol" class="btn btn-primary">Add another Policy</button>
+</center>
+
 </div>
 </body>
 </html>

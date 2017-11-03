@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 
 public class Add_pol {
 	public void addNewPolicy(String pname, String pno, String dur, String lfee, String prem, String comm) {
-		String sql = "INSERT INTO policy(p_name,pol_no,duration,late_fee,premium,commision) VALUES (?,?,?,?,?,?)";
+		String sql = "INSERT INTO policy(p_name,pol_no,duration,late_fee,premium,commision,image) VALUES (?,?,?,?,?,?,NULL)";
 		//get prem_pdate
 		
 		try {

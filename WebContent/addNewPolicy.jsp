@@ -27,7 +27,7 @@
 			var prem = $('#premium').val();
 			var comm = $('#commision').val();
 		
-			$('#main').load("newPolAddSuccess.jsp?policy_name="+pname+"&policy_number="+pno+"&duration="+dur+"&late_fee="+lfee+"&premium="+prem+"&commision="+comm);
+			$('#ad_main').load("newPolAddSuccess.jsp?policy_name="+pname+"&policy_number="+pno+"&duration="+dur+"&late_fee="+lfee+"&premium="+prem+"&commision="+comm);
 	});
 </script>
 <style>

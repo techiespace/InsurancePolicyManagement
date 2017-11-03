@@ -83,15 +83,6 @@ label{
 				</div>
 			</div>
 			
-			<div class="form-group">
-				<label class="col-md-4 control-label">Last Name</label>
-				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<input type="file" name="file" id="file">
-					</div>
-				</div>
-			</div>
-			
 			<br>
 			<!-- Text input-->
 			<div class="form-group">

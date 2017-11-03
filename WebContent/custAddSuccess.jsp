@@ -4,27 +4,16 @@
 <%
 		int aid = (Integer) session.getAttribute("Id");
 		String policy = request.getParameter("policy");
-		out.println(policy);
 		String fname = request.getParameter("first_name");
-		out.println(fname);
 		String mname = request.getParameter("middle_name");
-		out.println(mname);
 		String lname = request.getParameter("last_name");
-		out.println(lname);
 		String email = request.getParameter("email");
-		out.println(email);
 		String phone = request.getParameter("phone");
-		out.println(phone);
 		String add = request.getParameter("address");
-		out.println(add);
 		String dob = request.getParameter("dob");
-		out.println(dob);
 		String uname = request.getParameter("uname");
-		out.println(uname);
 		String passwd = request.getParameter("passd");
-		out.println(passwd);
 		String desig = request.getParameter("desig");
-		out.println(desig);
 		Add_cust c = new Add_cust();
 		c.addCustInfo(aid, fname, mname, lname, email, phone, add, dob, uname, passwd, desig, policy);
 		//c.addCustInfo(1, "w", "e", "r", "t", "y", "ed", "01/01/0101", "u", "i", "o","1");
@@ -35,7 +24,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
 <script type="text/javascript">
 $(document).ready(function() {
 	$("#goHome").click(function() {
@@ -45,19 +33,22 @@ $(document).ready(function() {
 		$('#amain').load('addCustomers.jsp');
 	});
 	
-	
-	var f = <%=fname%>;
-	alert(f);
-	
 });
 
 </script>
 </head>
 <body>
 <div id="main">
-<h1>Customer Added Successfully</h1>
-<button id="addCust" class="btn btn-primary">Add another customer</button>
-<button id="goHome" class="btn btn-primary">Go to Dashboard</button>
+<center
+			style="height: 100v; width: 50%; margin: 0 auto; position: relative; top: 29vh;
+	/* top: 50%; */ bottom: 50%; left: 0px; right: 0;">
+			<div style="font-size:2em;font-weight:bold">Customer Added Successfully</div><br>
+			<br>
+			<button style="width:200px;margin:20px;"id="goHome" class="btn btn-primary">Go to Dashboard</button>
+			<button style="width:200px;margin:20px;" id="addCust" class="btn btn-primary">Add another customer</button>
+</center>
+
+
 </div>
 </body>
 </html>

@@ -137,7 +137,8 @@
 				</p>
 			</div>
 		</div>
-		<br> <br> <br> <br>
+		<hr>
+		<br> <br>
 		<div class="row">
 			<div class="col-md-4"></div>
 
@@ -167,7 +168,7 @@
 				</p>
 				<br>
 				<br>
-				<button style="float: right;" id="pay_done" class="btn btn-primary">Checkout</button>
+				<button style="float: right;width:200px;" id="pay_done" class="btn btn-primary">Checkout</button>
 			</div>
 		</div>
 

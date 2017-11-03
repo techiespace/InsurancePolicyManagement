@@ -82,7 +82,7 @@
 				</p>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<p>
 					<b>Policy Name</b>
 				</p>
@@ -94,7 +94,7 @@
 				</p>
 			</div>
 
-			<div style="padding-left: 0px;" class="col-md-2">
+			<div style="padding-left: 0px;" class="col-md-3">
 				<p>
 					<b>Term</b>
 				</p>
@@ -122,7 +122,7 @@
 				</p>
 			</div>
 
-			<div class="col-md-3">
+			<div class="col-md-2">
 				<p>
 					<%
 						String pol_name = new Prem_name().p_name(pol_no);
@@ -139,7 +139,7 @@
 				</p>
 			</div>
 
-			<div style="padding-top: 16px; padding-left: 0px;" class="col-md-2">
+			<div style="padding-top: 16px; padding-left: 0px;" class="col-md-3">
 				<p>
 					<%
 						Date e_date = new Prem_date().due_date(cust_id, pol_no);
@@ -157,7 +157,8 @@
 				</p>
 			</div>
 		</div>
-		<br> <br> <br> <br>
+		<hr>
+		<br> <br>
 		<div class="row">
 			<div class="col-md-4"></div>
 
@@ -187,7 +188,7 @@
 				</p>
 				<br>
 				<br>
-				<button style="float: right;" id="pay_done" class="btn btn-primary">Checkout</button>
+				<button style="float: right;width:200px;" id="pay_done" class="btn btn-primary">Checkout</button>
 			</div>
 		</div>
 

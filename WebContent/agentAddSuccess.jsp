@@ -3,19 +3,12 @@
 <%@ page import="a_JDBC.jsp.*"%>
 <%
 		String fname = request.getParameter("first_name");
-		out.println(fname);
 		String lname = request.getParameter("last_name");
-		out.println(lname);
 		String email = request.getParameter("email");
-		out.println(email);
 		String phone = request.getParameter("phone");
-		out.println(phone);
 		String add = request.getParameter("address");
-		out.println(add);
 		String uname = request.getParameter("uname");
-		out.println(uname);
 		String passwd = request.getParameter("passd");
-		out.println(passwd);
 		new Add_agent().addAgentInfo(fname, lname, email, phone, add, uname, passwd);
 		//c.addCustInfo(1, "w", "e", "r", "t", "y", "ed", "01/01/0101", "u", "i", "o","1");
 		//response.sendRedirect("aindex.jsp?policy="+policy+"&first_name="+fname+"&middle_name="+mname+"&last_name="+lname+"&email="+email+"&phone="+phone+"&address="+add+"&dob"+dob+"&uname="+uname+"&passd="+passwd+"&desig="+desig);
@@ -36,18 +29,22 @@ $(document).ready(function() {
 	});
 	
 	
-	var f = <%=fname%>;
-	alert(f);
-	
 });
 
 </script>
 </head>
 <body>
 <div id="main">
-<h1>Customer Added Successfully</h1>
-<button id="addCust" class="btn btn-primary">Add another Agent</button>
-<button id="goHome" class="btn btn-primary">Go to Dashboard</button>
+<center
+			style="height: 100v; width: 50%; margin: 0 auto; position: relative; top: 29vh !important;
+	 top: 0; bottom: 0; left: 0; right: 0;">
+			<div style="font-size:2em;font-weight:bold">Agent Added Successfully</div><br>
+			<br>
+			<button style="width:200px;margin:20px;" id="goHome" class="btn btn-primary">Go to Dashboard</button>
+			<button style="width:200px;margin:20px;" id="addCust" class="btn btn-primary">Add another Agent</button>
+			
+</center>
+
 </div>
 </body>
 </html>
