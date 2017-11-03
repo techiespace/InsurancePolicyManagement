@@ -179,13 +179,13 @@
 									String last=name[2];
 									String full=first+" "+mid+" " +last;
 									if (day_diff[acnt] < 0) {
-											out.println(full+ " has missed his/her premium due date for Policy Number: " + pol_no[acnt] + ".");
+											out.println(full+ " has missed his/her premium due date for " + new Prem_name().p_name(pol_no[acnt]) + ".");
 										} else if (day_diff[acnt] == 0) {
-											out.println(full+"'s premium due date for Policy Number: " + pol_no[acnt] + " is today.");
+											out.println(full+"'s premium due date for " + new Prem_name().p_name(pol_no[acnt]) + " is today.");
 										} else if (day_diff[acnt] > 0) {
 											if (day_diff[acnt] <= 5) {
 												//Date d=new Prem_date().due_date(cust_id, pols[acnt]);
-												out.println(full+"'s next premium for Policy Number: " + pol_no[acnt] + " is due in " + day_diff[acnt]
+												out.println(full+"'s next premium for " + new Prem_name().p_name(pol_no[acnt]) + " is due in " + day_diff[acnt]
 														+ " days on " + new Prem_date().due_date(cust_id[acnt], pol_no[acnt]) + ".");
 											}
 										}
