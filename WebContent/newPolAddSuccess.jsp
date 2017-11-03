@@ -8,9 +8,10 @@
 		String lfee = request.getParameter("late_fee");
 		String prem = request.getParameter("premium");
 		String comm = request.getParameter("commision");
+		String desc = request.getParameter("policy_desc");
 		
 		Add_pol p = new Add_pol();
-		p.addNewPolicy(pname,pno,dur,lfee,prem,comm);
+		p.addNewPolicy(pname,pno,dur,lfee,prem,comm,desc);
 		//c.addCustInfo(1, "w", "e", "r", "t", "y", "ed", "01/01/0101", "u", "i", "o","1");
 		//response.sendRedirect("aindex.jsp?policy="+policy+"&first_name="+fname+"&middle_name="+mname+"&last_name="+lname+"&email="+email+"&phone="+phone+"&address="+add+"&dob"+dob+"&uname="+uname+"&passd="+passwd+"&desig="+desig);
 	%>

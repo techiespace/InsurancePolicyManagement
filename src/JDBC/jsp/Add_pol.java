@@ -5,20 +5,26 @@ import java.text.SimpleDateFormat;
 
 
 public class Add_pol {
-	public void addNewPolicy(String pname, String pno, String dur, String lfee, String prem, String comm) {
-		String sql = "INSERT INTO policy(p_name,pol_no,duration,late_fee,premium,commision,image) VALUES (?,?,?,?,?,?,NULL)";
+	public void addNewPolicy(String pname, String pno, String dur, String lfee, String prem, String comm, String desc) {
+		String sql = "INSERT INTO policy(p_name,duration,late_fee,premium,commision,image) VALUES (?,?,?,?,?,?)";
+		String descsql = "INSERT INTO policy_description(p_name,descp) VALUES (?,?)";
 		//get prem_pdate
 		
 		try {
 			Connection conn = new Connect().myDBConnect();
 			PreparedStatement prep = conn.prepareStatement(sql);
+			PreparedStatement descprep = conn.prepareStatement(descsql);
+			descprep.setString(1, pname);
+			descprep.setString(2, desc);
 			prep.setString(1, pname);
-			prep.setString(2, pno);
-			prep.setString(3, dur);
-			prep.setString(4, lfee);
-			prep.setString(5, prem);
-			prep.setString(6, comm);
+			prep.setString(2, dur);
+			prep.setString(3, lfee);
+			prep.setString(4, prem);
+			prep.setString(5, comm);
+			prep.setString(6, "images/plan4.jpg");
+
 			prep.execute();
+			descprep.execute();
 			
 			
 		}

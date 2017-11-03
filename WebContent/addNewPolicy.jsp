@@ -21,13 +21,13 @@
 					function() {
 	
 			var pname = $('#policy_name').val();
-			var pno = $('#policy_number').val();
 			var dur = $('#duration').val();
 			var lfee = $('#late_fee').val();
 			var prem = $('#premium').val();
 			var comm = $('#commision').val();
+			var desc = $('#policy_desc').val();
 		
-			$('#ad_main').load("newPolAddSuccess.jsp?policy_name="+pname+"&policy_number="+pno+"&duration="+dur+"&late_fee="+lfee+"&premium="+prem+"&commision="+comm);
+			$('#ad_main').load("newPolAddSuccess.jsp?policy_name="+pname+"&duration="+dur+"&late_fee="+lfee+"&premium="+prem+"&commision="+comm+"&policy_desc="+desc);
 	});
 </script>
 <style>
@@ -70,18 +70,7 @@ label{
 					</div>
 				</div>
 			</div>
-			<br>
-			<!-- Text input-->
 			
-			<div class="form-group">
-				<label class="col-md-4 control-label">Policy Number</label>
-				<div class="col-md-4 inputGroupContainer">
-					<div class="input-group">
-						<input id="policy_number"
-							placeholder="Policy Number" class="form-control" type="text">
-					</div>
-				</div>
-			</div>
 			<br>
 			<!-- Text input-->
 
@@ -133,7 +122,17 @@ label{
 			</div>
 			<br>
 			<!-- Text input-->
+<!-- Text input-->
 
+			<div class="form-group">
+				<label class="col-md-4 control-label">Policy Description</label>
+				<div class="col-md-4 inputGroupContainer">
+					<div class="input-group">
+						<input id="policy_desc"
+							placeholder="Policy Description" class="form-control" type="text">
+					</div>
+				</div>
+			</div>
 			
 			<br>
 			<!-- Text input-->
