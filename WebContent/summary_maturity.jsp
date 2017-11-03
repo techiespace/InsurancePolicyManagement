@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Statement"%>
@@ -124,7 +126,7 @@
 					</div>
 					<div class="col-md-2">
 						<span style="font-size: 1em;"> <%
- 	out.print("INR <br>");
+ 	out.print("₹");
  %> <%=new custInvestments().myInvestments(pol_no, id)%>
 						</span>
 					</div>
@@ -132,7 +134,7 @@
 					<div class="col-md-2">
 
 						<span style="font-size: 1em;"> <%
- 	out.println("INR <br>" + pMaturity);
+ 	out.println("₹ " + pMaturity);
  %>
 						</span>
 					</div>
@@ -140,7 +142,7 @@
 					<div class="col-md-2">
 
 						<span style="font-size: 1em;"> <%
- 	out.print("INR <br>");
+ 	out.print("₹ ");
  %><%=1.05 * new custInvestments().myInvestments(pol_no, id)%>
 
 						</span>

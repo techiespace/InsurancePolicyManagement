@@ -1,4 +1,5 @@
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Statement"%>
@@ -73,7 +74,7 @@
 
 
 
-
+		<hr>
 		<div id="cont">
 			<%
 				String pName = "";
@@ -103,7 +104,7 @@
 						pPremium = rs.getString(3);
 						pComission = rs.getString(4);
 			%>
-			<hr>
+			
 
 			<!-- Project One -->
 
@@ -122,13 +123,13 @@
 					<p>
 						<b>Policy Duration: </b>
 						<%
-							out.println(pDuration);
+							out.println(pDuration+" months");
 						%><br> <b>Late Fee: </b>
 						<%
-							out.println(pLatefee);
+							out.println(pLatefee+" %");
 						%><br> <b>Premium Amount: </b>
 						<%
-							out.println(pPremium);
+							out.println("₹ "+pPremium);
 						%>
 					</p>
 					<!-- Button trigger modal -->
