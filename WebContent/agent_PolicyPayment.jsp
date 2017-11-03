@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="a_JDBC.jsp.*"%>
 <%@ page import="java.sql.*"%>
@@ -159,7 +161,7 @@
 
 							<span style="font-size: 1em;"> <%
  	int prem[] = new Prem_amount().p_details(pol_no[acnt]);
- 		out.println(prem[0]);
+ 		out.println("₹ "+prem[0]);
  %>
 							</span>
 

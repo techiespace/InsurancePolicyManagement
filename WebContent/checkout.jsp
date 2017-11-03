@@ -9,8 +9,9 @@
 
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="CSS/paystyle.css">
 
+<link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
 
 
@@ -41,97 +42,135 @@
 
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
-$(document).ready(function() {
+	$(document).ready(
+			function() {
 
-	$("#pay_done").click(function() {
-        var pol_no=<%=pol_no%>;
-        var total=<%=total%>;
-        var commision=<%=commision1%>;
-		$('#main').load('ctrans_final.jsp?pol_no='+pol_no+'&total='+total+'&commision='+commision);
-	});
+				$("#pay_done").click(
+						function() {
+							var pol_no =
+<%=pol_no%>
+	;
+							var total =
+<%=total%>
+	;
+							var commision =
+<%=commision1%>
+	;
+							$('#main').load(
+									'ctrans_final.jsp?pol_no=' + pol_no
+											+ '&total=' + total + '&commision='
+											+ commision);
+						});
 
-});
+			});
 </script>
 </head>
 
-<body style="margin-top:-27px">
+<body style="margin-top: -27px">
 
-	<div class="shopping-cart">
-		<br>
-		<h1>Policy Payment</h1>
-		<br>
-		<div class="column-labels">
-			<label class="product-details">Product</label> 
-			<label class="product-price">Policy Number</label> 
-			<label class="product-quantity">Term</label> 
-			<label class="product-line-price" style="padding-right: 249px !important;">Cost</label>
+	<br>
+	<h1>Policy Payment</h1>
+	<br>
+
+	<div style="margin: 20px;">
+
+		<!-- headers -->
+		<div class="row">
+			<div class="col-md-3">
+				<p>
+					<b>Product</b>
+				</p>
+			</div>
+
+			<div class="col-md-3">
+				<p>
+					<b>Policy Number</b>
+				</p>
+			</div>
+
+			<div style="padding-left: 0px;" class="col-md-3">
+				<p>
+					<b>Term</b>
+				</p>
+			</div>
+
+			<div class="col-md-3">
+				<p>
+					<b>Cost</b>
+				</p>
+			</div>
 		</div>
-		<div class="product">
-			<div class="product-details">
-				<div class="product-title">
+		<hr>
+		<div class="row">
+			<div class="col-md-3">
+				<p>
 					<%
 						String pol_name = new Prem_name().p_name(pol_no);
 						out.println("<h3>" + pol_name + "</h3>");
 					%>
-				</div>
+				</p>
 			</div>
-			<div class="product-details">
-			<div style="padding-left: 4px;" class="product-price" id="pol">
-				<%
-					out.println(pol_no);
-				%>
+
+			<div style="padding-top: 16px;" class="col-md-3">
+				<p>
+					<%
+						out.println(pol_no);
+					%>
+				</p>
 			</div>
+
+			<div style="padding-top: 16px; padding-left: 0px;" class="col-md-3">
+				<p>
+					<%
+						Date e_date = new Prem_date().due_date(cust_id, pol_no);
+						Date s_date = new Term().term_date(cust_id, pol_no);
+						out.println(e_date + " to " + s_date);
+					%>
+				</p>
 			</div>
-			<div class="product-details">
-			<div class="product-quantity">
-				<%
-					Date e_date = new Prem_date().due_date(cust_id, pol_no);
-					Date s_date = new Term().term_date(cust_id, pol_no);
-					out.println(e_date + " to " + s_date);
-				%>
-			</div>
-			</div>
-			<div class="product-details">
-			<div class="product-line-price" style="padding-right: 0px !important;">
-				<%
-					out.println("INR " + premium);
-				%>
-			</div>
+
+			<div style="padding-top: 16px;" class="col-md-3">
+				<p>
+					<%
+						out.println("INR " + premium);
+					%>
+				</p>
 			</div>
 		</div>
+		<br> <br> <br> <br>
+		<div class="row">
+			<div class="col-md-4"></div>
 
-		<div class="totals">
-			<div class="totals-item">
-				<label>Late Fee</label>
-				<div class="totals-value" id="cart-shipping">
+			<div class="col-md-4"></div>
+
+			<div class="col-md-4" style="padding-right: 70px;">
+				<p style="float: right;">
+					<b>Late Fee: </b>
 					<%
 						out.println("INR " + act_latefee);
 					%>
-				</div>
-			</div>
-			<div class="totals-item">
-				<label>Tax (5%)</label>
-				<div class="totals-value" id="cart-tax">
+				</p>
+				<br>
+				<br>
+				<p style="float: right;">
+					<b>Tax (5%): </b>
 					<%
 						out.println("INR " + tax);
 					%>
-				</div>
-			</div>
-
-			<div class="totals-item totals-item-total">
-				<label>Grand Total</label>
-				<div class="totals-value" id="cart-total">
+				</p>
+				<br>
+				<p style="font-weight: 800; font-size: 1.5em; float: right;">
+					<b>Grand Total: </b>
 					<%
-						out.println("<h4>INR " + total + "</h4>");
+						out.println("<span style='color: red;'>INR " + total + "</span>");
 					%>
-				</div>
+				</p>
+				<br>
+				<br>
+				<button style="float: right;" id="pay_done" class="btn btn-primary">Checkout</button>
 			</div>
 		</div>
-		<a id="pay_done"
-			style="color: white; margin-left: 82%; margin-right: 5%; font-size: 1.2em; margin-top: 16%;"
-			class="nav-link btn btn-primary"> <i class="fa fa-fw fa-sign-out"></i>
-			Checkout
-		</a>
+
 
 	</div>
 	<script
