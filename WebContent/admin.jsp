@@ -6,53 +6,51 @@
 <head>
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
+	$(document).ready(function() {
 
-						$('#ad_main').load('admin_main.jsp');
-						$('#dashboard').addClass('active');
+		$('#ad_main').load('admin_main.jsp');
+		$('#dashboard').addClass('active');
 
-						$("#addAgent").click(function() {
-							$('#ad_main').load('addAgent.jsp');
-							$('.highlight').removeClass('active');
-							$(this).addClass('active');
-						});
+		$("#addAgent").click(function() {
+			$('#ad_main').load('addAgent.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
 
-						$("#dashboard").click(function() {
-							$('#ad_main').load('admin_main.jsp');
-							$('.highlight').removeClass('active');
-							$(this).addClass('active');
-						});
+		$("#dashboard").click(function() {
+			$('#ad_main').load('admin_main.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
 
-						$("#addPolicy").click(function() {
-							$('#ad_main').load('addNewPolicy.jsp');
-							$('.highlight').removeClass('active');
-							$(this).addClass('active');
-						});allAgents
+		$("#addPolicy").click(function() {
+			$('#ad_main').load('addNewPolicy.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
+		allAgents
 
-						$("#allPlans").click(function() {
-							$('#ad_main').load('allPlans.jsp');
-							$('.highlight').removeClass('active');
-							$(this).addClass('active');
-						});
+		$("#allPlans").click(function() {
+			$('#ad_main').load('allPlans.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
 
-						$("#allAgents").click(function() {
-							$('#ad_main').load('allAgents.jsp');
-							$('.highlight').removeClass('active');
-							$(this).addClass('active');
-						});
+		$("#allAgents").click(function() {
+			$('#ad_main').load('allAgents.jsp');
+			$('.highlight').removeClass('active');
+			$(this).addClass('active');
+		});
 
-						$(".highlight").hover(function() {
-							$(this).toggleClass("mod");
-						});
+		$(".highlight").hover(function() {
+			$(this).toggleClass("mod");
+		});
 
-						$(".highlight")
-								.click(function() {
-									$(this).toggleClass(".active");
-								});
+		$(".highlight").click(function() {
+			$(this).toggleClass(".active");
+		});
 
-					});
+	});
 </script>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -109,7 +107,7 @@
 					title="Charts">
 					<div id="addAgent" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-server"></i> <span
+						<a> <i class="fa fa-fw fa-plus"></i> <span
 							class="nav-link-text"> Add Agent</span>
 						</a>
 					</div>
@@ -118,7 +116,7 @@
 					title="Charts">
 					<div id="addPolicy" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-money"></i> <span
+						<a> <i class="fa fa-fw fa-plus"></i> <span
 							class="nav-link-text"> Add Policy</span>
 						</a>
 					</div>
@@ -127,7 +125,7 @@
 					title="Charts">
 					<div id="allAgents" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-money"></i> <span
+						<a> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> All Agents</span>
 						</a>
 					</div>
@@ -136,7 +134,7 @@
 					title="Charts">
 					<div id="allPlans" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-money"></i> <span
+						<a> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text">All Plans</span>
 						</a>
 					</div>

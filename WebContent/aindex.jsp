@@ -212,7 +212,7 @@ footer {
 					title="Charts">
 					<div id="myProfile" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-server"></i> <span
+						<a> <i class="fa fa-fw fa-address-card-o"></i> <span
 							class="nav-link-text"> My Profile</span>
 						</a>
 					</div>
@@ -230,7 +230,7 @@ footer {
 					title="Charts">
 					<div id="addCustomers" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-money"></i> <span
+						<a> <i class="fa fa-fw fa-plus"></i> <span
 							class="nav-link-text"> Add Customers</span>
 						</a>
 					</div>
@@ -239,7 +239,7 @@ footer {
 					title="Charts">
 					<div id="addPolicy" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-money"></i> <span
+						<a> <i class="fa fa-fw fa-plus"></i> <span
 							class="nav-link-text"> Add Policy</span>
 						</a>
 					</div>
@@ -248,7 +248,7 @@ footer {
 					title="Charts">
 					<div id="aPolicyPayment" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-address-card-o"></i> <span
+						<a> <i class="fa fa-fw fa-money"></i> <span
 							class="nav-link-text"> Make Payment</span>
 						</a>
 					</div>
@@ -257,7 +257,7 @@ footer {
 					title="Tables">
 					<div id="allPlans" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-user-o"></i> <span
+						<a> <i class="fa fa-fw fa-server"></i> <span
 							class="nav-link-text"> All Plans</span>
 						</a>
 					</div>
@@ -274,7 +274,7 @@ footer {
 				<li class="nav-item" data-toggle="tooltip" data-placement="right"
 					title="Tables">
 					<div id="summary" class="nav-link highlight" style="color:#F2B809;">
-						<a > <i class="fa fa-fw fa-user-o"></i>
+						<a > <i class="fa fa-fw fa-industry"></i>
 							<span class="nav-link-text"> Summary</span>
 						</a>
 					</div>

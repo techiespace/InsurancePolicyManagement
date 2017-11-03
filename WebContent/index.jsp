@@ -195,7 +195,7 @@
 					title="Tables">
 					<div id="summary" class="nav-link highlight"
 						style="color: #F2B809;">
-						<a> <i class="fa fa-fw fa-user-o"></i> <span
+						<a> <i class="fa fa-fw fa-industry"></i> <span
 							class="nav-link-text"> Summary</span>
 						</a>
 					</div>
