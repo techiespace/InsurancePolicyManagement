@@ -16,6 +16,35 @@
 %>
 
 <script type="text/javascript">
+$(document).ready(function(){
+	$('.alph').keydown(function(e){
+	console.log("aplh");
+    // Allow: backspace, delete, tab, escape, enter and .
+    if (e.keyCode == 32) {
+        e.preventDefault();
+    }
+    e = e || window.event;
+    var charCode = (typeof e.which == "undefined") ? e.keyCode : e.which;
+    var charStr = String.fromCharCode(charCode);
+    if (/\d/.test(charStr)) {
+        return false;
+    }
+	});
+
+	$('.nums').keydown(function(e){
+    // $('#phone_number').removeClass("highlight")
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 || (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || (e.keyCode >= 35 && e.keyCode <= 40)) {
+        // Allow: home, end, left, right, down, up
+
+        // let it happen, don't do anything
+        return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+    }
+	});
 	$('#addcustbtn')
 			.click(
 					function() {
@@ -45,40 +74,45 @@
 			console.log(desig);
 			$('#amain').load("custAddSuccess.jsp?policy="+policy+"&first_name="+fname+"&middle_name="+mname+"&last_name="+lname+"&email="+email+"&phone="+phone+"&address="+add+"&dob="+dob+"&uname="+uname+"&passd="+passwd+"&desig="+desig);
 	});
+
+});	
 </script>
 <style>
-.form-group{
-	display:inline-flex;
-}
-.control-label{
-	width:600px;
-}
-.container{
-	padding-bottom:50px;
-}
-label{
-	font-weight:bold;
-}
-.selectpicker{
-	width:216px;
+.form-group {
+	display: inline-flex;
 }
 
+.control-label {
+	width: 600px;
+}
+
+.container {
+	padding-bottom: 50px;
+}
+
+label {
+	font-weight: bold;
+}
+
+.selectpicker {
+	width: 216px;
+}
 </style>
 
 
-<div class="container">
+<div class="container" id="total">
 	<div class="well form-horizontal">
 
 		<fieldset>
 			<!-- Form Name -->
-			<h1 style="padding-bottom:50px;">Add new Customer</h1>
+			<h1 style="padding-bottom: 50px;">Add new Customer</h1>
 
 			<div class="form-group has-feedback">
 				<label class="col-md-4 control-label">Designation</label>
 				<div class="col-md-4 selectContainer">
 					<div class="input-group">
-						<select id="desig"
-							class="form-control selectpicker" data-bv-field="state" style="width: 216px;">
+						<select id="desig" class="form-control selectpicker"
+							data-bv-field="state" style="width: 216px;">
 							<option value=" ">Designation</option>
 							<option>Mr.</option>
 							<option>Mrs.</option>
@@ -98,20 +132,20 @@ label{
 				<label class="col-md-4 control-label">First Name</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input id="first_name"
-							placeholder="First Name" class="form-control" type="text">
+						<input id="first_name" placeholder="First Name"
+							class="form-control alph" type="text">
 					</div>
 				</div>
 			</div>
 			<br>
 			<!-- Text input-->
-			
+
 			<div class="form-group">
 				<label class="col-md-4 control-label">Middle Name</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input id="middle_name"
-							placeholder="Middle Name" class="form-control" type="text">
+						<input id="middle_name"  placeholder="Middle Name"
+							class="form-control alph" type="text">
 					</div>
 				</div>
 			</div>
@@ -122,49 +156,49 @@ label{
 				<label class="col-md-4 control-label">Last Name</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input id="last_name"
-							placeholder="Last Name" class="form-control" type="text">
+						<input id="last_name" class="form-control alph" placeholder="Last Name"
+							 type="text">
 					</div>
 				</div>
 			</div>
-			
-			
+
+
 			<br>
 			<div class="form-group has-feedback">
 				<label class="col-md-4 control-label">Select Policy</label>
 				<div class="col-md-4 selectContainer">
 					<div class="input-group">
-							<select id="policy"
-							class="form-control selectpicker" data-bv-field="state" style="width: 216px;">
+						<select id="policy" class="form-control selectpicker"
+							data-bv-field="state" style="width: 216px;">
 							<option value=" ">Select Policy</option>
-							
-							<%
-							String policies[] = new String[10];
-							int polno[] = new int[10];
-							String sql1 = "select pol_no,p_name from policy";
-							try {
-								Connection conn = new Connect().myDBConnect();
-								Statement stmt1 = conn.createStatement();
-								ResultSet rs1 = stmt1.executeQuery(sql1);
-								int count= 0;
-								while(rs1.next())
-								{
-									policies[count]= rs1.getString("p_name");
-									polno[count]= rs1.getInt("pol_no");
-									count++;
-								}
-								 for(int i = 0;i<count;i++) {
-									/* policies[i]= rs1.getString("p_name"); */
-									/* polno[i]= rs1.getInt("pol_no"); */%>
-									 <option value="<%out.print(polno[i]); %>"><%out.print(policies[i]); %></option><%
-								} 
-								conn.close();
-							} catch (Exception e) {
-								System.out.println(e);
-							}
 
+							<%
+								String policies[] = new String[10];
+								int polno[] = new int[10];
+								String sql1 = "select pol_no,p_name from policy";
+								try {
+									Connection conn = new Connect().myDBConnect();
+									Statement stmt1 = conn.createStatement();
+									ResultSet rs1 = stmt1.executeQuery(sql1);
+									int count = 0;
+									while (rs1.next()) {
+										policies[count] = rs1.getString("p_name");
+										polno[count] = rs1.getInt("pol_no");
+										count++;
+									}
+									for (int i = 0; i < count; i++) {
+										/* policies[i]= rs1.getString("p_name"); */
+										/* polno[i]= rs1.getInt("pol_no"); */
 							%>
-							
+							<option value="<%out.print(polno[i]);%>"><%out.print(policies[i]);%></option>
+							<%
+								}
+									conn.close();
+								} catch (Exception e) {
+									System.out.println(e);
+								}
+							%>
+
 						</select>
 					</div>
 					<small data-bv-validator="notEmpty" data-bv-validator-for="state"
@@ -172,8 +206,8 @@ label{
 						your state</small>
 				</div>
 			</div>
-			
-			
+
+
 			<br>
 			<!-- Text input-->
 			<div class="form-group">
@@ -181,7 +215,7 @@ label{
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<input id="email" placeholder="E-Mail Address"
-							class="form-control" type="text">
+							class="form-control" type="email">
 					</div>
 				</div>
 			</div>
@@ -193,7 +227,7 @@ label{
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<input id="phone" placeholder="(845)555-1212"
-							class="form-control" type="text">
+							class="form-control nums" type="text">
 					</div>
 				</div>
 			</div>
@@ -204,8 +238,8 @@ label{
 				<label class="col-md-4 control-label">Address</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input id="address"
-							placeholder="Address" class="form-control" type="text">
+						<input id="address" placeholder="Address"
+							class="form-control alph" type="text">
 					</div>
 				</div>
 			</div>
@@ -227,7 +261,7 @@ label{
 				<label class="col-md-4 control-label">Username</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input id="uname" placeholder="Username" class="form-control"
+						<input id="uname" placeholder="Username" class="form-control alph"
 							type="text">
 					</div>
 				</div>
@@ -249,7 +283,7 @@ label{
 			<!-- Text input-->
 
 
-			<button id="addcustbtn" style="margin:14px" class="btn btn-primary">Add
+			<button id="addcustbtn" style="margin: 14px" class="btn btn-primary">Add
 				customer</button>
 
 		</fieldset>

@@ -35,7 +35,7 @@ label{
 
 		<fieldset>
 			<!-- Form Name -->
-			<h1 style="padding-bottom:50px;">My Profile</h1>
+			<h1 style="padding-bottom: 1em;margin-top: 1em;">My Profile</h1>
 
 			<!-- Text input-->
 

@@ -44,8 +44,24 @@
 	href='https://fonts.googleapis.com/css?family=Open+Sans:600'>
 
 <link rel="stylesheet" href="CSS/style.css">
-
-
+<script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('.alph').keydown(function(e){
+	console.log("aplh");
+    // Allow: backspace, delete, tab, escape, enter and .
+    if (e.keyCode == 32) {
+        e.preventDefault();
+    }
+    e = e || window.event;
+    var charCode = (typeof e.which == "undefined") ? e.keyCode : e.which;
+    var charStr = String.fromCharCode(charCode);
+    if (/\d/.test(charStr)) {
+        return false;
+    }
+	});
+});	
+</script>
 </head>
 
 <body>
@@ -63,7 +79,7 @@
 					<div class="sign-in-htm">
 						<div class="group">
 							<label for="user" class="label">Username</label> <input
-								id="userC" name="userC" type="text" class="input">
+								id="userC" name="userC" type="text" class="input alph">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Password</label> <input
@@ -81,7 +97,7 @@
 					<div class="login-htm">
 						<div class="group">
 							<label for="user" class="label">Username</label> <input
-								id="userP" name="userP" type="text" class="input">
+								id="userP" name="userP" type="text" class="input alph">
 						</div>
 						<div class="group">
 							<label for="pass" class="label">Password</label> <input
