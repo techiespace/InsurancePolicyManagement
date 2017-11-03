@@ -17,7 +17,7 @@ new Invoice().enter(cust_id, agent_id, total, pol_no, commision,s_date,e_date);
 </head>
 <body>
 
-<script type="text/javascript">
+	<script type="text/javascript">
 $(document).ready(function() {
 	$("#goHome").click(function() {
 		$('#main').load('main.jsp');
@@ -26,12 +26,14 @@ $(document).ready(function() {
 
 </script>
 
-<div id="main">
-
-<h1>
-	<center>Transaction Successful!</center>
-</h1>
-<button id="goHome" class="btn btn-primary">Home</button>
-</div>
+	<div id="main">
+		<center
+			style="height: 100v; width: 50%; margin: 0 auto; position: relative; top: 29vh;
+	/* top: 50%; */ bottom: 50%; left: 0px; right: 0;">
+			<div style="font-size:2em;font-weight:bold">Transaction Successful!</div><br>
+			<br>
+			<button id="goHome" class="btn btn-primary">Home</button>
+		</center>
+	</div>
 </body>
 </html>
