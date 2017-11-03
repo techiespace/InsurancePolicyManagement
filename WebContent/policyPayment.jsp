@@ -24,7 +24,11 @@
 
 	});
 </script>
-
+<style>
+.checkout_done:hover{
+cursor: pointer;
+}
+</style>
 
 </head>
 
