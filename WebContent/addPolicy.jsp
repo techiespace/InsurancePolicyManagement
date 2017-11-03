@@ -39,7 +39,7 @@
 		<!-- Page Heading -->
 				<div class="row">
 			<div class="col-md-4">
-				<h1 class="my-4">All Policy</h1>
+				<h1 class="my-4">Add Policy</h1>
 			</div>
 			<div class="col-md-1"></div>
 			<div class="col-md-3">
@@ -59,7 +59,9 @@
 			<div class="col-md-1"></div>
 			
 		</div>
+			<hr>		
 		<div id="cont">
+
 			<%
 				try {
 
@@ -120,7 +122,7 @@
 
 
 
-			<hr>
+		
 
 			<!-- Project One -->
 

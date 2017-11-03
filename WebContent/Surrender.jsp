@@ -105,12 +105,12 @@
 				<!-- <div class="col-md-2">
 					<span style="color: grey; font-size: 1.2em;">Agent Name</span>
 				</div> -->
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<span style="color: grey; font-size: 1.2em;">Amount on
 						Surrender<br>
 					</span>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<span style="color: grey; font-size: 1.2em">Maturity Date<br></span>
 				</div>
 			</div>
@@ -138,7 +138,7 @@
 					</span>
 				</div> --%>
 
-				<div class="col-md-2">
+				<div class="col-md-3">
 
 					<span style="font-size: 1.6em;"> <%int x1 = new surrenderValueProcedure().surrenderValue(total);
 					out.println(x1);
@@ -146,7 +146,7 @@
 
 					</span>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-3">
 
 					<span style="font-size: 1.6em;"> <%
  	out.println(date);

@@ -37,7 +37,7 @@
 						pPremium = rs.getString(3);
 						pComission = rs.getString(4);
 		%>
-		<hr>
+		
         
 		<!-- Project One -->
 		
