@@ -25,6 +25,12 @@
 							$(this).addClass('active');
 						});
 
+						$("#backtodashboard").click(function() {
+							$('#main').load('main.jsp');
+							$('.highlight').removeClass('active');
+							$('#dashboard').addClass('active');
+						});
+
 						$("#policyPayment").click(function() {
 							$('#main').load('policyPayment.jsp');
 							$('.highlight').removeClass('active');
@@ -119,7 +125,7 @@
 				System.out.println(e);
 			}
 		%> <!-- session.getAttribute("userid")-->
-		</span> <span><img src="images/logolic.png" style="z-index:1000;width:18%;margin-top:-45px;float:left;"></span></a>
+		</span> <span><img src="images/logolic.png" id="backtodashboard" style="z-index:1000;width:18%;margin-top:-45px;float:left;"></span></a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false"

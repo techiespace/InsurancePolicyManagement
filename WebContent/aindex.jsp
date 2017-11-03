@@ -99,6 +99,12 @@ footer {
 			$('.highlight').removeClass('active');
 			$(this).addClass('active');
 		});
+		
+		$("#backtodashboard").click(function() {
+			$('#amain').load('agent_main.jsp');
+			$('.highlight').removeClass('active');
+			$('#dashboard').addClass('active');
+		});
 
 		$("#aPolicyPayment").click(function() {
 			$('#amain').load('agent_PolicyPayment.jsp');
@@ -189,7 +195,7 @@ footer {
 			} catch (Exception e) {
 				System.out.println(e);
 			}
-		%></span><span><img src="images/logolic.png" style="z-index:1000;width:18%;margin-top:-45px;float:left;"></span><!-- session.getAttribute("userid")-->
+		%></span><span><img id="backtodashboard" src="images/logolic.png" style="z-index:1000;width:18%;margin-top:-45px;float:left;"></span><!-- session.getAttribute("userid")-->
 		</a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"

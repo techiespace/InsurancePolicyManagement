@@ -167,18 +167,18 @@
 	%>
 	<!-- /.container -->
 </div>
-<div>
+<div style="margin-left: 25%; margin-top: 10%;">
 	<button type="button"
-		style="margin-left: 30%; margin-top: 10%; width: 200px; height: 65px; font-size: 1.7em;"
+		style="width: 200px; height: 65px; font-size: 1.7em;"
 		class="btn btn-danger SureSurrender">
 		<b>Yes,I am Sure</b>
 	</button>
 
-</div>
 
-<div>
+
+
 	<button type="button"
-		style="margin-left: 50%; margin-top: -6%; width: 200px; height: 65px; font-size: 1.7em;"
+		style="margin-left:8em; width: 200px; height: 65px; font-size: 1.7em;"
 		class="btn btn-primary backToMyPolicies">
 		<b>No</b>
 	</button>

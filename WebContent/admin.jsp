@@ -24,6 +24,12 @@
 							$('.highlight').removeClass('active');
 							$(this).addClass('active');
 						});
+						
+						$("#backtodashboard").click(function() {
+							$('#ad_main').load('admin_main.jsp');
+							$('.highlight').removeClass('active');
+							$('#dashboard').addClass('active');
+						});
 
 						$("#addPolicy").click(function() {
 							$('#ad_main').load('addNewPolicy.jsp');
@@ -61,7 +67,8 @@
 
 <meta name="description" content="">
 <meta name="author" content="">
-<title>LIC Customer Login</title>
+<title>LIC Admin Login</title>
+<link rel="shortcut icon" href="images/logolic.png" />
 
 <!-- Bootstrap core CSS -->
 <link href="dashboard/vendor/bootstrap/css/bootstrap.min.css"
@@ -86,7 +93,9 @@
 	<nav class="navbar navbar-expand-lg navbar-dark bg-des fixed-top"
 		id="mainNav" style="padding-bottom: 0.1em;">
 		<a class="navbar-brand" href="#" style="color: #F2B809"><span
-			style="font-size: 1.2em;">Welcome, Admin <!-- session.getAttribute("userid")-->
+			style="margin-left:23%;font-size: 1.2em;">Welcome, Admin 
+			<span><img id="backtodashboard" src="images/logolic.png" style="z-index:1000;width:18%;margin-top:-45px;float:left;">
+			</span><!-- session.getAttribute("userid")-->
 		</span> </a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-toggle="collapse" data-target="#navbarResponsive"
