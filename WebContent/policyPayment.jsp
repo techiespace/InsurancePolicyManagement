@@ -37,8 +37,7 @@ cursor: pointer;
 	<div class="container" style="max-width: 150%;">
 
 		<!-- Page Heading -->
-		<h1 style="color: #03275A;" class="my-4">Premium Payments</h1>
-
+		<h1 class="my-4" style="margin-left:1.5em">Premium Payments</h1>		
 		<div>
 
 			<div class="row"

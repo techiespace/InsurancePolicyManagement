@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ page import="JDBC.jsp.*"%>
 <%@ page import="java.sql.PreparedStatement"%>
 <%@ page import="java.sql.Statement"%>
@@ -32,6 +34,7 @@
 
 		<!-- Page Heading -->
 		<h1 class="my-4">My Policies</h1>
+		<hr>
 		<%
 			String pName = "";
 			String pDuration = "";
@@ -70,7 +73,7 @@
 						imgUrl = rs.getString(5);
 
 		%>
-		<hr>
+		
 
 		<!-- Project One -->
 
@@ -86,20 +89,20 @@
 						out.println(pName);
 					%>
 				</h3>
-				<p>
+				<p style="margin-top:1em">
 					<b>Policy Duration: </b>
 					<%
-						out.println(pDuration);
+						out.println(pDuration+" months");
 					%><br> <b>Premium Amount: </b>
 					<%
-						out.println(pPremium);
+						out.println("₹ "+pPremium);
 					%><br> <b>Maturity Date: </b>
 					<%
 						out.println(maturity);
 					%>
 				</p>
 				<!-- Button trigger modal -->
-				<button type="button" style="margin-left: 80%; margin-top: -35%;"
+				<button type="button" style="margin-left: 80%; margin-top: -34%;"
 					class="btn btn-primary" data-toggle="modal"
 					data-target="#polDetModal<%out.print(modeli);%>">Policy
 					Details</button>
