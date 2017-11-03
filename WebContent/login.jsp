@@ -1,6 +1,10 @@
 <%@ page import="JDBC.jsp.*"%>
-
 <%
+if(session.getAttribute("current_user")!=null)
+	response.sendRedirect("index.jsp");
+if(session.getAttribute("agent_user")!=null)
+	response.sendRedirect("aindex.jsp");
+
 	String msg = "";
 	boolean isPost = "POST".equals(request.getMethod());
 	if (isPost == true) {

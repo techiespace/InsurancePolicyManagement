@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@ page import="java.sql.*,JDBC.jsp.*,a_JDBC.*"%>
-
+<%
+if(session.getAttribute("agent_user")==null)
+	response.sendRedirect("login.jsp");
+%>
 <head>
 
 <style>
@@ -427,7 +430,7 @@ footer {
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.jsp">Logout</a>
+					<a class="btn btn-primary" href="logout.jsp">Logout</a>
 				</div>
 			</div>
 		</div>

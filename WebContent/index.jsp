@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@ page import="java.sql.*,JDBC.jsp.*"%>
-
+<%
+if(session.getAttribute("current_user")==null)
+	response.sendRedirect("login.jsp");
+%>
 <head>
 <script type="text/javascript" src="dashboard/vendor/jquery/jquery.js"></script>
 <script type="text/javascript">
@@ -361,7 +364,7 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Cancel</button>
-					<a class="btn btn-primary" href="login.jsp">Logout</a>
+					<a class="btn btn-primary" href="logout.jsp">Logout</a>
 				</div>
 			</div>
 		</div>
