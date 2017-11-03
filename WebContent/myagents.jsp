@@ -40,11 +40,13 @@ height:220px;
 				String agentid = "select DISTINCT agent_id from customer_agent_policy where cust_id=" + id;
 				Statement s = conn.createStatement();
 				ResultSet agentlist = s.executeQuery(agentid);
+				out.println("<hr>");
 				while (agentlist.next()) {
 					String sql = "select a_fname, a_lname, a_phone, a_email, a_addr, image from agent where agent_id=?";
 					PreparedStatement stmt = conn.prepareStatement(sql);
 					stmt.setInt(1, agentlist.getInt(1));
 					ResultSet rs = stmt.executeQuery();
+				
 					while (rs.next()) {
 						afName = rs.getString(1);
 						alName = rs.getString(2);
@@ -53,8 +55,7 @@ height:220px;
 						aEmail = rs.getString(4);
 						imgUrl = rs.getString(6);
 		%>
-		<hr>
-
+		
 		<!-- Project One -->
 		<div class="row">
 			<div class="col-md-3">
