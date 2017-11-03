@@ -17,8 +17,10 @@
 <%
 	String pol = request.getParameter("pol_no");
 	int pol_no = Integer.parseInt(pol);
+	String cust = request.getParameter("cust_id");
+	int cust_id = Integer.parseInt(cust);
 	int agent_id = (Integer) session.getAttribute("Id");
-	int cust_id = new Get_cust().get_id(agent_id, pol_no);
+	//int cust_id = new Get_cust().get_id(agent_id, pol_no);
 	int details[] = new Prem_amount().p_details(pol_no);
 	int premium = details[0];
 	int commision = details[1];
@@ -56,10 +58,13 @@
 							var commision =
 <%=commision1%>
 	;
+							var cust_id =
+<%=cust_id%>
+	;
 							$('#amain').load(
 									'atrans_final.jsp?pol_no=' + pol_no
 											+ '&total=' + total + '&commision='
-											+ commision);
+											+ commision+ '&cust_id=' + cust_id);
 						});
 			});
 </script>
@@ -170,8 +175,7 @@
 						out.println("INR " + act_latefee);
 					%>
 				</p>
-				<br>
-				<br>
+				<br> <br>
 				<p style="float: right;">
 					<b>Tax (5%): </b>
 					<%
@@ -185,8 +189,7 @@
 						out.println("<span style='color: red;'>INR " + total + "</span>");
 					%>
 				</p>
-				<br>
-				<br>
+				<br> <br>
 				<button style="float: right;" id="pay_done" class="btn btn-primary">Checkout</button>
 			</div>
 		</div>
