@@ -33,6 +33,12 @@
 			$('.highlight').removeClass('active');
 			$('#newplans').addClass('active');
 		});
+		
+		$(".media-body").click(function(){
+			$('#main').load('policyPayment.jsp');
+			$('.highlight').removeClass('active');
+			$('#policyPayment').addClass('active');
+		})
 
 	});
 </script>
