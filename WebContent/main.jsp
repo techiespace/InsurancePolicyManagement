@@ -34,11 +34,14 @@
 			$('#newplans').addClass('active');
 		});
 		
-		$(".media-body").click(function(){
-			$('#main').load('policyPayment.jsp');
+		$(".list-group").click(function(){
+			var pol_no = $(".media-body").attr('id');
+			$('#main').load('checkout.jsp?pol_no=' + pol_no);
 			$('.highlight').removeClass('active');
 			$('#policyPayment').addClass('active');
 		})
+		
+		
 
 	});
 </script>
@@ -179,7 +182,7 @@
 						<div class="media">
 							<!--<img class="d-flex mr-3 "
 										src="http://placehold.it/45x45" alt="">-->
-							<div class="media-body">
+							<div class="media-body" id="<%out.print(pols[acnt]);%>">
 								<%
 									if (day_diff[acnt] < 0) {
 											out.println("You have missed your premium due date for " + new Prem_name().p_name(pols[acnt]) + ".");
