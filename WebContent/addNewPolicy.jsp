@@ -16,7 +16,8 @@
 %>
 
 <script type="text/javascript">
-	$('#addpolbtn')
+$(document).ready(function() {
+$('#addpolbtn')
 			.click(
 					function() {
 	
@@ -29,6 +30,38 @@
 		
 			$('#ad_main').load("newPolAddSuccess.jsp?policy_name="+pname+"&duration="+dur+"&late_fee="+lfee+"&premium="+prem+"&commision="+comm+"&policy_desc="+desc);
 	});
+	
+	$('.alph').keydown(function(e){
+		console.log("aplh");
+	    // Allow: backspace, delete, tab, escape, enter and .
+	    if (e.keyCode == 32) {
+	        e.preventDefault();
+	    }
+	    e = e || window.event;
+	    var charCode = (typeof e.which == "undefined") ? e.keyCode : e.which;
+	    var charStr = String.fromCharCode(charCode);
+	    if (/\d/.test(charStr)) {
+	        return false;
+	    }
+		});
+
+		$('.nums').keydown(function(e){
+	    // $('#phone_number').removeClass("highlight")
+	    // Allow: backspace, delete, tab, escape, enter and .
+	    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 || (e.keyCode === 65 && (e.ctrlKey === true || e.metaKey === true)) || (e.keyCode >= 35 && e.keyCode <= 40)) {
+	        // Allow: home, end, left, right, down, up
+
+	        // let it happen, don't do anything
+	        return;
+	    }
+	    // Ensure that it is a number and stop the keypress
+	    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+	        e.preventDefault();
+	    }
+		});
+	
+});	
+	
 </script>
 <style>
 .form-group{
@@ -66,7 +99,7 @@ label{
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<input id="policy_name"
-							placeholder="Policy Name" class="form-control" type="text">
+							placeholder="Policy Name" class="alph form-control" type="text">
 					</div>
 				</div>
 			</div>
@@ -79,7 +112,7 @@ label{
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<input id="duration"
-							placeholder="12" class="form-control" type="text">
+							placeholder="Duration" class="nums form-control" type="text">
 					</div>
 				</div>
 			</div>
@@ -91,8 +124,8 @@ label{
 				<label class="col-md-4 control-label">Late fee</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input id="late_fee" placeholder="500"
-							class="form-control" type="text">
+						<input id="late_fee" placeholder="Late fee"
+							class="form-control nums" type="text">
 					</div>
 				</div>
 			</div>
@@ -103,8 +136,8 @@ label{
 				<label class="col-md-4 control-label">Premium</label>
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
-						<input id="premium" placeholder="5000"
-							class="form-control" type="text">
+						<input id="premium" placeholder="Premium"
+							class="form-control nums" type="text">
 					</div>
 				</div>
 			</div>
@@ -116,7 +149,7 @@ label{
 				<div class="col-md-4 inputGroupContainer">
 					<div class="input-group">
 						<input id="commision"
-							placeholder="5" class="form-control" type="text">
+							placeholder="Commission" class="nums form-control" type="text">
 					</div>
 				</div>
 			</div>
