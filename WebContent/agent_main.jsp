@@ -31,6 +31,20 @@
 			$('.highlight').removeClass('active');
 			$('#allPlans').addClass('active');
 		});
+		
+		
+		$(".list-group").click(function(){
+			var cust_id=$(".media-body").attr('id');
+			var pol_no = $(".media-body").parent().attr('id');
+			$('#amain').load('agent_checkout.jsp?pol_no=' + pol_no+'&cust_id='+cust_id);
+			$('.highlight').removeClass('active');
+			$('#aPolicyPayment').addClass('active');
+		})
+
+		
+
+			
+	
 
 	});
 </script>
@@ -73,10 +87,10 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">My Customers</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="my-customers" class="float-left" style="font-size: 1.2em">View
-						Details</span> <span class="float-right"> <i
-						class="fa fa-angle-right"></i>
+				<a href="#" id="my-customers"
+					class="card-footer text-white clearfix small z-1"> <span
+					class="float-left" style="font-size: 1.2em">View Details</span> <span
+					class="float-right"> <i class="fa fa-angle-right"></i>
 				</span>
 				</a>
 			</div>
@@ -89,9 +103,9 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">Premium Payment</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="premium-payment-details" class="float-left"
-					style="font-size: 1.2em">View Details</span> <span
+				<a href="#" id="premium-payment-details"
+					class="card-footer text-white clearfix small z-1"> <span
+					class="float-left" style="font-size: 1.2em">View Details</span> <span
 					class="float-right"> <i class="fa fa-angle-right"></i>
 				</span>
 				</a>
@@ -105,7 +119,8 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">Add New Customer</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
+				<a href="#" id="new-customer"
+					class="card-footer text-white clearfix small z-1"> <span
 					id="new-customer" class="float-left" style="font-size: 1.2em">View
 						Details</span> <span class="float-right"> <i
 						class="fa fa-angle-right"></i>
@@ -121,10 +136,10 @@
 					</div>
 					<div class="mr-5" style="font-size: 1.5em">All plans by LIC!</div>
 				</div>
-				<a href="#" class="card-footer text-white clearfix small z-1"> <span
-					id="plan-details" class="float-left" style="font-size: 1.2em">View
-						Details</span> <span class="float-right"> <i
-						class="fa fa-angle-right"></i>
+				<a href="#" id="plan-details"
+					class="card-footer text-white clearfix small z-1"> <span
+					class="float-left" style="font-size: 1.2em">View Details</span> <span
+					class="float-right"> <i class="fa fa-angle-right"></i>
 				</span>
 				</a>
 			</div>
@@ -168,31 +183,32 @@
 					%>
 					<a href="#" class="list-group-item list-group-item-action"
 						style="padding: 1.5em">
-						<div class="media">
+						<div class="media" id="<%out.print(pol_no[acnt]);%>">
 							<!--<img class="d-flex mr-3 "
 										src="http://placehold.it/45x45" alt="">-->
-							<div class="media-body">
-								<%
+								<div class="media-body" id="<%out.print(cust_id[acnt]);%>">
+									<%
 									String name[]=new Cust_name().c_name(cust_id[acnt]);
 									String first=name[0];
 									String mid=name[1];
 									String last=name[2];
 									String full=first+" "+mid+" " +last;
 									if (day_diff[acnt] < 0) {
-											out.println(full+ " has missed his/her premium due date for Policy Number: " + pol_no[acnt] + ".");
+											out.println(full+ " has missed his/her premium due date for " + new Prem_name().p_name(pol_no[acnt]) + ".");
 										} else if (day_diff[acnt] == 0) {
-											out.println(full+"'s premium due date for Policy Number: " + pol_no[acnt] + " is today.");
+											out.println(full+"'s premium due date for " + new Prem_name().p_name(pol_no[acnt]) + " is today.");
 										} else if (day_diff[acnt] > 0) {
 											if (day_diff[acnt] <= 5) {
 												//Date d=new Prem_date().due_date(cust_id, pols[acnt]);
-												out.println(full+"'s next premium for Policy Number: " + pol_no[acnt] + " is due in " + day_diff[acnt]
+												out.println(full+"'s next premium for " + new Prem_name().p_name(pol_no[acnt]) + " is due in " + day_diff[acnt]
 														+ " days on " + new Prem_date().due_date(cust_id[acnt], pol_no[acnt]) + ".");
 											}
 										}
 								%>
 
+								</div>
 							</div>
-						</div>
+						
 					</a>
 					<%
 						}

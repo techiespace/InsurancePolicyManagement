@@ -12,9 +12,9 @@
 	$(document).ready(function() {
 
 		$("#cont").delegate('.checkout_done', 'click', function() {
-			console.log("del");
+			var cust_id=$(this).parent().attr('id')
 			var pol_no = $(this).attr('id');
-			$('#amain').load('agent_checkout.jsp?pol_no=' + pol_no);
+			$('#amain').load('agent_checkout.jsp?pol_no=' + pol_no+'&cust_id='+cust_id);
 		});
 
 		$("#search-name").keyup(function() {
@@ -197,7 +197,7 @@
  %></span>
 						</div>
 
-						<div class="col-md-1">
+						<div class="col-md-1" id="<%out.print(cust_id[acnt]);%>">
 							<a class=" btn btn-primary checkout_done"
 								style="color: white; margin-left: 2em;margin-top:-0.5em;"
 								id="<%out.print(pol_no[acnt]);%>">Pay now</a>

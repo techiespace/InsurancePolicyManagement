@@ -33,6 +33,15 @@
 			$('.highlight').removeClass('active');
 			$('#newplans').addClass('active');
 		});
+		
+		$(".list-group").click(function(){
+			var pol_no = $(".media-body").attr('id');
+			$('#main').load('checkout.jsp?pol_no=' + pol_no);
+			$('.highlight').removeClass('active');
+			$('#policyPayment').addClass('active');
+		})
+		
+		
 
 	});
 </script>
@@ -173,22 +182,22 @@
 						<div class="media">
 							<!--<img class="d-flex mr-3 "
 										src="http://placehold.it/45x45" alt="">-->
-							<div class="media-body">
+							<div class="media-body" id="<%out.print(pols[acnt]);%>">
 								<%
 									if (day_diff[acnt] < 0) {
-											out.println("You have missed your premium due date for Policy Number: " + pols[acnt] + ".");
+											out.println("You have missed your premium due date for " + new Prem_name().p_name(pols[acnt]) + ".");
 											out.println("Please pay it ASAP!");
 										} else if (day_diff[acnt] == 0) {
-											out.println("Your premium due date for Policy Number: " + pols[acnt] + " is today.");
+											out.println("Your premium due date for " + new Prem_name().p_name(pols[acnt]) + " is today.");
 											out.println("Please pay it ASAP!");
 										} else if (day_diff[acnt] > 0) {
 											if (day_diff[acnt] >= 30) {
 												//Date d=new Prem_date().due_date(cust_id, pols[acnt]);
-												out.println("You have paid your premium for Policy Number: " + pols[acnt] + " for this month.");
+												out.println("You have paid your premium for " + new Prem_name().p_name(pols[acnt]) + " for this month.");
 												out.println("Next premium is due in " + day_diff[acnt] + " days on "
 														+ new Prem_date().due_date(cust_id, pols[acnt]) + ".");
 											} else {
-												out.println("Next premium for Policy Number: " + pols[acnt] + " is due in " + day_diff[acnt]
+												out.println("Next premium for " + new Prem_name().p_name(pols[acnt]) + " is due in " + day_diff[acnt]
 														+ " days on " + new Prem_date().due_date(cust_id, pols[acnt]) + ".");
 											}
 
