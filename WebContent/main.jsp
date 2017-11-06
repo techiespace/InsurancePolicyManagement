@@ -34,8 +34,8 @@
 			$('#newplans').addClass('active');
 		});
 		
-		$(".list-group").click(function(){
-			var pol_no = $(".media-body").attr('id');
+		$(".media-body").click(function(){
+			var pol_no = $(this).attr('id');
 			$('#main').load('checkout.jsp?pol_no=' + pol_no);
 			$('.highlight').removeClass('active');
 			$('#policyPayment').addClass('active');
@@ -178,11 +178,11 @@
 						for (acnt = 0; acnt < cnt; acnt++) {
 					%>
 					<a href="#" class="list-group-item list-group-item-action"
-						style="padding: 1.5em">
+						>
 						<div class="media">
 							<!--<img class="d-flex mr-3 "
 										src="http://placehold.it/45x45" alt="">-->
-							<div class="media-body" id="<%out.print(pols[acnt]);%>">
+							<div class="media-body" id="<%out.print(pols[acnt]);%>" style="padding: 1em">
 								<%
 									if (day_diff[acnt] < 0) {
 											out.println("You have missed your premium due date for " + new Prem_name().p_name(pols[acnt]) + ".");

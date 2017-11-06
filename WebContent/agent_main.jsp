@@ -33,9 +33,9 @@
 		});
 		
 		
-		$(".list-group").click(function(){
-			var cust_id=$(".media-body").attr('id');
-			var pol_no = $(".media-body").parent().attr('id');
+		$(".media-body").click(function(){
+			var cust_id=$(this).attr('id');
+			var pol_no = $(this).parent().attr('id');
 			$('#amain').load('agent_checkout.jsp?pol_no=' + pol_no+'&cust_id='+cust_id);
 			$('.highlight').removeClass('active');
 			$('#aPolicyPayment').addClass('active');
@@ -96,7 +96,7 @@
 			</div>
 		</div>
 		<div class="col-xl-6 col-sm-6 mb-3" style="display: block;">
-			<div class="card text-white bg-warning o-hidden h-100";">
+			<div class="card text-white bg-warning o-hidden h-100">
 				<div class="card-body">
 					<div class="card-body-icon">
 						<i class="fa fa-fw fa-money"></i>
@@ -182,11 +182,12 @@
 								continue;
 					%>
 					<a href="#" class="list-group-item list-group-item-action"
-						style="padding: 1.5em">
+						>
 						<div class="media" id="<%out.print(pol_no[acnt]);%>">
 							<!--<img class="d-flex mr-3 "
 										src="http://placehold.it/45x45" alt="">-->
-								<div class="media-body" id="<%out.print(cust_id[acnt]);%>">
+								<div class="media-body" id="<%out.print(cust_id[acnt]);%>" style="padding: 1em">
+								
 									<%
 									String name[]=new Cust_name().c_name(cust_id[acnt]);
 									String first=name[0];
