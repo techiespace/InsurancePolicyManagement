@@ -55,7 +55,7 @@
 		$(".highlight").click(function() {
 			$(this).toggleClass(".active");
 		});
-
+		
 	});
 </script>
 <meta charset="utf-8">
