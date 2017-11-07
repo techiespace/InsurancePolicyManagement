@@ -9,13 +9,13 @@
 	$(document).ready(function() {
 
 		$("#premium-payment-details").click(function() {
-			$('#admin_main').load('agent_PolicyPayment.jsp');
+			$('#ad_main').load('addAgent.jsp');
 			$('.highlight').removeClass('active');
 			$('#aPolicyPayment').addClass('active');
 		});
 
 		$("#my-customers").click(function() {
-			$('#ad_main').load('myCustomers.jsp');
+			$('#ad_main').load('allAgents.jsp');
 			$('.highlight').removeClass('active');
 			$('#myCustomers').addClass('active');
 		});
